@@ -1,0 +1,51 @@
+﻿@model IEnumerable<PizzaExpress.Models.Produto>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.IdProduto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NomeProduto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DescProduto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PrecoProduto)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdProduto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NomeProduto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DescProduto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PrecoProduto)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { item.IdProduto }) |
+            @Html.ActionLink("Details", "Details", new { item.IdProduto }) |
+            @Html.ActionLink("Delete", "Delete", new { item.IdProduto })
+        </td>
+    </tr>
+}
+
+</table>

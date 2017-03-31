@@ -1,0 +1,42 @@
+﻿@model string
+@{
+    ViewBag.Title = "Index";
+    AjaxOptions options = new AjaxOptions
+    {
+        UpdateTargetId = "searchResult",
+        Confirm = "Are you sure to start search?",
+        InsertionMode = InsertionMode.Replace,
+        LoadingElementId = "divLoading"
+    };
+}
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+<h2>Index</h2>
+<table style="width: 100%;">
+    <thead>
+        <tr>
+            <th>AutoId</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Age</th>
+            <th>Active</th>
+        </tr>
+    </thead>
+    <tbody id="searchResult">
+        @{ 
+            if (Model.Count() > 0)
+            {
+        @Html.Action("ProcurarFuncionarios", new { keyword = "" })
+                }
+            }
+    </tbody>
+</table>
+@using (Ajax.BeginForm("ProcurarFuncionarios", options))
+{
+    <div id="divLoading" style="color: red; width: 200px; background-color: yellow; fontsize: larger; display: none; position: absolute;">
+        Loading ....
+    </div>
+    <div>
+        @Html.TextBox("keyword")
+        <button type="submit">Search</button>
+    </div>
+}
