@@ -43,5 +43,32 @@ namespace PizzaExpress.Models
             set { precoProduto = value; }
 
         }
+        public Produto ProdutoPorId(int id)
+        {
+            DAOProduto dao = new DAOProduto();
+            return dao.BuscarPorIdProduto(id);
+        }
+        public IList<Produto> ListarNome(string nome)
+        {
+            DAOProduto dao = new DAOProduto();
+            return dao.BuscarPorNome(nome);
+        }
+        public void Salvar(Produto produto)
+        {
+            DAOProduto dao = new Models.DAOProduto();
+            if(produto.IdProduto == 0)
+            {
+                dao.Salvar(produto);
+            }
+            else
+            {
+                dao.Alterar(produto);
+            }
+        }
+        public void Deletar(int id)
+        {
+            DAOProduto dao = new DAOProduto();
+            dao.Excluir(id);
+        }
     }
 }

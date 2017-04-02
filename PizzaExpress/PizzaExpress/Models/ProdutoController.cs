@@ -8,10 +8,12 @@ namespace PizzaExpress.Controllers
 {
     public class ProdutoController : Controller
     {
+        // GET: Produto
+        
         public ActionResult Index(string pesquisar)
         {
-            Produto produto = new Produto();
-            if (Request.IsAjaxRequest())
+            Produto produto = new Produto();   
+            if(Request.IsAjaxRequest())
             {
                 return PartialView("ProcurarProduto", produto.ListarNome(pesquisar));
             }
@@ -23,7 +25,7 @@ namespace PizzaExpress.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Create([Bind(Exclude = "IdProduto")]Produto produto)
+        public ActionResult Create([Bind(Exclude ="IdProduto")]Produto produto)
         {
             produto.Salvar(produto);
             return View();

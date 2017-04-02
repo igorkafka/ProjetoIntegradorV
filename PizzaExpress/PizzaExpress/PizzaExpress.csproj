@@ -193,6 +193,7 @@
     <Compile Include="Models\Conexao.cs" />
     <Compile Include="Models\DAOCliente.cs" />
     <Compile Include="Models\DAOFuncionario.cs" />
+    <Compile Include="Models\DAOProduto.cs" />
     <Compile Include="Models\Funcionario.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ItensPedido.cs" />
@@ -274,7 +275,12 @@
     <Content Include="Views\Funcionario\Index.cshtml" />
     <Content Include="Views\Cliente\ProcurarCliente.cshtml" />
     <Content Include="Views\Cliente\Index.cshtml" />
+    <Content Include="Views\Produto\Create.cshtml" />
+    <Content Include="Views\Produto\Delete.cshtml" />
+    <Content Include="Views\Produto\Details.cshtml" />
+    <Content Include="Views\Produto\Edit.cshtml" />
     <Content Include="Views\Produto\Index.cshtml" />
+    <Content Include="Views\Produto\ProcurarProduto.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
