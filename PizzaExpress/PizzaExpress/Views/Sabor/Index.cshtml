@@ -1,0 +1,30 @@
+﻿@model IEnumerable<PizzaExpress.Models.Sabor>
+<h1>Sabor</h1>
+<div>
+    @using (Ajax.BeginForm("Index", "Sabor", new AjaxOptions { HttpMethod = "GET", InsertionMode = InsertionMode.Replace, UpdateTargetId = "divlistasabores", OnFailure = "handleError" }))
+    {
+
+        <div class="container" id="containerprocurarcliente">
+            <div class="form-inline">
+                <div class="row">
+                    <h2>Sabor</h2>
+                    <div>
+                        <input type="text" maxlength="180" name="pesquisar" placeholder="Pesquisar" class="procurarbotao" />
+                        <button type="submit" value="pesquisar" class="procurar">Pesquisar Cliente</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    }
+
+</div>
+@Html.Partial("ProcurarSabor", Model)
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+
+
+
+}
