@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Web;
 
@@ -23,6 +24,7 @@ namespace PizzaExpress.Models
             set { idProduto = value; }
         }
         private string nomeProduto;
+        [DisplayName("Nome")]
         public string NomeProduto
         {
             get { return nomeProduto; }
@@ -30,6 +32,7 @@ namespace PizzaExpress.Models
         }
 
         private string descProduto;
+        [DisplayName("Descrição")]
         public string DescProduto
         {
             get { return descProduto; }
@@ -37,6 +40,7 @@ namespace PizzaExpress.Models
         }
 
         private decimal precoProduto;
+        [DisplayName("Preço")]
         public decimal PrecoProduto
         {
             get { return precoProduto; }

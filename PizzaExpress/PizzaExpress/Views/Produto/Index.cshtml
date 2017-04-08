@@ -6,27 +6,38 @@
 
 <h2>Index</h2>
 
-<div>
+
     @using (Ajax.BeginForm("Index", "Produto", new AjaxOptions { HttpMethod = "GET", InsertionMode = InsertionMode.Replace, UpdateTargetId = "divlistaprodutos", OnFailure = "handleError" }))
     {
 
-        <div class="container" id="containerprocurarcliente">
-            <div class="form-inline">
-                <div class="row">
+        <section id="containerprocurarcliente">
+            <form class="form-inline">
+                
                     <h2>Cliente</h2>
-                    <div>
-                        <input type="text" maxlength="180" name="pesquisar" placeholder="Pesquisar" class="procurarbotao" />
-                        <button type="submit" value="pesquisar" class="procurar">Pesquisar Cliente</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            <input type="text" class="form-control" />
+                            </div>
+                        </div>
+                       <div class="form-group">
+                          
+                               <input type="submit" class="btn btn-group" />
+                               
+                           </div>
+                          
+                       
+              
+                       
+               
+           
+        </form>
+            <input type="submit" class="btn" />
+            </section>
 
     }
-
-</div>
+<div>
 @Html.Partial("ProcurarProduto", Model)
+    </div>
 @section scripts
 {
     @Scripts.Render("~/bundles/jqueryval")
