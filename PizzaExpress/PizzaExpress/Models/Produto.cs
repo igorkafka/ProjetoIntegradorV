@@ -19,6 +19,7 @@ namespace PizzaExpress.Models
         //----- Atributos -----
 
         private int idProduto;
+        [ScaffoldColumn(false)]
         public int IdProduto
         {
             get { return idProduto; }
