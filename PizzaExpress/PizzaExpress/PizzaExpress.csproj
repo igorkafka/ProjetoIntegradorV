@@ -184,6 +184,8 @@
     <Compile Include="Controllers\FuncionarioController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PedidoController.cs" />
+    <Compile Include="Controllers\PizzaController.cs" />
     <Compile Include="Controllers\ProdutoController.cs" />
     <Compile Include="Controllers\SaborController.cs" />
     <Compile Include="Global.asax.cs">
@@ -194,6 +196,7 @@
     <Compile Include="Models\Conexao.cs" />
     <Compile Include="Models\DAOCliente.cs" />
     <Compile Include="Models\DAOFuncionario.cs" />
+    <Compile Include="Models\DAOPedido.cs" />
     <Compile Include="Models\DAOProduto.cs" />
     <Compile Include="Models\DAOSabor.cs" />
     <Compile Include="Models\Funcionario.cs" />
@@ -292,6 +295,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Pedido\" />
+    <Folder Include="Views\Pizza\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

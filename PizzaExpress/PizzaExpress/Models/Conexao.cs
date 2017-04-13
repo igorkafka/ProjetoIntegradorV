@@ -19,12 +19,14 @@ namespace PizzaExpress.Models
             return conexao;
         }
 
-        public void ExecutarCrud(SqlCommand comando)
+        public int ExecutarCrud(SqlCommand comando)
         {
             SqlConnection con = Conectar();
             comando.Connection = con;
-            comando.ExecuteNonQuery();
+            int id = Convert.ToInt32(comando.ExecuteScalar());
+           
             con.Close();
+            return id;
 
             
         }
