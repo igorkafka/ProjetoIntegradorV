@@ -1,0 +1,25 @@
+﻿@model  IEnumerable<PizzaExpress.Models.Pizza>
+
+@{
+    ViewBag.Title = "Index";
+}
+@using (Ajax.BeginForm("Index", "Pizza", new AjaxOptions { HttpMethod = "GET", InsertionMode = InsertionMode.Replace, UpdateTargetId = "divlistasabores", OnFailure = "handleError" }))
+{
+
+    <div class="container" id="containerprocurarcliente">
+        <div class="form-inline">
+            <div class="row">
+                <h2>Cliente</h2>
+                <div>
+                    @Html.DropDownList("Tamanho", new List<SelectListItem>() { new SelectListItem() { Text = "G", Value = "G" }},"Selecione um Tamanho" )
+                    <button type="submit" value="tamanho" class="procurar">Pesquisar Cliente</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+}
+@Html.Partial("ProcurarPizza", Model)
+<h2>Index</h2>
+

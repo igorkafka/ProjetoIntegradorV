@@ -8,6 +8,10 @@ namespace PizzaExpress.Models
 {
     public class Sabor
     {
+        public Sabor()
+        {
+
+        }
         private Pizza objPizza; //Composição Pizza
         public Pizza ObjPizza
         {

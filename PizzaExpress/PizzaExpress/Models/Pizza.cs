@@ -7,6 +7,11 @@ namespace PizzaExpress.Models
 {
     public class Pizza
     {
+        public Pizza()
+        {
+           Sabor listasabor = new Sabor();
+            this.ObjListaSabor = listasabor;
+        }
         private Sabor objListaSabor = new Sabor(); //Lista Sabor
 
         public Sabor ObjListaSabor
@@ -52,29 +57,16 @@ namespace PizzaExpress.Models
             get { return tamanho; }
             set { tamanho = value; }
         }
-
-        private string sabor1;
-
-        public string Sabor1
+        public IList<Pizza> ListarPorTamanho(string tamanho)
         {
-            get { return sabor1; }
-            set { sabor1 = value; }
-        }
-        private string sabor2;
-
-        public string Sabor2
-        {
-            get { return sabor2; }
-            set { sabor2 = value; }
+            DAOPizza dao = new DAOPizza();
+            return dao.BuscarPizza(tamanho);
         }
 
-        private string sabor3;
+        public IList<Sabor> Sabores { get { return sabores; } set { this.sabores = value; } }
 
-        public string Sabor3
-        {
-            get { return sabor3; }
-            set { sabor3 = value; }
-        }
+        private IList<Sabor> sabores;
+        
 
 
         public decimal CalcularValorTotalPizza(decimal valorSabor, string tamanho)

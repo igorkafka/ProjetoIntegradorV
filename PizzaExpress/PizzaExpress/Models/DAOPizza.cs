@@ -17,9 +17,9 @@ namespace PizzaExpress.Models
 
             comando.Parameters.AddWithValue("@Tamanho", objPizza.Tamanho);
             comando.Parameters.AddWithValue("@PrecoPizza", objPizza.PrecoPizza);
-            for (int i = 1; i <= objPizza.Sabores.Count(); i++)
+            for (int i = 1;i <= objPizza.Sabores.Count(); i++)
             {
-                comando.Parameters.AddWithValue("@Sabor" + i, objPizza.Sabores[i]);
+                comando.Parameters.AddWithValue("@Sabor" + i, objPizza.Sabores[i-1]);
             }
             comando.Parameters.AddWithValue("@status", objPizza.Status);
 
@@ -58,18 +58,44 @@ namespace PizzaExpress.Models
                 dr.Read();
                 objPizza.IdPizza = (int)dr["IdPizza"];
                 objPizza.Tamanho = dr["Tamanho"].ToString();
-                objPizza.Sabor1 = dr["Sabor1"].ToString();
-                objPizza.Sabor2 = dr["Sabor2"].ToString();
-                objPizza.Sabor3 = dr["Sabor3"].ToString();
+                objPizza.Sabores[0] = objPizza.Sabores[0].BuscarPorId(Convert.ToInt32(dr["Sabor1"]));
+                objPizza.Sabores[1] = objPizza.Sabores[1].BuscarPorId(Convert.ToInt32(dr["Sabor2"]));
+                objPizza.Sabores[2] = objPizza.Sabores[2].BuscarPorId(Convert.ToInt32(dr["Sabor3"]));
                 objPizza.PrecoPizza = Convert.ToDecimal(dr["PrecoPizza"]);
                 objPizza.Status = dr["status"].ToString();
             }
-            else
-            {
-                objPizza = null;
-            }
+          
 
             return objPizza;
+        }
+        public IList<Pizza> BuscarPizza(string tamanho)
+        {
+            IList<Pizza> listadepizza = new List<Pizza>();
+            Pizza objPizza = new Pizza(new Sabor());
+            SqlCommand comando = new SqlCommand();
+            comando.CommandType = CommandType.Text;
+            comando.CommandText = "SELECT * FROM Tb_Pizza WHERE Tb_Pizza.Tamanho  like '%@tamanho%'";
+
+            comando.Parameters.AddWithValue("@tamano", tamanho);
+
+            Conexao con = new Conexao();
+            SqlDataReader dr = con.ExecutarSelect(comando);
+
+            if (dr.HasRows)
+            {
+                dr.Read();
+                objPizza.IdPizza = (int)dr["IdPizza"];
+                objPizza.Tamanho = dr["Tamanho"].ToString();
+                objPizza.Sabores[0] = objPizza.Sabores[0].BuscarPorId(Convert.ToInt32(dr["Sabor1"]));
+                objPizza.Sabores[1] = objPizza.Sabores[1].BuscarPorId(Convert.ToInt32(dr["Sabor2"]));
+                objPizza.Sabores[2] = objPizza.Sabores[2].BuscarPorId(Convert.ToInt32(dr["Sabor3"]));
+                objPizza.PrecoPizza = Convert.ToDecimal(dr["PrecoPizza"]);
+                objPizza.Status = dr["status"].ToString();
+                listadepizza.Add(objPizza);
+            }
+
+
+            return listadepizza;
         }
     }
 }

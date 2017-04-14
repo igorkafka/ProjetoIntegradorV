@@ -28,16 +28,14 @@ namespace PizzaExpress.Controllers
         {
             
             
-            if(sabor.PrecoSabor.Equals(typeof(decimal)))
-            {
-                ModelState.AddModelError("Preço invalido",  new Exception());
-            }
-            TryUpdateModel(ModelState); 
+           
+             
             if (ModelState.IsValid)
             {
                 sabor.Salvar(sabor);
                 return View();
             }
+           
            
             return View();
         }

@@ -1,0 +1,49 @@
+﻿@model IEnumerable<PizzaExpress.Models.Pizza>
+<div id="divlistasabores">
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Tamanho)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdPizza)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PrecoPizza)
+        </th>
+        
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tamanho)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdPizza)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PrecoPizza)
+        </td>
+        
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            @Html.ActionLink("Sabores", "SaborDaPizza", new {  id= item.IdPizza })
+        </td>
+    </tr>
+}
+
+</table>
+    </div>

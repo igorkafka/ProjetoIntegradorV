@@ -7,6 +7,8 @@ namespace PizzaExpress.Models
 {
     public class Pedido
     {
+        private Produto objproduto;
+        private Pizza objpizza;
         private IList<ItensPedido> listaItemPedido; //Lista ItensPedido
         public IList<ItensPedido> ListaItemPedido
         {
@@ -76,6 +78,10 @@ namespace PizzaExpress.Models
             get { return tipoPedido; }
             set { tipoPedido = value; }
         }
+
+        public Produto ObjProduto { get { return objproduto; } set { this.objproduto = value; } }
+
+        public Pizza ObjPizza { get { return objpizza; } set { this.objpizza= value; } }
 
         public Pedido()
         {

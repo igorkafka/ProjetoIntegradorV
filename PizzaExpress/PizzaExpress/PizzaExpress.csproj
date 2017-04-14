@@ -192,11 +192,13 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\City.cs" />
     <Compile Include="Models\Cliente.cs" />
     <Compile Include="Models\Conexao.cs" />
     <Compile Include="Models\DAOCliente.cs" />
     <Compile Include="Models\DAOFuncionario.cs" />
     <Compile Include="Models\DAOPedido.cs" />
+    <Compile Include="Models\DAOPizza.cs" />
     <Compile Include="Models\DAOProduto.cs" />
     <Compile Include="Models\DAOSabor.cs" />
     <Compile Include="Models\Funcionario.cs" />
@@ -223,6 +225,7 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\Custom.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -292,11 +295,14 @@
     <Content Include="Views\Sabor\Details.cshtml" />
     <Content Include="Views\Sabor\Edit.cshtml" />
     <Content Include="Views\Sabor\Delete.cshtml" />
+    <Content Include="Views\Pizza\Index.cshtml" />
+    <Content Include="Views\Pizza\ProcurarPizza.cshtml" />
+    <Content Include="Views\Pedido\Index.cshtml" />
+    <Content Include="Views\Pedido\ProcurarPedido.cshtml" />
+    <Content Include="Views\Pedido\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Pedido\" />
-    <Folder Include="Views\Pizza\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
