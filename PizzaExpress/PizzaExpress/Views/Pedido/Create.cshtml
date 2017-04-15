@@ -150,6 +150,10 @@
                         }
                     })
                 },
+                select: function (event, ui) {
+                    $("input[name='ObjPizza.Sabores[0].IdSabor'").val(ui.item.Id);
+
+                },
                 messages: {
                     noResults: "Não foi Encontrado", results: ""
                 }
@@ -171,18 +175,18 @@
                     success: function (data) {
                         response($.map(data, function (item) {
                             $("input[name='ObjPizza.Sabores[1].IdSabor'").val(item.Value);
-                            return { label: item.Label, item: item.Value };
+                            return { label: item.Label, value: item.Name, Id: item.Value };
                         }))
 
                     },
-                    select: function (event, ui) {
-                        alert(ui.item.Name);
-                        return false;
-                    }
+                   
                     
                 })
             },
-            
+            select: function (event, ui) {
+                $("input[name='ObjPizza.Sabores[1].IdSabor'").val(ui.item.Id);
+                
+            },
             messages: {
                 noResults: "", results: ""
             }
@@ -231,12 +235,19 @@
                         data: { term: request.term },
                         success: function (data) {
                             response($.map(data, function (item) {
-                                $("input[name='ObjProduto.IdProduto']").val(item.Value);
-                                return { label: item.Label, Value: item.Name };
+                              
+                                return { label: item.Label, value: item.Name, Id: item.Value  };
                             }))
 
                         }
                     })
+                },
+                select: function (e, ui) {
+                    $("input[name='ObjProduto.IdProduto']").val(ui.item.Id);
+                  
+
+
+
                 },
                 messages: {
                     noResults: "", results: ""

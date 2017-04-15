@@ -35,7 +35,7 @@ namespace PizzaExpress.Controllers
              Produto objproduto = new Produto();
             //Searching records from list using LINQ query
             var Produtos = (from produto in objproduto.ListarNome(term) where produto.NomeProduto.Contains(term)
-                           select new {Label = "Nome: " + produto.NomeProduto + " Preço: " + produto.PrecoProduto, Value = produto.IdProduto });
+                           select new {Label = "Nome: " + produto.NomeProduto + " Preço: " + produto.PrecoProduto, Name = produto.NomeProduto, Value = produto.IdProduto });
             return Json(Produtos, JsonRequestBehavior.AllowGet);
         }
     }
