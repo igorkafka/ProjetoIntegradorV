@@ -8,8 +8,8 @@
                 data: { term: request.term },
                 success: function (data) {
                     response($.map(data, function (item) {
-                        $("input[name='ObjPizza.Sabores[0].IdSabor'").val(item.Value);
-                        return { label: item.Label, item: item.Value };
+                        
+                        return { label: item.Label, value: item.Name, Id: item.Value };
                     }))
 
                 }
