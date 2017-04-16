@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -45,6 +47,8 @@ namespace PizzaExpress.Models
         }
 
         private decimal precoPizza;
+        [DisplayName("Preço")]
+        [DataType(DataType.Currency)]
         public decimal PrecoPizza
         {
             get { return precoPizza; }
@@ -52,6 +56,7 @@ namespace PizzaExpress.Models
         }
 
         private string tamanho;
+        [Required( ErrorMessage ="Tamanho é obrigatório")]
         public string Tamanho
         {
             get { return tamanho; }

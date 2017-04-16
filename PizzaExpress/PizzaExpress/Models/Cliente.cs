@@ -9,14 +9,20 @@ namespace PizzaExpress.Models
 {
     public class Cliente:Pessoa
     {
+        public Cliente()
+        {
+
+        }
         private int idCliente;
         public int IdCliente
         {
             get { return idCliente; }
             set { idCliente = value; }
         }
-
+    
         private string nomeCliente;
+      
+        [Required]
         [DisplayName(displayName:"Nome")]
         public string NomeCliente
         {
@@ -25,7 +31,10 @@ namespace PizzaExpress.Models
         }
 
         private string telefoneCliente;
-        [DisplayName(displayName: "Telefone do Cliente")]
+        [DisplayName(displayName: "Telefone")]
+        [RegularExpression(@"^\(\d{2}\)\d{4}-\d{4}$",ErrorMessage ="Numero de Telefone não valído")]
+        [DataType(DataType.PhoneNumber,ErrorMessage ="Por Favor, Insira um número telefone válido")]
+        [Required(ErrorMessage ="Número do Telefone do Cliente é obrigatório")]
         public string TelefoneCliente
         {
             get { return telefoneCliente; }
@@ -33,6 +42,7 @@ namespace PizzaExpress.Models
         }
 
         private string rua;
+        [Required(ErrorMessage ="Nome da Rua é obrigatório")]
         public string Rua
         {
             get { return rua; }
@@ -40,6 +50,7 @@ namespace PizzaExpress.Models
         }
 
         private string bairro;
+        [Required(ErrorMessage = "Nome do Bairro é obrigatório")]
         public string Bairro
         {
             get { return bairro; }
@@ -47,6 +58,8 @@ namespace PizzaExpress.Models
         }
 
         private string numero;
+        [RegularExpression("[0-9]{1,}",ErrorMessage ="Apenas algarismo númericos são permitidos")]
+        [Required(ErrorMessage = "Número da Casa é obrigatório")]
         public string Numero
         {
             get { return numero; }

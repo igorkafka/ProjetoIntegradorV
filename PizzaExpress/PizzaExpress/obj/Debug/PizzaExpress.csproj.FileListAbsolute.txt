@@ -141,7 +141,6 @@ C:\Users\Ingyar\Documents\GitHub\PIMV\PizzaExpress\PizzaExpress\bin\PagedList.Mv
 C:\Users\Ingyar\Documents\GitHub\PIMV\PizzaExpress\PizzaExpress\bin\PagedList.xml
 C:\Users\Ingyar\Documents\GitHub\PIMV\PizzaExpress\PizzaExpress\bin\PagedList.Mvc.xml
 C:\Users\Ingyar\Documents\GitHub\PIMV\PizzaExpress\PizzaExpress\obj\Debug\PizzaExpress.csprojResolveAssemblyReference.cache
-C:\Users\Ingyar\Documents\GitHub\ProjetoIntegradorV\PizzaExpress\PizzaExpress\obj\Debug\PizzaExpress.csprojResolveAssemblyReference.cache
 C:\Users\Ingyar\Documents\GitHub\ProjetoIntegradorV\PizzaExpress\PizzaExpress\obj\Debug\PizzaExpress.dll
 C:\Users\Ingyar\Documents\GitHub\ProjetoIntegradorV\PizzaExpress\PizzaExpress\obj\Debug\PizzaExpress.pdb
 C:\Users\Ingyar\Documents\GitHub\ProjetoIntegradorV\PizzaExpress\PizzaExpress\bin\roslyn\csc.exe

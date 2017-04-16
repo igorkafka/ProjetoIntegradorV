@@ -25,8 +25,13 @@ namespace PizzaExpress.Controllers
         [HttpPost]
         public ActionResult Create([Bind(Exclude = "IdProduto")]Produto produto)
         {
-            produto.Salvar(produto);
-            return View();
+            
+            TryUpdateModel(produto);
+            if (ModelState.IsValid)
+            {
+                produto.Salvar(produto);
+            }
+                return View();
         }
         [ActionName("Edit")]
         [HttpGet]

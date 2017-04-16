@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -26,6 +27,7 @@ namespace PizzaExpress.Models
         //----- Atributos -----
 
         private int numPedido;
+     
         public int NumPedido
         {
             get { return numPedido; }
@@ -33,22 +35,20 @@ namespace PizzaExpress.Models
         }
 
         private string descPedido;
+        [Display(Name="Descrição")]
         public string DescPedido
         {
             get { return descPedido; }
             set { descPedido = value; }
         }
-        private string horaPedido;
-
-        public string HoraPedido
-        {
-            get { return horaPedido; }
-            set { horaPedido = value; }
-        }
+        
 
 
 
         private DateTime dataPedido;
+        [Display(Name ="Data")]
+        [Required(ErrorMessage ="Data do pedido é obrigatória!")]
+        [DataType(DataType.DateTime)]
         public DateTime DataPedido
         {
             get { return dataPedido; }
@@ -56,7 +56,7 @@ namespace PizzaExpress.Models
         }
 
         private decimal valorTotal;
-
+        [DataType(DataType.Currency)]
         public decimal ValorTotal
         {
             get { return valorTotal; }
@@ -64,7 +64,8 @@ namespace PizzaExpress.Models
         }
 
         private string statusPedido;
-
+        [Display( Name ="Status")]
+        [Required(ErrorMessage ="Status")]
         public string StatusPedido
         {
             get { return statusPedido; }
@@ -72,7 +73,8 @@ namespace PizzaExpress.Models
         }
 
         private string tipoPedido;
-
+        [Display(Name = "Tipo de Pedido")]
+        [Required( ErrorMessage ="Tipo de Pedido é obrigatório")]
         public string TipoPedido
         {
             get { return tipoPedido; }

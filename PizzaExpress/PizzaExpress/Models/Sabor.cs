@@ -29,6 +29,8 @@ namespace PizzaExpress.Models
         }
 
         private string nomeSabor;
+        [Display( Name = "Nome")]
+        [Required(ErrorMessage ="Nome é obrigatório")]
         public string NomeSabor
         {
             get { return nomeSabor; }
@@ -36,6 +38,8 @@ namespace PizzaExpress.Models
         }
 
         private string descSabor;
+        [Required(ErrorMessage = "Descrição é obrigatória")]
+        [Display(Name = "Descrição")]
         public string DescSabor
         {
             get { return descSabor; }
@@ -44,6 +48,7 @@ namespace PizzaExpress.Models
 
         private decimal precoSabor;
         [DataType(DataType.Currency)]
+        [Display(Name = "Preço")]
         public decimal PrecoSabor
         {
             get { return precoSabor; }

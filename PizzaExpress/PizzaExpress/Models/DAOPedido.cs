@@ -13,10 +13,9 @@ namespace PizzaExpress.Models
         {
             SqlCommand comando = new SqlCommand();
             comando.CommandType = CommandType.Text;
-            comando.CommandText = "INSERT INTO Tb_Pedido(DescPedido, HoraPedido, DataPedido, PrecoTotal, TipoPedido, StatusPedido, IdCliente) VALUES (@DescPedido, @HoraPedido, @DataPedido, @PrecoTotal, @TipoPedido, @StatusPedido, @IdCliente); SELECT @@IDENTITY;)";
+            comando.CommandText = "INSERT INTO Tb_Pedido(DescPedido, DataPedido, PrecoTotal, TipoPedido, StatusPedido, IdCliente) VALUES (@DescPedido, @HoraPedido, @DataPedido, @PrecoTotal, @TipoPedido, @StatusPedido, @IdCliente); SELECT @@IDENTITY;)";
 
             comando.Parameters.AddWithValue("@DescPedido", objPedido.DescPedido);
-            comando.Parameters.AddWithValue("@HoraPedido", objPedido.HoraPedido);
             comando.Parameters.AddWithValue("@DataPedido", objPedido.DataPedido);
             comando.Parameters.AddWithValue("@PrecoTotal", objPedido.ValorTotal);
             comando.Parameters.AddWithValue("@TipoPedido", objPedido.TipoPedido);
@@ -60,7 +59,7 @@ namespace PizzaExpress.Models
                     Cliente objCliente = new Cliente();
                     objPedido.NumPedido = (int)(dr["NumPedido"]);
                     objPedido.DescPedido = dr["DescPedido"].ToString();
-                    objPedido.HoraPedido = dr["HoraPedido"].ToString();
+                 
                     objPedido.DataPedido = Convert.ToDateTime(dr["DataPedido"]);
                     objPedido.StatusPedido = dr["StatusPedido"].ToString();
                     objPedido.ObjCliente = objClienteDAO.BuscarPorIdCliente(Convert.ToInt32(dr["IdCliente"]));
@@ -102,7 +101,7 @@ namespace PizzaExpress.Models
                     Cliente objCliente = new Cliente();
                     objPedido.NumPedido = (int)(dr["NumPedido"]);
                     objPedido.DescPedido = dr["DescPedido"].ToString();
-                    objPedido.HoraPedido = dr["HoraPedido"].ToString();
+               
                     objPedido.DataPedido = Convert.ToDateTime(dr["DataPedido"]);
                     objPedido.StatusPedido = dr["StatusPedido"].ToString();
                     objPedido.ObjCliente = objClienteDAO.BuscarPorIdCliente(Convert.ToInt32(dr["IdCliente"]));
@@ -142,8 +141,7 @@ namespace PizzaExpress.Models
                     Cliente objCliente = new Cliente();
                     objPedido.NumPedido = (int)(dr["NumPedido"]);
                     objPedido.DescPedido = dr["DescPedido"].ToString();
-                    objPedido.HoraPedido = dr["HoraPedido"].ToString();
-                    objPedido.DataPedido = Convert.ToDateTime(dr["DataPedido"]);
+                   objPedido.DataPedido = Convert.ToDateTime(dr["DataPedido"]);
                     objPedido.StatusPedido = dr["StatusPedido"].ToString();
                     objPedido.ObjCliente = objClienteDAO.BuscarPorIdCliente(Convert.ToInt32(dr["IdCliente"]));
 
@@ -180,7 +178,6 @@ namespace PizzaExpress.Models
                 Cliente objCliente = new Cliente();
                 objPedido.NumPedido = (int)(dr["NumPedido"]);
                 objPedido.DescPedido = dr["DescPedido"].ToString();
-                objPedido.HoraPedido = dr["HoraPedido"].ToString();
                 objPedido.DataPedido = Convert.ToDateTime(dr["DataPedido"]);
                 objPedido.StatusPedido = dr["StatusPedido"].ToString();
                 objPedido.ObjCliente = objClienteDAO.BuscarPorIdCliente(Convert.ToInt32(dr["IdCliente"]));
@@ -207,9 +204,7 @@ namespace PizzaExpress.Models
             SqlCommand comando = new SqlCommand();
             comando.CommandType = CommandType.Text;
             comando.CommandText = "SELECT*FROM Tb_Pedido WHERE IdCliente = @IdCliente";
-
             comando.Parameters.AddWithValue("@IdCliente", id);
-
             Conexao con = new Conexao();
             SqlDataReader dr = con.ExecutarSelect(comando);
 
@@ -220,7 +215,6 @@ namespace PizzaExpress.Models
                     Pedido objPedido = new Pedido();
                     objPedido.NumPedido = (int)(dr["NumPedido"]);
                     objPedido.DescPedido = dr["DescPedido"].ToString();
-                    objPedido.HoraPedido = dr["HoraPedido"].ToString();
                     objPedido.DataPedido = Convert.ToDateTime(dr["DataPedido"]);
                     objPedido.StatusPedido = dr["StatusPedido"].ToString();
                     objPedido.ObjCliente = objClienteDAO.BuscarPorIdCliente(Convert.ToInt32(dr["IdCliente"]));

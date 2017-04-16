@@ -38,8 +38,11 @@ namespace PizzaExpress.Controllers
         [HttpPost]
         public ActionResult Create([Bind(Exclude = "IdCliente")]Cliente cliente)
         {
-
-            cliente.Salvar(cliente);
+            TryUpdateModel(cliente);
+            if (ModelState.IsValid)
+            {
+                cliente.Salvar(cliente);
+            }
             return View();
         }
         [ActionName(name: "Edit")]

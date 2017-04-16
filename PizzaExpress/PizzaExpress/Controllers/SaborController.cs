@@ -29,7 +29,7 @@ namespace PizzaExpress.Controllers
             
             
            
-             
+            TryUpdateModel(sabor)  
             if (ModelState.IsValid)
             {
                 sabor.Salvar(sabor);

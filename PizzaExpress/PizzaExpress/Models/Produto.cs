@@ -9,6 +9,10 @@ namespace PizzaExpress.Models
 {
     public class Produto
     {
+        public Produto()
+        {
+           
+        }
         private ItensPedido objitensPedido; //Agregação ItensPedido
         public ItensPedido ObjitensPedido
         {
@@ -26,6 +30,7 @@ namespace PizzaExpress.Models
             set { idProduto = value; }
         }
         private string nomeProduto;
+        
         [DisplayName("Nome")]
         public string NomeProduto
         {
