@@ -247,6 +247,7 @@
     <Content Include="Content\themes\base\images\ui-icons_ffffff_256x240.png" />
     <Content Include="Content\themes\base\jquery-ui.css" />
     <Content Include="Content\themes\base\jquery-ui.min.css" />
+    <Content Include="Content\themes\base\jquery.datetimepicker.min.css" />
     <Content Include="Content\themes\base\menu.css" />
     <Content Include="Content\themes\base\progressbar.css" />
     <Content Include="Content\themes\base\resizable.css" />
@@ -274,6 +275,8 @@
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery-ui-1.12.1.js" />
     <Content Include="Scripts\jquery-ui-1.12.1.min.js" />
+    <Content Include="Scripts\jquery.datetimepicker.full.js" />
+    <Content Include="Scripts\jquery.datetimepicker.full.min.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />

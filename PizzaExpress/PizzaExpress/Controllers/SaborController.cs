@@ -26,10 +26,10 @@ namespace PizzaExpress.Controllers
         [HttpPost]
         public ActionResult Create([Bind(Exclude ="idSabor")]Sabor sabor)
         {
-            
-            
-           
-            TryUpdateModel(sabor)  
+
+
+
+            TryUpdateModel(sabor);  
             if (ModelState.IsValid)
             {
                 sabor.Salvar(sabor);

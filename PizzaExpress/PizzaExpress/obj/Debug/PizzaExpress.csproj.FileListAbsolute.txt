@@ -214,3 +214,4 @@ C:\Users\Ingyar\Documents\GitHub\ProjetoIntegradorV\PizzaExpress\PizzaExpress\bi
 C:\Users\Ingyar\Documents\GitHub\ProjetoIntegradorV\PizzaExpress\PizzaExpress\bin\Microsoft.Owin.Security.Google.xml
 C:\Users\Ingyar\Documents\GitHub\ProjetoIntegradorV\PizzaExpress\PizzaExpress\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\Ingyar\Documents\GitHub\ProjetoIntegradorV\PizzaExpress\PizzaExpress\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\Ingyar\Documents\GitHub\ProjetoIntegradorV\PizzaExpress\PizzaExpress\obj\Debug\PizzaExpress.csprojResolveAssemblyReference.cache
