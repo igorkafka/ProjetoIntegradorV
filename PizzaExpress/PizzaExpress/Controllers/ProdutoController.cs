@@ -8,7 +8,7 @@ namespace PizzaExpress.Controllers
 {
     public class ProdutoController : Controller
     {
-        public ActionResult Index(string pesquisar)
+        public ActionResult Index(string pesquisar = "")
         {
             Produto produto = new Produto();
             if (Request.IsAjaxRequest())
