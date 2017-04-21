@@ -8,15 +8,17 @@ namespace PizzaExpress.Controllers
 {
     public class PedidoController : Controller
     {
+      
         // GET: Pedido
         public ActionResult Index()
         {
-
+            
             return View();
         }
         public ActionResult Create()
         {
-            return View();
+            Pedido pedido = new Pedido();
+            return View(pedido);
         }
         
         [HttpPost]
@@ -47,6 +49,14 @@ namespace PizzaExpress.Controllers
                             where cliente.NomeCliente.Contains(term)
                             select new { Label = "Nome: " + cliente.NomeCliente  + " Telefone: " +  cliente.TelefoneCliente, Name = cliente.TelefoneCliente, Value = cliente.IdCliente });
             return Json(Clientes, JsonRequestBehavior.AllowGet);
+        }
+       
+        public ActionResult AdicionarPizza(Pedido pedido)
+        {
+            pedido.Pizzas.Add(pedido.ObjPizza);
+            
+
+            return PartialView("ListaDePizzasDoPedido", pedido.Pizzas);
         }
     }
 }

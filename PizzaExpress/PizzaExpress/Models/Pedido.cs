@@ -80,7 +80,8 @@ namespace PizzaExpress.Models
             get { return tipoPedido; }
             set { tipoPedido = value; }
         }
-
+        private IList<Pizza> pizzas = new List<Pizza>();
+        public IList<Pizza> Pizzas { get { return pizzas; } set { this.pizzas = value; } }
         public Produto ObjProduto { get { return objproduto; } set { this.objproduto = value; } }
 
         public Pizza ObjPizza { get { return objpizza; } set { this.objpizza= value; } }
@@ -88,6 +89,7 @@ namespace PizzaExpress.Models
         public Pedido()
         {
             listaItemPedido = new List<ItensPedido>();
+            Pizzas = new List<Pizza>();
         }
     }
 }

@@ -12,48 +12,14 @@
 {
     @Html.AntiForgeryToken()
    <h3> Create</h3>
-    <div class="form-horizontal">
-        <h4>Pedido</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.ObjPizza.Tamanho, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ObjPizza.Tamanho, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ObjPizza.Tamanho, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.ObjPizza.Status, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ObjPizza.Status, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ObjPizza.Status, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        <div class="form-group">
-           <label class="control-label col-md-2"> Sabor 1</label>
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ObjPizza.Sabores[0].NomeSabor, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.HiddenFor(model => model.ObjPizza.Sabores[0].IdSabor)
-                @Html.ValidationMessageFor(model => model.ObjPizza.Sabores[0].IdSabor, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-md-2"> Sabor 2</label>
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ObjPizza.Sabores[1].NomeSabor, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.HiddenFor(model => model.ObjPizza.Sabores[1].IdSabor)
-                @Html.ValidationMessageFor(model => model.ObjPizza.Sabores[1].IdSabor, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-md-2"> Sabor 3</label>
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ObjPizza.Sabores[2].NomeSabor, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.HiddenFor(model => model.ObjPizza.Sabores[2].IdSabor)
-                @Html.ValidationMessageFor(model => model.ObjPizza.Sabores[2], "", new { @class = "text-danger" })
-            </div>
-        </div>
+<div class="form-horizontal">
+    <h4>Pedido</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+   
+   
+</div>
+     <div class="form-horizontal">
         <div class="form-group">
             <label class="control-label col-md-2">Produto</label>
             <div class="col-md-10">
@@ -112,15 +78,73 @@
             </div>
         </div>
         
+       </div>
        
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
+    
+}
+@using (Ajax.BeginForm("AdicionarPizza", new AjaxOptions()
+{
+    InsertionMode = InsertionMode.Replace,
+    UpdateTargetId = "ListaPizzaAdicionadas"
+}))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <div class="form-horizontal">
+    <div class="form-group">
+        @Html.LabelFor(model => model.ObjPizza.Tamanho, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.ObjPizza.Tamanho, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.ObjPizza.Tamanho, "", new { @class = "text-danger" })
         </div>
     </div>
-}
+    <div class="form-group">
+        @Html.LabelFor(model => model.ObjPizza.Status, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.ObjPizza.Status, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.ObjPizza.Status, "", new { @class = "text-danger" })
+        </div>
+    </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.ObjPizza.PrecoPizza, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ObjPizza.PrecoPizza, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ObjPizza.PrecoPizza, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    <div class="form-group">
+        <label class="control-label col-md-2"> Sabor 1</label>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.ObjPizza.Sabores[0].NomeSabor, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.HiddenFor(model => model.ObjPizza.Sabores[0].IdSabor)
+            @Html.ValidationMessageFor(model => model.ObjPizza.Sabores[0].IdSabor, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-2"> Sabor 2</label>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.ObjPizza.Sabores[1].NomeSabor, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.HiddenFor(model => model.ObjPizza.Sabores[1].IdSabor)
+            @Html.ValidationMessageFor(model => model.ObjPizza.Sabores[1].IdSabor, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-2"> Sabor 3</label>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.ObjPizza.Sabores[2].NomeSabor, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.HiddenFor(model => model.ObjPizza.Sabores[2].IdSabor)
+            @Html.ValidationMessageFor(model => model.ObjPizza.Sabores[2], "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Adicionar Pizza" class="btn btn-default"/>
+        </div>
+    </div>
+    </div>
 
+}
+@Html.Partial("ListaDePizzasDoPedido", Model.Pizzas)
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
@@ -130,6 +154,7 @@
     @section scripts{
   
     @Scripts.Render("~/bundles/scripsdoprojeto")
+   @Scripts.Render("~/bundles/jqueryval")
 
   
 
