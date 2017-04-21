@@ -102,10 +102,8 @@ namespace PizzaExpress.Models
                 objCliente.IdCliente = (int)dr["IdCliente"];
 
             }
-            else
-            {
-                objCliente = null;
-            }
+        
+            
             return objCliente;
         }
 
@@ -130,10 +128,7 @@ namespace PizzaExpress.Models
                 objCliente.IdCliente = (int)dr["IdCliente"];
 
             }
-            else
-            {
-                objCliente = null;
-            }
+           
             return objCliente;
         }
 
@@ -167,10 +162,7 @@ namespace PizzaExpress.Models
                     listaDeClientes.Add(objCliente);
                 }
             }
-            else
-            {
-                listaDeClientes = null;
-            }
+          
             return listaDeClientes;
         }
 
@@ -203,10 +195,7 @@ namespace PizzaExpress.Models
                     listaDeClientes.Add(objCliente);
                 }
             }
-            else
-            {
-                listaDeClientes = null;
-            }
+           
             return listaDeClientes;
         }
 
@@ -234,10 +223,8 @@ namespace PizzaExpress.Models
                     ListaDeClientes.Add(objCliente);
                 }
             }
-            else
-            {
-                ListaDeClientes = null;
-            }
+           
+            
 
             return ListaDeClientes;
         }

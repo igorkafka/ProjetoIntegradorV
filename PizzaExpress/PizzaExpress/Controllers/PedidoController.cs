@@ -38,5 +38,15 @@ namespace PizzaExpress.Controllers
                            select new {Label = "Nome: " + produto.NomeProduto + " Preço: " + produto.PrecoProduto, Name = produto.NomeProduto, Value = produto.IdProduto });
             return Json(Produtos, JsonRequestBehavior.AllowGet);
         }
+        [HttpPost]
+        public JsonResult BuscarCliente(string term)
+        {
+            Cliente c = new Cliente();
+            //Searching records from list using LINQ query
+            var Clientes = (from cliente in c.ListarNome(term)
+                            where cliente.NomeCliente.Contains(term)
+                            select new { Label = "Nome: " + cliente.NomeCliente  + " Telefone: " +  cliente.TelefoneCliente, Name = cliente.TelefoneCliente, Value = cliente.IdCliente });
+            return Json(Clientes, JsonRequestBehavior.AllowGet);
+        }
     }
 }

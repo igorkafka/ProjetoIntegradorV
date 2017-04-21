@@ -22,7 +22,7 @@ namespace PizzaExpress.Controllers
                  else if(cliente.ListarNome(pesquisar) == null)
                 {
 
-                    return PartialView("ProcurarCliente", cliente.ListarTodos().Take(2));
+                    return PartialView("ProcurarCliente", cliente.ListarNome(pesquisar));
                 }
             }
             return View(cliente.ListarNome(pesquisar).Take(0));

@@ -112,5 +112,34 @@ $(document).ready(function () {
         }
     });
 })
+$(document).ready(function () {
+    $("input[name='ObjCliente.NomeCliente']").autocomplete({
+        source: function (request, response) {
+            $.ajax({
+                url: "/Pedido/BuscarCliente",
+                type: "POST",
+                dataType: "json",
+                data: { term: request.term },
+                success: function (data) {
+                    response($.map(data, function (item) {
+
+                        return { label: item.Label, value: item.Name, Id: item.Value };
+                    }))
+
+                }
+            })
+        },
+        select: function (e, ui) {
+            $("input[name='ObjCliente.IdCliente']").val(ui.item.Id);
+
+
+
+
+        },
+        messages: {
+            noResults: "", results: ""
+        }
+    });
+})
 
 $(document).ready(function () { $("#DataPedido").datetimepicker(); })

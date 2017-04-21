@@ -1,13 +1,11 @@
 ﻿@model IEnumerable<PizzaExpress.Models.Sabor>
-<h1>Sabor</h1>
 <div>
     @using (Ajax.BeginForm("Index", "Sabor", new AjaxOptions { HttpMethod = "GET", InsertionMode = InsertionMode.Replace, UpdateTargetId = "divlistasabores", OnFailure = "handleError" }))
     {
-
         <div class="container" id="containerprocurarcliente">
             <form class="form-inline">
-
-                <h2>Sabor</h2>
+                <h3>Sabor</h3>
+                
                 <div>
                     <div class="col-md-10">
                         <input type="text" class="form-control" name="pesquisar" placeholder="Digite o nome do Sabor" />
