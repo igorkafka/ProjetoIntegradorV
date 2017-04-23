@@ -4,11 +4,14 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using PizzaExpress.Models;
+using Microsoft.AspNet.Identity;
+
 namespace PizzaExpress.Controllers
 {
+    [Authorize(Roles="Funcionario,Admin")]
     public class PedidoController : Controller
     {
-      
+        
         // GET: Pedido
         public ActionResult Index()
         {
@@ -20,7 +23,14 @@ namespace PizzaExpress.Controllers
             Pedido pedido = new Pedido();
             return View(pedido);
         }
-        
+        [HttpPost]
+        public ActionResult Create(Pedido pedido)
+        {
+            
+            pedido.Usuario = User.Identity.GetUserId();
+            return View(pedido);
+        }
+
         [HttpPost]
         public JsonResult BuscarSabor(string term)
         {
@@ -53,10 +63,11 @@ namespace PizzaExpress.Controllers
        
         public ActionResult AdicionarPizza(Pedido pedido)
         {
-            pedido.Pizzas.Add(pedido.ObjPizza);
-            
+            (TempData["myData"] as IList<Pizza>).Add(pedido.ObjPizza);
+       
 
-            return PartialView("ListaDePizzasDoPedido", pedido.Pizzas);
+
+            return PartialView("ListaDePizzasDoPedido", TempData["myData"]);
         }
     }
 }

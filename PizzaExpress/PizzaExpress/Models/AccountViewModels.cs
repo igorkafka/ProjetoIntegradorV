@@ -57,6 +57,7 @@ namespace PizzaExpress.Models
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }
+        public string Setor { get; set; }
 
         [Display(Name = "Remember me?")]
         public bool RememberMe { get; set; }
@@ -74,6 +75,7 @@ namespace PizzaExpress.Models
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }
+        public string Setor { get; set; }
 
         [DataType(DataType.Password)]
         [Display(Name = "Confirm password")]

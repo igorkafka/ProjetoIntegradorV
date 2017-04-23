@@ -13,6 +13,9 @@ namespace PizzaExpress.Controllers
             Produto produto = new Produto();
             if (Request.IsAjaxRequest())
             {
+
+                if (string.IsNullOrEmpty(pesquisar) || pesquisar.Trim().Length < 2)
+                    return JavaScript("alert(\"Nome Invalido, Digite algo que tenha pelo menos mais de duas letras\")");
                 return PartialView("ProcurarProduto", produto.ListarNome(pesquisar));
             }
             return View(produto.ListarNome(pesquisar).Take(0));

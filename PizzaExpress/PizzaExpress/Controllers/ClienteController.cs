@@ -16,14 +16,11 @@ namespace PizzaExpress.Controllers
             Cliente cliente = new Cliente();
             if (Request.IsAjaxRequest())
             {
-                if (cliente.ListarNome(pesquisar) != null) {
-                    return PartialView("ProcurarCliente", cliente.ListarNome(pesquisar));
+                if (string.IsNullOrEmpty(pesquisar) || pesquisar.Trim().Length < 2) {
+                    return JavaScript("alert(\"Nome Invalido, Digite algo que tenha pelo menos mais de duas letras\")");
                 }
-                 else if(cliente.ListarNome(pesquisar) == null)
-                {
-
-                    return PartialView("ProcurarCliente", cliente.ListarNome(pesquisar));
-                }
+               return PartialView("ProcurarCliente", cliente.ListarNome(pesquisar));
+                
             }
             return View(cliente.ListarNome(pesquisar).Take(0));
             

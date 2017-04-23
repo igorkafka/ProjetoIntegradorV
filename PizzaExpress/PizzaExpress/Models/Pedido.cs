@@ -10,6 +10,13 @@ namespace PizzaExpress.Models
     {
         private Produto objproduto;
         private Pizza objpizza;
+        private string usuario;
+        public string Usuario
+        {
+            get { return this.usuario; }
+            set { this.usuario = value; }
+        }
+        
         private IList<ItensPedido> listaItemPedido; //Lista ItensPedido
         public IList<ItensPedido> ListaItemPedido
         {

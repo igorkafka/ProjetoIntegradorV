@@ -10,7 +10,7 @@ using PizzaExpress.Models;
 
 namespace PizzaExpress.Controllers
 {
-    [Authorize]
+    [Authorize(Roles ="Admin")]
     public class ManageController : Controller
     {
         private ApplicationSignInManager _signInManager;
