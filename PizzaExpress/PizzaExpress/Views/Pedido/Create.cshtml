@@ -79,85 +79,85 @@
         </div>
         
        </div>
-       
-    
+
+
 }
-@using (Ajax.BeginForm("AdicionarPizza", new AjaxOptions()
-{
-    InsertionMode = InsertionMode.Replace,
-    UpdateTargetId = "ListaPizzaAdicionadas"
-}))
-{
+
+<form class="form-horizontal" role="form" ng-submit="addRow()">
     <h4>Pizza</h4>
     <hr />
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
     <div class="form-horizontal">
-    <div class="form-group">
-        @Html.LabelFor(model => model.ObjPizza.Tamanho, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.ObjPizza.Tamanho, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.ObjPizza.Tamanho, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.ObjPizza.Tamanho, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="text" name="ObjPizza.Tamanho" class="form-control" ng-model="Tamanho" />
+                       @Html.ValidationMessageFor(model => model.ObjPizza.Tamanho, "", new { @class = "text-danger" })
+            </div>
         </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(model => model.ObjPizza.Status, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.ObjPizza.Status, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.ObjPizza.Status, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.ObjPizza.Status, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="text" name="ObjPizza.Status" class="form-control" ng-model="Status" />
+                @Html.ValidationMessageFor(model => model.ObjPizza.Status, "", new { @class = "text-danger" })
+            </div>
         </div>
-    </div>
         <div class="form-group">
             @Html.LabelFor(model => model.ObjPizza.PrecoPizza, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.ObjPizza.PrecoPizza, new { htmlAttributes = new { @class = "form-control" } })
+                <input type="text" name="ObjPizza.PrecoPizza" class="form-control" ng-model="PrecoPizza" />
                 @Html.ValidationMessageFor(model => model.ObjPizza.PrecoPizza, "", new { @class = "text-danger" })
             </div>
         </div>
-    <div class="form-group">
-        <label class="control-label col-md-2"> Sabor 1</label>
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.ObjPizza.Sabores[0].NomeSabor, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.HiddenFor(model => model.ObjPizza.Sabores[0].IdSabor)
-            @Html.ValidationMessageFor(model => model.ObjPizza.Sabores[0].IdSabor, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <label class="control-label col-md-2"> Sabor 1</label>
+            <div class="col-md-10">
+                <input type="text" name="ObjPizza.Sabores[0].NomeSabor" class="form-control" ng-model="Sabor1" />
+                <input type="hidden" name="ObjPizza.Sabores[0].IdSabor" class="form-control" ng-model="IdSabor1" />
+                @Html.ValidationMessageFor(model => model.ObjPizza.Sabores[0].IdSabor, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2"> Sabor 2</label>
+            <div class="col-md-10">
+                <input type="text" name="ObjPizza.Sabores[1].NomeSabor" class="form-control" ng-model="Sabor2" />
+                <input type="hidden" name="ObjPizza.Sabores[1].IdSabor" class="form-control" ng-model="IdSabor2" />
+                @Html.ValidationMessageFor(model => model.ObjPizza.Sabores[1].IdSabor, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2"> Sabor 3</label>
+            <div class="col-md-10">
+                <input type="text" name="ObjPizza.Sabores[2].NomeSabor" class="form-control" ng-model="Sabor3" />
+                <input type="hidden" name="ObjPizza.Sabores[2].IdSabor" class="form-control" ng-model="IdSabor3" />
+                @Html.ValidationMessageFor(model => model.ObjPizza.Sabores[2], "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+               <input type="submit" value="Submit" class="btn btn-primary"/>
+            </div>
         </div>
     </div>
-    <div class="form-group">
-        <label class="control-label col-md-2"> Sabor 2</label>
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.ObjPizza.Sabores[1].NomeSabor, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.HiddenFor(model => model.ObjPizza.Sabores[1].IdSabor)
-            @Html.ValidationMessageFor(model => model.ObjPizza.Sabores[1].IdSabor, "", new { @class = "text-danger" })
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="control-label col-md-2"> Sabor 3</label>
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.ObjPizza.Sabores[2].NomeSabor, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.HiddenFor(model => model.ObjPizza.Sabores[2].IdSabor)
-            @Html.ValidationMessageFor(model => model.ObjPizza.Sabores[2], "", new { @class = "text-danger" })
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Adicionar Pizza" class="btn btn-default"/>
-        </div>
-    </div>
+</form>
+@Html.Partial("ListaDePizzasDoPedido")
+
+  
+    <div>
+        @Html.ActionLink("Back to List", "Index")
     </div>
 
-}
-@Html.Partial("ListaDePizzasDoPedido", Model.Pizzas)
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
 
-    
     @section scripts{
-  
-    @Scripts.Render("~/bundles/scripsdoprojeto")
-   @Scripts.Render("~/bundles/jqueryval")
 
-  
+        @Scripts.Render("~/scripts/angular")
+        @Scripts.Render("~/bundles/scripsdoprojeto")
+        @Scripts.Render("~/bundles/jqueryval")
+
+
+
+
 
     }

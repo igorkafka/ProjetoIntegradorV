@@ -141,4 +141,29 @@ $(document).ready(function () {
         }
     });
 })
-$(document).ready(function () { $("#DataPedido").datetimepicker(); })
+$(document).ready(function () { $("#DataPedido").datetimepicker(); });
+var helloApp = angular.module("helloApp", []);
+helloApp.controller("PizzaCtrl", function ($scope) {
+    $scope.pizzas = [{ 'PrecoPizza': 0, 'Tamanho': '', 'Sabor1': '', 'Sabor2': '', 'Sabor3': '', 'Status': '', 'IdSabor1': 0, 'IdSabor2': 0, 'IdSabor3': 0 }];
+    $scope.pizzas.splice(0);
+    $scope.addRow = function () {
+         
+
+        $scope.pizzas.push({ 'PrecoPizza': $scope.PrecoPizza, 'Tamanho': $scope.Tamanho, 'Sabor1': $scope.Sabor1, 'Sabor2': $scope.Sabor2, 'Sabor3': $scope.Sabor3, 'Status': $scope.Status, 'IdSabor1': $scope.IdSabor1, 'IdSabor2': $scope.IdSabor2, 'IdSabor3': $scope.IdSabor3 });
+        $scope.PrecoPizza = '';
+        $scope.Tamanho = '';
+        $scope.Sabor1 = '';
+        $scope.Sabor2 = '';
+        $scope.Sabor3 = '';
+        $scope.Status = '';
+        $scope.IdSabor1 = '';
+        $scope.IdSabor2 = '';
+        $scope.IdSabor3 = '';
+        $("input[name='Pizzas[0].Status']").alert(this.val);
+    }
+    $scope.remove = function (item) {
+        var index = $scope.pizzas.indexOf(item);
+        $scope.pizzas.splice(index, 1);
+    }
+});
+  

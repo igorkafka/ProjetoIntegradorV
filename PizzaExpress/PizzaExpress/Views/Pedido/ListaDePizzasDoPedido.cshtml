@@ -1,58 +1,58 @@
-﻿@model IEnumerable<PizzaExpress.Models.Pizza>
+﻿
 
-<div id="ListaPizzaAdicionadas">
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Status)
+            Status
         </th>
-       
+
         <th>
-            @Html.DisplayNameFor(model => model.PrecoPizza)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Tamanho)
+            Preço
         </th>
         <th>
-           Sabor 1
+            Tamamnho
         </th>
         <th>
-             Sabor 2 
+            Sabor 1
         </th>
         <th>
-        Sabor 3
+            Sabor 2
+        </th>
+        <th>
+            Sabor 3
         </th>
         <th></th>
     </tr>
-
-@foreach (var item in Model) {
-    <tr>
+   
+    <tr ng-repeat="pizza in pizzas">
         <td>
-            @Html.DisplayFor(modelItem => item.Status)
+        `    {{pizza.Status}} <input name="Pizzas[{{pizzas.length - 1}}].Status" type="hidden" ng-model="pizza.Status" class="form-control">
+        </td>
+        <td>
+            {{pizza.PrecoPizza}} <input name="Pizzas[{{pizzas.length - 1}}].PrecoPizza" type="hidden" ng-model="pizza.PrecoPizza" class="form-control">
+        </td>
+        <td>
+            {{pizza.Tamanho}} <input name="Pizzas[{{pizzas.length - 1}}].Tamanho" type="hidden" ng-model="pizza.Tamanho" class="form-control">
+        </td>
+        <td>
+            {{pizza.Sabor1}}
+        </td>
+        <td>
+            {{pizza.Sabor2}}
+        </td>
+        <td>
+            {{pizza.Sabor3}}
+        </td>
+        <td>
+            <input type="button" value="Excluir" class="btn btn-default" ng-click="remove(item)" />
+        </td>
+        <td>
+            <input type="hidden" name="Pizzas[{{pizzas.length - 1}}].Sabores[0].IdSabor"  ng-bind="pizza.IdSabor1 " />
+            <input type="hidden" name="Pizzas[{{pizzas.length - 1}}].Sabores[1].IdSabor" ng-bind="pizza.IdSabor2 " />
+            <input type="hidden" name="Pizzas[{{pizzas.length - 1}}].Sabores[2].IdSabor" ng-bind="pizza.IdSabor3 " />
         </td>
         
-        <td>
-            @Html.DisplayFor(modelItem => item.PrecoPizza)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Tamanho)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Sabores[0].NomeSabor)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Sabores[1].NomeSabor)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Sabores[2].NomeSabor)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-        </td>
     </tr>
-}
+
 
 </table>
-</div>
