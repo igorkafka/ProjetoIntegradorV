@@ -20,14 +20,7 @@
    
 </div>
      <div class="form-horizontal">
-        <div class="form-group">
-            <label class="control-label col-md-2">Produto</label>
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ObjProduto.NomeProduto, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.HiddenFor(model => model.ObjProduto.IdProduto)
-                @Html.ValidationMessageFor(model => model.ObjProduto.NomeProduto, "", new { @class = "text-danger" })
-            </div>
-        </div>
+       
         <div class="form-group">
             <label class="control-label col-md-2">Cliente</label>
             <div class="col-md-10">
@@ -36,13 +29,7 @@
                 @Html.ValidationMessageFor(model => model.ObjCliente.NomeCliente, "", new { @class = "text-danger" })
             </div>
         </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.NumPedido, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.NumPedido, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.NumPedido, "", new { @class = "text-danger" })
-            </div>
-        </div>
+
 
         <div class="form-group">
             @Html.LabelFor(model => model.DescPedido, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -65,85 +52,93 @@
         <div class="form-group">
             @Html.LabelFor(model => model.StatusPedido, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.StatusPedido, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.StatusPedido, "", new { @class = "text-danger" })
+                @Html.DropDownListFor(model => model.StatusPedido,new List<SelectListItem> { new SelectListItem { Text="Aberto",Value="Aberto"}, new SelectListItem { Text = "Fechado", Value = "Fechado" } })
+               @Html.ValidationMessageFor(model => model.StatusPedido, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.TipoPedido, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.TipoPedido, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownListFor(model => model.TipoPedido, new List<SelectListItem>() { new SelectListItem() { Text = "Urgente", Value = "Urgente" } } ,new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.TipoPedido, "", new { @class = "text-danger" })
             </div>
         </div>
         
-       </div>
+      
 
 
-}
 
-<form class="form-horizontal" role="form" ng-submit="addRow()">
+
+
+    <h4>Produto</h4>
+    <hr />
+    <div class="form-group">
+        <label class="control-label col-md-2">Produto</label>
+        <div class="col-md-10">
+            <input type="text" name="ObjProduto.NomeProduto" class="form-control"/>
+             <br />
+            <input type="text" name="ObjProduto.DescProduto" class="form-control" />
+            <input type="hidden" name="ObjProduto.IdProduto" />
+            @Html.ValidationMessageFor(model => model.ObjProduto.NomeProduto, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+
     <h4>Pizza</h4>
     <hr />
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
-    <div class="form-horizontal">
+ 
         <div class="form-group">
             @Html.LabelFor(model => model.ObjPizza.Tamanho, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <input type="text" name="ObjPizza.Tamanho" class="form-control" ng-model="Tamanho" />
+                <input type="text" name="ObjPizza.Tamanho" class="form-control" />
                        @Html.ValidationMessageFor(model => model.ObjPizza.Tamanho, "", new { @class = "text-danger" })
             </div>
         </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.ObjPizza.Status, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <input type="text" name="ObjPizza.Status" class="form-control" ng-model="Status" />
-                @Html.ValidationMessageFor(model => model.ObjPizza.Status, "", new { @class = "text-danger" })
-            </div>
-        </div>
+       
         <div class="form-group">
             @Html.LabelFor(model => model.ObjPizza.PrecoPizza, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <input type="text" name="ObjPizza.PrecoPizza" class="form-control" ng-model="PrecoPizza" />
+                <input type="text" name="ObjPizza.PrecoPizza" class="form-control" />
                 @Html.ValidationMessageFor(model => model.ObjPizza.PrecoPizza, "", new { @class = "text-danger" })
             </div>
         </div>
         <div class="form-group">
             <label class="control-label col-md-2"> Sabor 1</label>
             <div class="col-md-10">
-                <input type="text" name="ObjPizza.Sabores[0].NomeSabor" class="form-control" ng-model="Sabor1" />
-                <input type="hidden" name="ObjPizza.Sabores[0].IdSabor" class="form-control" ng-model="IdSabor1" />
+                <input type="text" name="ObjPizza.Sabores[0].NomeSabor" class="form-control" />
+                <input type="hidden" name="ObjPizza.Sabores[0].IdSabor" class="form-control"/>
                 @Html.ValidationMessageFor(model => model.ObjPizza.Sabores[0].IdSabor, "", new { @class = "text-danger" })
             </div>
         </div>
         <div class="form-group">
             <label class="control-label col-md-2"> Sabor 2</label>
             <div class="col-md-10">
-                <input type="text" name="ObjPizza.Sabores[1].NomeSabor" class="form-control" ng-model="Sabor2" />
-                <input type="hidden" name="ObjPizza.Sabores[1].IdSabor" class="form-control" ng-model="IdSabor2" />
-                @Html.ValidationMessageFor(model => model.ObjPizza.Sabores[1].IdSabor, "", new { @class = "text-danger" })
+                <input type="text" name="ObjPizza.Sabores[1].NomeSabor" class="form-control"  />
+                <input type="hidden" name="ObjPizza.Sabores[1].IdSabor" class="form-control"  />
+               
             </div>
         </div>
         <div class="form-group">
             <label class="control-label col-md-2"> Sabor 3</label>
             <div class="col-md-10">
-                <input type="text" name="ObjPizza.Sabores[2].NomeSabor" class="form-control" ng-model="Sabor3" />
-                <input type="hidden" name="ObjPizza.Sabores[2].IdSabor" class="form-control" ng-model="IdSabor3" />
-                @Html.ValidationMessageFor(model => model.ObjPizza.Sabores[2], "", new { @class = "text-danger" })
+                <input type="text" name="ObjPizza.Sabores[2].NomeSabor" class="form-control"  />
+                <input type="hidden" name="ObjPizza.Sabores[2].IdSabor" class="form-control"  />
+                
             </div>
         </div>
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-               <input type="submit" value="Submit" class="btn btn-primary"/>
+           =
+            <div class="col-md-10">
+                <input type="submit" value="Vender" class="btn btn-default" />
             </div>
-        </div>
-    </div>
-</form>
-@Html.Partial("ListaDePizzasDoPedido")
 
-  
+        </div>
+         </div>
+        }
     <div>
         @Html.ActionLink("Back to List", "Index")
     </div>
@@ -152,7 +147,7 @@
 
     @section scripts{
 
-        @Scripts.Render("~/scripts/angular")
+
         @Scripts.Render("~/bundles/scripsdoprojeto")
         @Scripts.Render("~/bundles/jqueryval")
 

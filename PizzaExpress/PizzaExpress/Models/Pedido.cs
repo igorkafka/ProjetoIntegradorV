@@ -98,5 +98,10 @@ namespace PizzaExpress.Models
             listaItemPedido = new List<ItensPedido>();
             Pizzas = new List<Pizza>();
         }
+        public void salvar(Pedido pedido)
+        {
+            DAOPedido dao = new DAOPedido();
+            dao.Salvar(pedido);
+        }
     }
 }

@@ -8,8 +8,7 @@ namespace PizzaExpress
         // For more information on bundling, visit http://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
-            BundleTable.Bundles.Add(new ScriptBundle("~/scripts/angular")
-           .Include("~/scripts/angular.js", "~/scripts/angular-route.js"));
+           ;
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js", "~/Scripts/jquery-ui-1.12.1.js", "~/Scripts/jquery-ui-1.12.1.min.js", "~/Scripts/jquery.datetimepicker.full.js"));
 

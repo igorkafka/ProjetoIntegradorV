@@ -126,5 +126,11 @@ namespace PizzaExpress.Models
             }
             return PrecoPizza;
         }
+        public int salvar(Pizza objpizza)
+        {
+           
+            DAOPizza dao = new DAOPizza();
+            return dao.Salvar(objpizza);
+        }
     }
 }

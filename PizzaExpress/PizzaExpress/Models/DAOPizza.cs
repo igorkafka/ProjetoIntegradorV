@@ -13,15 +13,30 @@ namespace PizzaExpress.Models
         {
             SqlCommand comando = new SqlCommand();
             comando.CommandType = CommandType.Text;
-            comando.CommandText = " INSERT INTO Tb_Pizza (Tamanho, PrecoPizza, Sabor1, Sabor2, Sabor3, status) VALUES ( @Tamanho, @PrecoPizza, @Sabor1, @Sabor2, @Sabor3, @status); SELECT CAST (scope_identity() AS int)";
+            comando.CommandText = " INSERT INTO Tb_Pizza (Tamanho, PrecoPizza, Sabor1, Sabor2, Sabor3) VALUES ( @Tamanho, @PrecoPizza, @Sabor1, @Sabor2, @Sabor3); SELECT @@IDENTITY";
 
             comando.Parameters.AddWithValue("@Tamanho", objPizza.Tamanho);
             comando.Parameters.AddWithValue("@PrecoPizza", objPizza.PrecoPizza);
-            for (int i = 1;i <= objPizza.Sabores.Count(); i++)
+            comando.Parameters.AddWithValue("@Sabor1", objPizza.Sabores[0].IdSabor);
+            if(objPizza.Sabores[1].IdSabor == 0)
             {
-                comando.Parameters.AddWithValue("@Sabor" + i, objPizza.Sabores[i-1]);
+                comando.Parameters.AddWithValue("@Sabor2", (object)DBNull.Value);
             }
-            comando.Parameters.AddWithValue("@status", objPizza.Status);
+            else
+            {
+                comando.Parameters.AddWithValue("@Sabor2", objPizza.Sabores[1].IdSabor);
+            }
+            if (objPizza.Sabores[2].IdSabor == 0)
+            {
+                comando.Parameters.AddWithValue("@Sabor3", (object)DBNull.Value);
+            }
+            else
+            {
+                comando.Parameters.AddWithValue("@Sabor3", objPizza.Sabores[2].IdSabor);
+            }
+           
+
+           
 
 
             Conexao con = new Conexao();

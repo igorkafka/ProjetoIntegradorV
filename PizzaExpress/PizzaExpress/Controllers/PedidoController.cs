@@ -15,7 +15,7 @@ namespace PizzaExpress.Controllers
         // GET: Pedido
         public ActionResult Index()
         {
-            
+              
             return View();
         }
         public ActionResult Create()
@@ -24,11 +24,14 @@ namespace PizzaExpress.Controllers
             return View(pedido);
         }
         [HttpPost]
-        public ActionResult Create(Pedido pedido)
+        public ActionResult Create([Bind(Exclude = "Sabores[1].IdSabor,Sabores[2].IdSabor")]Pedido pedido)
         {
+
+           
+            pedido.ObjPizza.IdPizza = pedido.ObjPizza.salvar(pedido.ObjPizza);
+            pedido.salvar(pedido);
             
-            pedido.Usuario = User.Identity.GetUserId();
-            return View(pedido);
+            return View();
         }
 
         [HttpPost]
@@ -47,7 +50,7 @@ namespace PizzaExpress.Controllers
              Produto objproduto = new Produto();
             //Searching records from list using LINQ query
             var Produtos = (from produto in objproduto.ListarNome(term) where produto.NomeProduto.Contains(term)
-                           select new {Label = "Nome: " + produto.NomeProduto + " Preço: " + produto.PrecoProduto, Name = produto.NomeProduto, Value = produto.IdProduto });
+                           select new {Label = "Nome: " + produto.NomeProduto + " Preço: " + produto.PrecoProduto, Name = produto.NomeProduto, Value = produto.IdProduto, Descricao = produto.DescProduto, PrecoProduto = produto.PrecoProduto });
             return Json(Produtos, JsonRequestBehavior.AllowGet);
         }
         [HttpPost]

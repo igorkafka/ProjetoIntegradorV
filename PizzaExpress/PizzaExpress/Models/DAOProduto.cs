@@ -20,7 +20,7 @@ namespace PizzaExpress.Models
             comando.Parameters.AddWithValue("@DescProduto", objProduto.DescProduto);
 
             Conexao con = new Conexao();
-            con.ExecutarCrud(comando);
+          con.ExecutarCrud(comando);
         }
 
         //Altera um Produto

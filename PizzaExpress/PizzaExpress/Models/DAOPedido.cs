@@ -13,15 +13,16 @@ namespace PizzaExpress.Models
         {
             SqlCommand comando = new SqlCommand();
             comando.CommandType = CommandType.Text;
-            comando.CommandText = "INSERT INTO Tb_Pedido(DescPedido, DataPedido, PrecoTotal, TipoPedido, StatusPedido, IdCliente) VALUES (@DescPedido, @HoraPedido, @DataPedido, @PrecoTotal, @TipoPedido, @StatusPedido, @IdCliente); SELECT @@IDENTITY;)";
+            comando.CommandText = "INSERT INTO Tb_Pedido(DescPedido, DataPedido, PrecoTotal, TipoPedido, StatusPedido, IdCliente,IdPizza,IdProduto) VALUES (@DescPedido, @DataPedido, @PrecoTotal, @TipoPedido, @StatusPedido, @IdCliente,@IdPizza,@IdProduto); SELECT @@IDENTITY;";
 
             comando.Parameters.AddWithValue("@DescPedido", objPedido.DescPedido);
             comando.Parameters.AddWithValue("@DataPedido", objPedido.DataPedido);
             comando.Parameters.AddWithValue("@PrecoTotal", objPedido.ValorTotal);
             comando.Parameters.AddWithValue("@TipoPedido", objPedido.TipoPedido);
             comando.Parameters.AddWithValue("@StatusPedido", objPedido.StatusPedido);
+            comando.Parameters.AddWithValue("@IdPizza", objPedido.ObjPizza.IdPizza);
             comando.Parameters.AddWithValue("@IdCliente", objPedido.ObjCliente.IdCliente);
-
+            comando.Parameters.AddWithValue("@IdProduto", objPedido.ObjProduto.IdProduto);
             Conexao con = new Conexao();
             return con.ExecutarCrud(comando);
         }
@@ -61,7 +62,7 @@ namespace PizzaExpress.Models
                     objPedido.DescPedido = dr["DescPedido"].ToString();
                  
                     objPedido.DataPedido = Convert.ToDateTime(dr["DataPedido"]);
-                    objPedido.StatusPedido = dr["StatusPedido"].ToString();
+                    objPedido.StatusPedido =  dr["StatusPedido"].ToString();
                     objPedido.ObjCliente = objClienteDAO.BuscarPorIdCliente(Convert.ToInt32(dr["IdCliente"]));
 
                     ListaDePedidos.Add(objPedido);

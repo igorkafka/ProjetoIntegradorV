@@ -214,9 +214,9 @@ C:\Users\Ingyar\Documents\GitHub\ProjetoIntegradorV\PizzaExpress\PizzaExpress\bi
 C:\Users\Ingyar\Documents\GitHub\ProjetoIntegradorV\PizzaExpress\PizzaExpress\bin\Microsoft.Owin.Security.Google.xml
 C:\Users\Ingyar\Documents\GitHub\ProjetoIntegradorV\PizzaExpress\PizzaExpress\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\Ingyar\Documents\GitHub\ProjetoIntegradorV\PizzaExpress\PizzaExpress\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-C:\Users\Ingyar\Documents\GitHub\ProjetoIntegradorV\PizzaExpress\PizzaExpress\obj\Debug\PizzaExpress.csprojResolveAssemblyReference.cache
 C:\Users\Ingyar\Documents\GitHub\ProjetoIntegradorV\PizzaExpress\PizzaExpress\obj\Debug\PizzaExpress.Migrations._10.resources
 C:\Users\Ingyar\Documents\GitHub\ProjetoIntegradorV\PizzaExpress\PizzaExpress\obj\Debug\PizzaExpress.csproj.GenerateResource.Cache
 C:\Users\Ingyar\Documents\GitHub\ProjetoIntegradorV\PizzaExpress\PizzaExpress\obj\Debug\PizzaExpress.Migrations._12.resources
 C:\Users\Ingyar\Documents\GitHub\ProjetoIntegradorV\PizzaExpress\PizzaExpress\obj\Debug\PizzaExpress.Migrations._13.resources
 C:\Users\Ingyar\Documents\GitHub\ProjetoIntegradorV\PizzaExpress\PizzaExpress\obj\Debug\PizzaExpress.Migrations._14.resources
+C:\Users\Ingyar\Documents\GitHub\ProjetoIntegradorV\PizzaExpress\PizzaExpress\obj\Debug\PizzaExpress.csprojResolveAssemblyReference.cache
