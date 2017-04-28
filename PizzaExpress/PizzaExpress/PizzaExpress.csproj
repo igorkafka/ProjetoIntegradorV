@@ -363,11 +363,11 @@
     <Content Include="Views\Sabor\Delete.cshtml" />
     <Content Include="Views\Pizza\Index.cshtml" />
     <Content Include="Views\Pizza\ProcurarPizza.cshtml" />
-    <Content Include="Views\Pedido\Index.cshtml" />
     <Content Include="Views\Pedido\ProcurarPedido.cshtml" />
     <Content Include="Views\Pedido\Create.cshtml" />
     <Content Include="Views\Pedido\ListaDePizzasDoPedido.cshtml" />
     <Content Include="Views\Pedido\ListaDeProdutosDoPedido.cshtml" />
+    <Content Include="Views\Pedido\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

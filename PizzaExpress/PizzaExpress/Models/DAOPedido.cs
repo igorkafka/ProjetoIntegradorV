@@ -70,10 +70,7 @@ namespace PizzaExpress.Models
 
                 }
             }
-            else
-            {
-                ListaDePedidos = null;
-            }
+            
 
             return ListaDePedidos;
         }
@@ -83,6 +80,7 @@ namespace PizzaExpress.Models
         public IList<Pedido> BuscaTodosOsPedidosAberto(string status)
         {
             IList<Pedido> ListaDePedidos = new List<Pedido>();
+            Pedido objpedido = new Pedido();
             DAOCliente objClienteDAO = new DAOCliente();
             SqlCommand comando = new SqlCommand();
             comando.CommandType = CommandType.Text;
@@ -106,16 +104,14 @@ namespace PizzaExpress.Models
                     objPedido.DataPedido = Convert.ToDateTime(dr["DataPedido"]);
                     objPedido.StatusPedido = dr["StatusPedido"].ToString();
                     objPedido.ObjCliente = objClienteDAO.BuscarPorIdCliente(Convert.ToInt32(dr["IdCliente"]));
-
+                    objPedido.ObjPizza = objpedido.ObjPizza.BuscarPizzaId(Convert.ToInt32(dr["IdPizza"]));
+                    objPedido.ObjProduto = objpedido.ObjProduto.ProdutoPorId(Convert.ToInt32(dr["IdPedido"]));
                     ListaDePedidos.Add(objPedido);
 
 
                 }
             }
-            else
-            {
-                ListaDePedidos = null;
-            }
+            
 
             return ListaDePedidos;
         }
@@ -151,10 +147,7 @@ namespace PizzaExpress.Models
 
                 }
             }
-            else
-            {
-                ListaDePedidos = null;
-            }
+            
 
             return ListaDePedidos;
         }
@@ -188,10 +181,7 @@ namespace PizzaExpress.Models
 
 
             }
-            else
-            {
-                objPedido = null;
-            }
+            
 
             return objPedido;
         }
@@ -227,10 +217,7 @@ namespace PizzaExpress.Models
 
 
             }
-            else
-            {
-                listDePedido = null;
-            }
+            
 
             return listDePedido;
         }

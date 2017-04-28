@@ -145,7 +145,7 @@ namespace PizzaExpress.Controllers
         //
         // POST: /Account/Register
         [HttpPost]
-        [Authorize(Roles ="Admin")]
+        [Authorize()]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {

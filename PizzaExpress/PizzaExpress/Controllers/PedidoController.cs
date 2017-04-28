@@ -8,7 +8,7 @@ using Microsoft.AspNet.Identity;
 
 namespace PizzaExpress.Controllers
 {
-    [Authorize(Roles="Funcionario,Admin")]
+    [Authorize()]
     public class PedidoController : Controller
     {
         

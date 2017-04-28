@@ -128,9 +128,14 @@ namespace PizzaExpress.Models
         }
         public int salvar(Pizza objpizza)
         {
-           
+            
             DAOPizza dao = new DAOPizza();
             return dao.Salvar(objpizza);
+        }
+        public Pizza BuscarPizzaId(int id)
+        {
+            DAOPizza dao = new DAOPizza();
+            return dao.BuscarPizza(id);
         }
     }
 }

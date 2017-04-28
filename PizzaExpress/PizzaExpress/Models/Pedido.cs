@@ -10,6 +10,12 @@ namespace PizzaExpress.Models
     {
         private Produto objproduto;
         private Pizza objpizza;
+        private Sabor objsabor;
+        public Sabor ObjSabor
+        {
+            get { return this.objsabor; }
+            set { this.objsabor = value; }
+        }
         private string usuario;
         public string Usuario
         {

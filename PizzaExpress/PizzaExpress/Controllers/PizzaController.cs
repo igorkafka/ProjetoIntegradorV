@@ -9,6 +9,7 @@ namespace PizzaExpress.Controllers
     public class PizzaController : Controller
     {
         // GET: Pizza
+        [Authorize()]
         public ActionResult Index(string tamanho="")
         {
             Sabor sabor = new Sabor();
