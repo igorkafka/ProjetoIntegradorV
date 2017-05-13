@@ -13,7 +13,7 @@ namespace PizzaExpress.Controllers
     {
         
         // GET: Pedido
-        public ActionResult Index(string pesquisar = "",string status="")
+        public ActionResult Index(string status="")
         {
             FormCollection form = new FormCollection();
           
@@ -22,11 +22,11 @@ namespace PizzaExpress.Controllers
             {
                 if (status == "Aberto")
                 {
-                    return PartialView("ProcurarPedido", objpedido.ListarPizzasAbertos(pesquisar));
+                    return PartialView("ProcurarPedido", objpedido.ListarPizzasAbertos());
                 }
                 else if(status == "Fechado")
                 {
-                    return PartialView("ProcurarPedido", objpedido.ListarPizzasFechados(pesquisar));
+                    return PartialView("ProcurarPedido", objpedido.ListarPizzasFechados());
                 }
                 else
                 {
@@ -37,7 +37,7 @@ namespace PizzaExpress.Controllers
                 
             }
 
-            return View(objpedido.TodoosPedidos());
+            return View(objpedido.TodoosPedidos().Take(0));
         }
         public ActionResult Create()
         {

@@ -121,17 +121,17 @@ namespace PizzaExpress.Models
             DAOPedido dao = new DAOPedido();
             dao.Salvar(pedido);
         }
-        public IList<Pedido> ListarPizzasAbertos(String numero)
+        public IList<Pedido> ListarPizzasAbertos()
         {
             DAOPedido dao = new DAOPedido();
-            return dao.BuscaTodosOsPedidosAberto(numero);
+            return dao.BuscaTodosOsPedidosAberto();
             
             
         }
-        public IList<Pedido> ListarPizzasFechados(String numero)
+        public IList<Pedido> ListarPizzasFechados()
         {
             DAOPedido dao = new DAOPedido();
-            return dao.BuscaTodosOsPedidosFechado(numero);
+            return dao.BuscaTodosOsPedidosFechado();
 
 
         }

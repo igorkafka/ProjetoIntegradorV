@@ -5,9 +5,7 @@
 </p>
 <table class="table">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.ObjCliente)
-        </th>
+       
         <th>
             @Html.DisplayNameFor(model => model.NumPedido)
         </th>
@@ -36,9 +34,7 @@
     {
         <tr>
            
-            <td>
-                @Html.DisplayFor(modelItem => item.ObjCliente.Nome)
-            </td>
+            
             <td>
                 @Html.DisplayFor(modelItem => item.NumPedido)
             </td>
@@ -64,8 +60,10 @@
                 @Html.ActionLink("Edit", "Edit", new { id = item.NumPedido }) |
                 @Html.ActionLink("Details", "Details", new { id = item.NumPedido }) |
                 @Html.ActionLink("Delete", "Delete", new { id = item.NumPedido })
-                @Html.ActionLink("Pizza", "Details", "Pizza", new { id = item.ObjPizza.IdPizza })
-                @Html.ActionLink("Produto", "Details", "Produto", new { id = item.ObjProduto.IdProduto })
+                @Html.ActionLink("Pizza", "Details", "Pizza", new { id = item.ObjPizza.IdPizza },null)
+                @Html.ActionLink("Produto", "Details", "Produto", new { id = item.ObjProduto.IdProduto},null)
+                @Html.ActionLink("Cliente", "Details", "Cliente", new { id = item.ObjCliente.IdCliente }, null)
+                
             </td>
         </tr>
     }

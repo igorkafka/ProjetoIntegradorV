@@ -32,7 +32,7 @@ namespace PizzaExpress.Models
         {
             SqlCommand comando = new SqlCommand();
             comando.CommandType = CommandType.Text;
-            comando.CommandText = "UPDATE Tb_Pedido SET StatusPedido = @StatusPedido WHERE NumPedido LIKE '%@NumPedido%'";
+            comando.CommandText = "UPDATE Tb_Pedido SET StatusPedido = @StatusPedido WHERE NumPedido = @NumPedido";
 
             comando.Parameters.AddWithValue("@NumPedido", objPedido.NumPedido);
             comando.Parameters.AddWithValue("@StatusPedido", objPedido.StatusPedido);
@@ -79,16 +79,16 @@ namespace PizzaExpress.Models
 
 
 
-        public IList<Pedido> BuscaTodosOsPedidosAberto(string numero)
+        public IList<Pedido> BuscaTodosOsPedidosAberto()
         {
             IList<Pedido> ListaDePedidos = new List<Pedido>();
             Pedido objpedido = new Pedido();
             DAOCliente objClienteDAO = new DAOCliente();
             SqlCommand comando = new SqlCommand();
             comando.CommandType = CommandType.Text;
-            comando.CommandText = "SELECT*FROM Tb_Pedido WHERE StatusPedido = 'Aberto' and NumPedido = @NumPedido";
+            comando.CommandText = "SELECT*FROM Tb_Pedido WHERE StatusPedido = 'Aberto'  AND DataPedido = CAST(GETDATE() as date)";
 
-            comando.Parameters.AddWithValue("@NumPedido", numero);
+
 
 
             Conexao con = new Conexao();
@@ -118,17 +118,17 @@ namespace PizzaExpress.Models
             return ListaDePedidos;
         }
 
-        public IList<Pedido> BuscaTodosOsPedidosFechado(string numero)
+        public IList<Pedido> BuscaTodosOsPedidosFechado()
         {
             IList<Pedido> ListaDePedidos = new List<Pedido>();
             Pedido objPedido = new Pedido();
             DAOCliente objClienteDAO = new DAOCliente();
             SqlCommand comando = new SqlCommand();
             comando.CommandType = CommandType.Text;
-            comando.CommandText = "SELECT*FROM Tb_Pedido WHERE StatusPedido = 'Fechado' and NumPedido =@NumPedido";
+            comando.CommandText = "SELECT*FROM Tb_Pedido WHERE StatusPedido = 'Fechado' AND DataPedido = CAST(GETDATE() as date)";
 
 
-            comando.Parameters.AddWithValue("@NumPedido", numero );
+          
 
             Conexao con = new Conexao();
             SqlDataReader dr = con.ExecutarSelect(comando);
