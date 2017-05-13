@@ -13,19 +13,31 @@ namespace PizzaExpress.Controllers
     {
         
         // GET: Pedido
-        public ActionResult Index(string pesquisar = "")
+        public ActionResult Index(string pesquisar = "",string status="")
         {
             FormCollection form = new FormCollection();
+          
             Pedido objpedido = new Pedido();
             if(Request.IsAjaxRequest())
             {
-                    
-                    return PartialView("ProcurarPedido",objpedido.TodoosPedidos());
+                if (status == "Aberto")
+                {
+                    return PartialView("ProcurarPedido", objpedido.ListarPizzasAbertos(pesquisar));
+                }
+                else if(status == "Fechado")
+                {
+                    return PartialView("ProcurarPedido", objpedido.ListarPizzasFechados(pesquisar));
+                }
+                else
+                {
+                    return JavaScript("alert(" + status +  ")");
+                }
+
                 
                 
             }
 
-            return View(objpedido.TodoosPedidos());
+            return View(objpedido.TodoosPedidos().Take(0));
         }
         public ActionResult Create()
         {
@@ -69,7 +81,7 @@ namespace PizzaExpress.Controllers
             //Searching records from list using LINQ query
             var Clientes = (from cliente in c.ListarNome(term)
                             where cliente.NomeCliente.Contains(term)
-                            select new { Label = "Nome: " + cliente.NomeCliente  + " Telefone: " +  cliente.TelefoneCliente, Name = cliente.TelefoneCliente, Value = cliente.IdCliente });
+                            select new { Label = "Nome: " + cliente.NomeCliente  + " Telefone: " +  cliente.TelefoneCliente, Name = cliente.Nome, Value = cliente.IdCliente });
             return Json(Clientes, JsonRequestBehavior.AllowGet);
         }
        

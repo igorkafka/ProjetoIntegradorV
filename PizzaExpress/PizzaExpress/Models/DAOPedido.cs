@@ -18,7 +18,7 @@ namespace PizzaExpress.Models
             comando.Parameters.AddWithValue("@DescPedido", objPedido.DescPedido);
             comando.Parameters.AddWithValue("@DataPedido", objPedido.DataPedido);
             comando.Parameters.AddWithValue("@PrecoTotal", objPedido.ValorTotal);
-            comando.Parameters.AddWithValue("@TipoPedido", objPedido.TipoPedido);
+            comando.Parameters.AddWithValue("@TipoPedido", objPedido.TipoPedido = "Aberto");
             comando.Parameters.AddWithValue("@StatusPedido", objPedido.StatusPedido);
             comando.Parameters.AddWithValue("@IdPizza", objPedido.ObjPizza.IdPizza);
             comando.Parameters.AddWithValue("@IdCliente", objPedido.ObjCliente.IdCliente);
@@ -32,7 +32,7 @@ namespace PizzaExpress.Models
         {
             SqlCommand comando = new SqlCommand();
             comando.CommandType = CommandType.Text;
-            comando.CommandText = "UPDATE Tb_Pedido SET StatusPedido = @StatusPedido WHERE NumPedido = @NumPedido";
+            comando.CommandText = "UPDATE Tb_Pedido SET StatusPedido = @StatusPedido WHERE NumPedido LIKE '%@NumPedido%'";
 
             comando.Parameters.AddWithValue("@NumPedido", objPedido.NumPedido);
             comando.Parameters.AddWithValue("@StatusPedido", objPedido.StatusPedido);
@@ -58,10 +58,11 @@ namespace PizzaExpress.Models
                 {
                     Pedido objPedido = new Pedido();
                     Cliente objCliente = new Cliente();
+
                     objPedido.NumPedido = (int)(dr["NumPedido"]);
                     objPedido.DescPedido = dr["DescPedido"].ToString();
                     objPedido.DataPedido = Convert.ToDateTime(dr["DataPedido"]);
-                    objPedido.StatusPedido =  dr["StatusPedido"].ToString();
+                    objPedido.StatusPedido = dr["StatusPedido"].ToString();
                     objPedido.ObjCliente = objClienteDAO.BuscarPorIdCliente(Convert.ToInt32(dr["IdCliente"]));
                     objPedido.ObjPizza = objPedido.ObjPizza.BuscarPizzaId(Convert.ToInt32(dr["IdPizza"]));
                     objPedido.ObjProduto = objPedido.ObjProduto.ProdutoPorId(Convert.ToInt32(dr["IdProduto"]));
@@ -87,7 +88,8 @@ namespace PizzaExpress.Models
             comando.CommandType = CommandType.Text;
             comando.CommandText = "SELECT*FROM Tb_Pedido WHERE StatusPedido = 'Aberto' and NumPedido = @NumPedido";
 
-            
+            comando.Parameters.AddWithValue("@NumPedido", numero);
+
 
             Conexao con = new Conexao();
             SqlDataReader dr = con.ExecutarSelect(comando);
@@ -101,12 +103,11 @@ namespace PizzaExpress.Models
                     Cliente objCliente = new Cliente();
                     objPedido.NumPedido = (int)(dr["NumPedido"]);
                     objPedido.DescPedido = dr["DescPedido"].ToString();
-               
                     objPedido.DataPedido = Convert.ToDateTime(dr["DataPedido"]);
                     objPedido.StatusPedido = dr["StatusPedido"].ToString();
                     objPedido.ObjCliente = objClienteDAO.BuscarPorIdCliente(Convert.ToInt32(dr["IdCliente"]));
-                    objPedido.ObjPizza = objpedido.ObjPizza.BuscarPizzaId(Convert.ToInt32(dr["IdPizza"]));
-                    objPedido.ObjProduto = objpedido.ObjProduto.ProdutoPorId(Convert.ToInt32(dr["IdProduto"]));
+                    objPedido.ObjPizza = objPedido.ObjPizza.BuscarPizzaId(Convert.ToInt32(dr["IdPizza"]));
+                    objPedido.ObjProduto = objPedido.ObjProduto.ProdutoPorId(Convert.ToInt32(dr["IdProduto"]));
                     ListaDePedidos.Add(objPedido);
 
 
@@ -124,7 +125,7 @@ namespace PizzaExpress.Models
             DAOCliente objClienteDAO = new DAOCliente();
             SqlCommand comando = new SqlCommand();
             comando.CommandType = CommandType.Text;
-            comando.CommandText = "SELECT*FROM Tb_Pedido WHERE StatusPedido = 'Fechado' and NumPedido=@NumPedido";
+            comando.CommandText = "SELECT*FROM Tb_Pedido WHERE StatusPedido = 'Fechado' and NumPedido =@NumPedido";
 
 
             comando.Parameters.AddWithValue("@NumPedido", numero );

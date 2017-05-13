@@ -67,7 +67,7 @@ namespace PizzaExpress.Models
 
         private decimal precoPizza;
         [DisplayName("Preço")]
-        [DataType(DataType.Currency)]
+        [DataType(DataType.Currency, ErrorMessage ="Valor não é válido")]
         public decimal PrecoPizza
         {
             get { return precoPizza; }

@@ -61,7 +61,8 @@ namespace PizzaExpress.Models
         private DateTime dataPedido;
         [Display(Name ="Data")]
         [Required(ErrorMessage ="Data do pedido é obrigatória!")]
-        [DataType(DataType.DateTime)]
+        [DataType(DataType.Date,ErrorMessage ="Digite uma datá valida Dia/Mês/Ano")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime DataPedido
         {
             get { return dataPedido; }
@@ -73,7 +74,7 @@ namespace PizzaExpress.Models
         public decimal ValorTotal
         {
             get { return valorTotal; }
-            set { valorTotal = value; }
+            set { valorTotal = this.ObjProduto.PrecoProduto; }
         }
 
         private string statusPedido;
