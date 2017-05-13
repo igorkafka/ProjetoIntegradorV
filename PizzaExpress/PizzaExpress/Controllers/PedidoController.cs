@@ -51,7 +51,22 @@ namespace PizzaExpress.Controllers
 
            
             pedido.ObjPizza.IdPizza = pedido.ObjPizza.salvar(pedido.ObjPizza);
+            pedido.ObjProduto = pedido.ObjProduto.ProdutoPorId(pedido.ObjProduto.IdProduto);
+            pedido.ObjPizza.Sabores[0] = pedido.ObjPizza.Sabores[0].BuscarPorId(pedido.ObjPizza.Sabores[0].IdSabor);
             
+            
+       /*     if (pedido.ObjPizza.Sabores[1].IdSabor != 0)
+            {
+                pedido.ObjPizza.Sabores[1] = pedido.ObjPizza.Sabores[1].BuscarPorId(pedido.ObjPizza.Sabores[1].IdSabor);
+                pedido.ValorTotal += pedido.ObjPizza.Sabores[1].PrecoSabor;
+            }
+            if (pedido.ObjPizza.Sabores[2].IdSabor != 0)
+            {
+                pedido.ObjPizza.Sabores[2] = pedido.ObjPizza.Sabores[2].BuscarPorId(pedido.ObjPizza.Sabores[2].IdSabor);
+                pedido.ValorTotal += pedido.ObjPizza.Sabores[2].PrecoSabor;
+           } */
+          
+   
             pedido.salvar(pedido);
             
             return View();
@@ -87,13 +102,6 @@ namespace PizzaExpress.Controllers
             return Json(Clientes, JsonRequestBehavior.AllowGet);
         }
        
-        public ActionResult AdicionarPizza(Pedido pedido)
-        {
-            (TempData["myData"] as IList<Pizza>).Add(pedido.ObjPizza);
-       
-
-
-            return PartialView("ListaDePizzasDoPedido", TempData["myData"]);
-        }
+        
     }
 }
