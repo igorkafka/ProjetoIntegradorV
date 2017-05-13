@@ -9,29 +9,13 @@ namespace PizzaExpress.Controllers
     public class PizzaController : Controller
     {
         // GET: Pizza
-        [Authorize()]
-        public ActionResult Index(string tamanho="")
-        {
-            Sabor sabor = new Sabor();
-            Pizza pizza = new Pizza(sabor);
-            if (Request.IsAjaxRequest())
-            {
-                return PartialView("ProcurarPizza", pizza.ListarPorTamanho(tamanho));
-            }
-            else
-            {
-                return View(pizza.ListarPorTamanho(tamanho));
-            }
-            }
+       
         [HttpGet]
-        public ActionResult Create()
+        public ActionResult Details(int id)
         {
-            return View();
-        }
-        [HttpPost]
-        public ActionResult Create([Bind(Exclude = "IdPizza")]Sabor objsabor)
-        {
-            return View();
+            Pizza objpizza = new Pizza();
+            objpizza = objpizza.BuscarPizzaId(id);
+            return View(objpizza);
         }
     }
    

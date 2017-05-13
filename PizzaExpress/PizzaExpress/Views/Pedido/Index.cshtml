@@ -1,81 +1,47 @@
 ﻿@model IEnumerable<PizzaExpress.Models.Pedido>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Usuario)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NumPedido)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DescPedido)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DataPedido)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ValorTotal)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.StatusPedido)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TipoPedido)
-        </th>
-        <th>
-            Sabor 1
-        </th>
-        <th>
-            Sabor 2
-        </th>
-        <th>
-            Sabor 3
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Usuario)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NumPedido)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DescPedido)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DataPedido)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ValorTotal)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.StatusPedido)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TipoPedido)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ObjPizza.Sabores[0]);
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ObjPizza.Sabores[1]);
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ObjPizza.Sabores[2]);
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-        </td>
-    </tr>
+<div>
+    @using (Ajax.BeginForm("Index", "Pedido", new AjaxOptions { HttpMethod = "GET", InsertionMode = InsertionMode.Replace, UpdateTargetId = "divlistapedidos", OnFailure = "handleError" }))
+    {
+
+        <div class="container" id="containerprocurarcliente">
+            <form class="form-inline">
+
+                <h2>Cliente</h2>
+                <div>
+                <label class="radio-inline">
+                    <input type="radio" value="Aberto" name="status">Aberto
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" value="Fechado" name="status">Fechado
+                </label>
+                    </div>
+                <div>
+                    <div class="col-md-10">
+                      
+                        <input type="text" class="form-control" name="pesquisar" placeholder="Digite o nome do Cliente" />
+                    </div>
+                    <input type="submit" class="btn" value="Buscar" />
+                </div>
+
+
+
+
+
+
+            </form>
+        </div>
+
+
+    }
+
+</div>
+@Html.Partial("ProcurarPedido", Model)
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+
+
+
 }
-
-</table>

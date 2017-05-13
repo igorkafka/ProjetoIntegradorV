@@ -103,11 +103,41 @@ namespace PizzaExpress.Models
         {
             listaItemPedido = new List<ItensPedido>();
             Pizzas = new List<Pizza>();
+            this.objpizza = new Pizza();
+            this.objproduto = new Produto();
+            this.objpizza.Sabores = new List<Sabor>();
+            this.objpizza.Sabores.Add(new Sabor());
+            this.objpizza.Sabores.Add(new Sabor());
+            this.objpizza.Sabores.Add(new Sabor());
+            this.objpizza.Sabores[0] = new Sabor();
+            this.objpizza.Sabores[1] = new Sabor();
+            this.objpizza.Sabores[2] = new Sabor();
+
+
         }
         public void salvar(Pedido pedido)
         {
             DAOPedido dao = new DAOPedido();
             dao.Salvar(pedido);
+        }
+        public IList<Pedido> ListarPizzasAbertos(String numero)
+        {
+            DAOPedido dao = new DAOPedido();
+            return dao.BuscaTodosOsPedidosAberto(numero);
+            
+            
+        }
+        public IList<Pedido> ListarPizzasFechados(String numero)
+        {
+            DAOPedido dao = new DAOPedido();
+            return dao.BuscaTodosOsPedidosFechado(numero);
+
+
+        }
+        public IList<Pedido> TodoosPedidos()
+        {
+            DAOPedido dao = new DAOPedido();
+            return dao.BuscaTodosOsPedidos();
         }
     }
 }

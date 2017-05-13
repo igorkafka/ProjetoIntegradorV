@@ -13,10 +13,19 @@ namespace PizzaExpress.Controllers
     {
         
         // GET: Pedido
-        public ActionResult Index()
+        public ActionResult Index(string pesquisar = "")
         {
-              
-            return View();
+            FormCollection form = new FormCollection();
+            Pedido objpedido = new Pedido();
+            if(Request.IsAjaxRequest())
+            {
+                    
+                    return PartialView("ProcurarPedido",objpedido.TodoosPedidos());
+                
+                
+            }
+
+            return View(objpedido.TodoosPedidos());
         }
         public ActionResult Create()
         {

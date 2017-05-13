@@ -12,11 +12,30 @@ namespace PizzaExpress.Models
         public Pizza()
         {
            Sabor listasabor = new Sabor();
-            this.ObjListaSabor = listasabor;
+            this.ObjListaSabor1 = listasabor;
+            this.ObjListaSabor2 = listasabor;
+            Sabor ListaSabor2 = new Sabor();
+            this.ObjListSabor3 = ListaSabor2;
+            this.Sabores = new List<Sabor>();
+            this.Sabores.Add(new Sabor());
+            this.Sabores.Add(new Sabor());
+            this.Sabores.Add(new Sabor());
+
         }
         private Sabor objListaSabor = new Sabor(); //Lista Sabor
-
-        public Sabor ObjListaSabor
+        private Sabor objlistasabor2 = new Sabor();
+        public Sabor ObjListaSabor2
+        {
+            get { return this.objlistasabor2; }
+            set { this.objlistasabor2 = value; }
+        }
+        private Sabor objlistasabor3;
+        public Sabor ObjListSabor3
+        {
+            get { return this.objlistasabor3; }
+            set { this.objlistasabor3 = value; }
+        }
+        public Sabor ObjListaSabor1
         {
             get { return objListaSabor; }
             set { objListaSabor = value; }

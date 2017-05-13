@@ -10,7 +10,7 @@ namespace PizzaExpress.Models
     {
         public Sabor()
         {
-
+            this.DescSabor = "Sem sabor";
         }
         private Pizza objPizza; //Composição Pizza
         public Pizza ObjPizza

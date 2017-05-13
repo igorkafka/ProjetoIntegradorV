@@ -60,10 +60,11 @@ namespace PizzaExpress.Models
                     Cliente objCliente = new Cliente();
                     objPedido.NumPedido = (int)(dr["NumPedido"]);
                     objPedido.DescPedido = dr["DescPedido"].ToString();
-                 
                     objPedido.DataPedido = Convert.ToDateTime(dr["DataPedido"]);
                     objPedido.StatusPedido =  dr["StatusPedido"].ToString();
                     objPedido.ObjCliente = objClienteDAO.BuscarPorIdCliente(Convert.ToInt32(dr["IdCliente"]));
+                    objPedido.ObjPizza = objPedido.ObjPizza.BuscarPizzaId(Convert.ToInt32(dr["IdPizza"]));
+                    objPedido.ObjProduto = objPedido.ObjProduto.ProdutoPorId(Convert.ToInt32(dr["IdProduto"]));
 
                     ListaDePedidos.Add(objPedido);
 
@@ -77,16 +78,16 @@ namespace PizzaExpress.Models
 
 
 
-        public IList<Pedido> BuscaTodosOsPedidosAberto(string status)
+        public IList<Pedido> BuscaTodosOsPedidosAberto(string numero)
         {
             IList<Pedido> ListaDePedidos = new List<Pedido>();
             Pedido objpedido = new Pedido();
             DAOCliente objClienteDAO = new DAOCliente();
             SqlCommand comando = new SqlCommand();
             comando.CommandType = CommandType.Text;
-            comando.CommandText = "SELECT*FROM Tb_Pedido WHERE StatusPedido = @StatusPedido";
+            comando.CommandText = "SELECT*FROM Tb_Pedido WHERE StatusPedido = 'Aberto' and NumPedido = @NumPedido";
 
-            comando.Parameters.AddWithValue("@StatusPedido", status);
+            
 
             Conexao con = new Conexao();
             SqlDataReader dr = con.ExecutarSelect(comando);
@@ -105,7 +106,7 @@ namespace PizzaExpress.Models
                     objPedido.StatusPedido = dr["StatusPedido"].ToString();
                     objPedido.ObjCliente = objClienteDAO.BuscarPorIdCliente(Convert.ToInt32(dr["IdCliente"]));
                     objPedido.ObjPizza = objpedido.ObjPizza.BuscarPizzaId(Convert.ToInt32(dr["IdPizza"]));
-                    objPedido.ObjProduto = objpedido.ObjProduto.ProdutoPorId(Convert.ToInt32(dr["IdPedido"]));
+                    objPedido.ObjProduto = objpedido.ObjProduto.ProdutoPorId(Convert.ToInt32(dr["IdProduto"]));
                     ListaDePedidos.Add(objPedido);
 
 
@@ -116,16 +117,17 @@ namespace PizzaExpress.Models
             return ListaDePedidos;
         }
 
-        public IList<Pedido> BuscaTodosOsPedidosFechado(string status)
+        public IList<Pedido> BuscaTodosOsPedidosFechado(string numero)
         {
             IList<Pedido> ListaDePedidos = new List<Pedido>();
             Pedido objPedido = new Pedido();
             DAOCliente objClienteDAO = new DAOCliente();
             SqlCommand comando = new SqlCommand();
             comando.CommandType = CommandType.Text;
-            comando.CommandText = "SELECT*FROM Tb_Pedido WHERE StatusPedido = @StatusPedido";
+            comando.CommandText = "SELECT*FROM Tb_Pedido WHERE StatusPedido = 'Fechado' and NumPedido=@NumPedido";
 
-            comando.Parameters.AddWithValue("@StatusPedido", status);
+
+            comando.Parameters.AddWithValue("@NumPedido", numero );
 
             Conexao con = new Conexao();
             SqlDataReader dr = con.ExecutarSelect(comando);
@@ -143,7 +145,7 @@ namespace PizzaExpress.Models
                     objPedido.StatusPedido = dr["StatusPedido"].ToString();
                     objPedido.ObjCliente = objClienteDAO.BuscarPorIdCliente(Convert.ToInt32(dr["IdCliente"]));
                     objPedido.ObjPizza = objPedido.ObjPizza.BuscarPizzaId(Convert.ToInt32(dr["IdPizza"]));
-                    objPedido.ObjProduto = objPedido.ObjProduto.ProdutoPorId(Convert.ToInt32(dr["IdPedido"]));
+                    objPedido.ObjProduto = objPedido.ObjProduto.ProdutoPorId(Convert.ToInt32(dr["IdProduto"]));
 
                     ListaDePedidos.Add(objPedido);
 
@@ -158,7 +160,7 @@ namespace PizzaExpress.Models
 
         public Pedido BuscaPorID(int id)
         {
-           
+            Pedido objPedido = new Pedido();
             DAOCliente objClienteDAO = new DAOCliente();
             SqlCommand comando = new SqlCommand();
             comando.CommandType = CommandType.Text;
@@ -180,6 +182,8 @@ namespace PizzaExpress.Models
                 objPedido.ObjCliente = objClienteDAO.BuscarPorIdCliente(Convert.ToInt32(dr["IdCliente"]));
                 objPedido.ValorTotal = Convert.ToDecimal(dr["PrecoTotal"]);
                 objPedido.TipoPedido = dr["TipoPedido"].ToString();
+                objPedido.ObjPizza = objPedido.ObjPizza.BuscarPizzaId((int)dr["IdPizza"]);
+                objPedido.ObjProduto = objPedido.ObjProduto.ProdutoPorId((int)dr["IdProduto"]);
 
 
 

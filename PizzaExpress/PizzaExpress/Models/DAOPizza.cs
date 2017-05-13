@@ -58,7 +58,7 @@ namespace PizzaExpress.Models
 
         public Pizza BuscarPizza(int id)
         {
-            Pizza objPizza = new Pizza(new Sabor());
+            Pizza objPizza = new Pizza();
             SqlCommand comando = new SqlCommand();
             comando.CommandType = CommandType.Text;
             comando.CommandText = "SELECT * FROM Tb_Pizza WHERE IdPizza = @id";
@@ -73,11 +73,29 @@ namespace PizzaExpress.Models
                 dr.Read();
                 objPizza.IdPizza = (int)dr["IdPizza"];
                 objPizza.Tamanho = dr["Tamanho"].ToString();
-                objPizza.Sabores[0] = objPizza.Sabores[0].BuscarPorId(Convert.ToInt32(dr["Sabor1"]));
-                objPizza.Sabores[1] = objPizza.Sabores[1].BuscarPorId(Convert.ToInt32(dr["Sabor2"]));
-                objPizza.Sabores[2] = objPizza.Sabores[2].BuscarPorId(Convert.ToInt32(dr["Sabor3"]));
+                Sabor objsabor = new Sabor();
+                objPizza.ObjListaSabor1 = objPizza.ObjListaSabor1.BuscarPorId((Convert.ToInt32(dr["Sabor1"])));
+                if(dr["Sabor2"] is DBNull)
+                {
+                    objPizza.ObjListaSabor2.DescSabor = "Sem segundo sabor";
+                }
+                else
+                {
+                    objPizza.ObjListaSabor2 = objPizza.ObjListaSabor2.BuscarPorId(Convert.ToInt32(dr["Sabor2"]));
+                }
+                if (dr["Sabor3"] is DBNull)
+                {
+                    
+                    objPizza.ObjListSabor3.DescSabor = "Sem terceiro sabor";
+                }
+                else
+                {
+                    objPizza.ObjListSabor3 = objPizza.ObjListSabor3.BuscarPorId(Convert.ToInt32(dr["Sabor3"]));
+                }
+               
                 objPizza.PrecoPizza = Convert.ToDecimal(dr["PrecoPizza"]);
                 objPizza.Status = dr["status"].ToString();
+                
             }
           
 
