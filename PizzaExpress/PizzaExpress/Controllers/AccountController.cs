@@ -136,7 +136,7 @@ namespace PizzaExpress.Controllers
 
         //
         // GET: /Account/Register
-        [Authorize(Roles = "Admin")]
+        [AllowAnonymous]
         public ActionResult Register()
         {
             return View();
@@ -145,7 +145,7 @@ namespace PizzaExpress.Controllers
         //
         // POST: /Account/Register
         [HttpPost]
-        [Authorize()]
+        [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
