@@ -140,6 +140,16 @@ namespace PizzaExpress.Models
             DAOPedido dao = new DAOPedido();
             return dao.BuscaTodosOsPedidos();
         }
+        public void AlterarStatus(Pedido objpedido)
+        {
+            DAOPedido dao = new DAOPedido();
+            dao.Alterar(objpedido);
+        }
+        public Pedido BuscarPorId(int id)
+        {
+            DAOPedido dao = new DAOPedido();
+            return dao.BuscaPorID(id);
+        }
         
     }
 }

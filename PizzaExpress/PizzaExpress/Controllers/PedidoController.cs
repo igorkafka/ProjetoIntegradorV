@@ -101,6 +101,21 @@ namespace PizzaExpress.Controllers
                             select new { Label = "Nome: " + cliente.NomeCliente  + " Telefone: " +  cliente.TelefoneCliente, Name = cliente.Nome, Value = cliente.IdCliente });
             return Json(Clientes, JsonRequestBehavior.AllowGet);
         }
+        [HttpGet]
+        [ActionName("Edit")]
+        public ActionResult EditGET(int id)
+        {
+            Pedido objpedido = new Pedido();
+            objpedido = objpedido.BuscarPorId(id);
+            return View(objpedido);
+        }
+        [HttpPost]
+        [ActionName("Edit")]
+        public ActionResult EditPOST(Pedido objpedido)
+        {
+            objpedido.AlterarStatus(objpedido);
+            return RedirectToAction("Index", "Pedido");
+        }
        
         
     }
