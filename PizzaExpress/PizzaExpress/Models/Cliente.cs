@@ -32,7 +32,6 @@ namespace PizzaExpress.Models
 
         private string telefoneCliente;
         [DisplayName(displayName: "Telefone")]
-        [RegularExpression(@"^\(\d{2}\)\d{4}-\d{4}$",ErrorMessage ="Numero de Telefone não valído")]
         [DataType(DataType.PhoneNumber,ErrorMessage ="Por Favor, Insira um número telefone válido")]
         [Required(ErrorMessage ="Número do Telefone do Cliente é obrigatório")]
         public string TelefoneCliente

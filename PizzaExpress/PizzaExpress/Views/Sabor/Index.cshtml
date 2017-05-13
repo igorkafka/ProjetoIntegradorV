@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<PizzaExpress.Models.Sabor>
+    <h2>Sabor</h2>
 <div>
     @using (Ajax.BeginForm("Index", "Sabor", new AjaxOptions { HttpMethod = "GET", InsertionMode = InsertionMode.Replace, UpdateTargetId = "divlistasabores", OnFailure = "handleError" }))
     {

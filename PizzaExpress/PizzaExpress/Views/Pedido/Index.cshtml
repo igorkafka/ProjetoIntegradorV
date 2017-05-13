@@ -1,5 +1,5 @@
 ﻿@model IEnumerable<PizzaExpress.Models.Pedido>
-
+<h2>Pedido</h2>
 
 <div>
     @using (Ajax.BeginForm("Index", "Pedido", new AjaxOptions { HttpMethod = "GET", InsertionMode = InsertionMode.Replace, UpdateTargetId = "divlistapedidos", OnFailure = "handleError" }))

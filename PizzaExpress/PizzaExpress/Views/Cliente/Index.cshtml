@@ -1,6 +1,6 @@
 ﻿@model  IEnumerable<PizzaExpress.Models.Cliente>
 
-
+<h2>Usuário</h2>
 <div>
     @using (Ajax.BeginForm("Index", "Cliente", new AjaxOptions { HttpMethod = "GET", InsertionMode = InsertionMode.Replace, UpdateTargetId = "divlistaclientes",OnFailure = "handleError" }))
     {
