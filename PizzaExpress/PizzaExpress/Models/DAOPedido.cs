@@ -18,8 +18,8 @@ namespace PizzaExpress.Models
             comando.Parameters.AddWithValue("@DescPedido", objPedido.DescPedido);
             comando.Parameters.AddWithValue("@DataPedido", objPedido.DataPedido);
             comando.Parameters.AddWithValue("@PrecoTotal", objPedido.ValorTotal);
-            comando.Parameters.AddWithValue("@TipoPedido", objPedido.TipoPedido = "Aberto");
-            comando.Parameters.AddWithValue("@StatusPedido", objPedido.StatusPedido);
+            comando.Parameters.AddWithValue("@TipoPedido", objPedido.TipoPedido);
+            comando.Parameters.AddWithValue("@StatusPedido","Aberto");
             comando.Parameters.AddWithValue("@IdPizza", objPedido.ObjPizza.IdPizza);
             comando.Parameters.AddWithValue("@IdCliente", objPedido.ObjCliente.IdCliente);
             comando.Parameters.AddWithValue("@IdProduto", objPedido.ObjProduto.IdProduto);

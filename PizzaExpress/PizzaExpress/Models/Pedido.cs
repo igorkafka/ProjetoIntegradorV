@@ -62,7 +62,7 @@ namespace PizzaExpress.Models
         [Display(Name ="Data")]
         [Required(ErrorMessage ="Data do pedido é obrigatória!")]
         [DataType(DataType.Date,ErrorMessage ="Digite uma datá valida Dia/Mês/Ano")]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yy-mm-dd}")]
         public DateTime DataPedido
         {
             get { return dataPedido; }
@@ -79,7 +79,7 @@ namespace PizzaExpress.Models
 
         private string statusPedido;
         [Display( Name ="Status")]
-        [Required(ErrorMessage ="Status")]
+        
         public string StatusPedido
         {
             get { return statusPedido; }

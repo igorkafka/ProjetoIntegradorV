@@ -144,3 +144,7 @@ $(document).ready(function () {
         }
     });
 })
+$(document).ready(function ()
+{
+    $("#DataPedido").datepicker({ dateFormat: 'yy-mm-dd' ,defaultDate: new Date()});
+})

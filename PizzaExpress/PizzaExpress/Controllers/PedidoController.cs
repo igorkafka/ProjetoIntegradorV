@@ -37,12 +37,13 @@ namespace PizzaExpress.Controllers
                 
             }
 
-            return View(objpedido.TodoosPedidos().Take(0));
+            return View(objpedido.TodoosPedidos());
         }
         public ActionResult Create()
         {
-            Pedido pedido = new Pedido();
-            return View(pedido);
+            
+           
+            return View();
         }
         [HttpPost]
         public ActionResult Create([Bind(Exclude = "Sabores[1].IdSabor,Sabores[2].IdSabor")]Pedido pedido)
@@ -50,6 +51,7 @@ namespace PizzaExpress.Controllers
 
            
             pedido.ObjPizza.IdPizza = pedido.ObjPizza.salvar(pedido.ObjPizza);
+            
             pedido.salvar(pedido);
             
             return View();
