@@ -1,7 +1,7 @@
 ﻿@model PizzaExpress.Models.Cliente
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Detalhes";
 }
 
 <h2>Details</h2>
@@ -61,6 +61,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Editar", "Edit", new {  id = Model.IdCliente }) |
+    @Html.ActionLink("Pesquisar Cliente", "Index")
 </p>
