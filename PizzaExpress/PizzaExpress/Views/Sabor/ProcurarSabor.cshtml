@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<PizzaExpress.Models.Sabor>
 <div id="divlistasabores">
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Cadastrar novo sabor", "Create")
 </p>
 <table class="table">
     <tr>
@@ -35,9 +35,9 @@
             @Html.DisplayFor(modelItem => item.PrecoSabor)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new {  id=item.IdSabor }) |
-            @Html.ActionLink("Details", "Details", new {  id=item.IdSabor }) |
-            @Html.ActionLink("Delete", "Delete", new {  id=item.IdSabor  })
+            @Html.ActionLink("Editar", "Edit", new {  id=item.IdSabor }) |
+            @Html.ActionLink("Detalhes", "Details", new {  id=item.IdSabor }) |
+            @Html.ActionLink("Deletar", "Delete", new {  id=item.IdSabor  })
         </td>
     </tr>
 }

@@ -24,7 +24,7 @@ namespace PizzaExpress.Models
         private string nomeCliente;
       
         [Required(ErrorMessage ="O nome é obrigatório!")]
-        [StringLength(40, ErrorMessage = "O campo nome não pode ter mais de 40 letras e menos de 2 letras",MinimumLength =2)]
+        [StringLength(40, ErrorMessage = "O campo nome não pode ter mais de 40 letras e menos de 3 letras",MinimumLength =3)]
         [DisplayName(displayName:"Nome")]
         public string NomeCliente
         {
@@ -33,7 +33,7 @@ namespace PizzaExpress.Models
         }
 
         private string telefoneCliente;
-        [StringLength(40, ErrorMessage = "O campo telefone não pode ter mais de 18 letras")]
+        [StringLength(18, ErrorMessage = "O campo telefone não pode ter mais de 18 letras")]
         [DisplayName(displayName: "Telefone")]
         [RegularExpression("[0-9]{1,}", ErrorMessage = "Apenas algarismo númericos são permitidos")]
         [Required(ErrorMessage ="Número do Telefone do Cliente é obrigatório")]

@@ -18,12 +18,13 @@ namespace PizzaExpress.Controllers
                     return JavaScript("alert(\"Nome Invalido, Digite algo que tenha pelo menos mais de duas letras\")");
                 return PartialView("ProcurarSabor", sabor.ListarNome(pesquisar));
             }
-            return View(sabor.ListarNome(pesquisar).Take(0));
+            IList<Sabor> lista = new List<Sabor>();
+            return View(lista);
         }
         [HttpGet]
         public ActionResult Create()
         {
-            return View();
+            return RedirectToAction("Index");
         }
         [HttpPost]
         public ActionResult Create([Bind(Exclude ="idSabor")]Sabor sabor)
@@ -60,7 +61,7 @@ namespace PizzaExpress.Controllers
         public ActionResult EditPOST(Sabor sabor)
         {
             sabor.Salvar(sabor);
-            return View();
+            return RedirectToAction("Index");
         }
         [ActionName("Delete")]
         [HttpGet]
@@ -75,7 +76,7 @@ namespace PizzaExpress.Controllers
         {
             Sabor sabor = new Models.Sabor();
             sabor.Excluir(id);
-            return View();
+            return RedirectToAction("Index");
         }
     }
 }

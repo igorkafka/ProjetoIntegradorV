@@ -48,38 +48,38 @@ namespace PizzaExpress.Models
 
     public class LoginViewModel
     {
-        [Required]
+        [Required(ErrorMessage ="O email é obrigatório")]
         [Display(Name = "Email")]
         [EmailAddress]
         public string Email { get; set; }
 
-        [Required]
+        [Required(ErrorMessage ="A senha é obrigatória")]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Senha")]
         public string Password { get; set; }
         public string Setor { get; set; }
 
-        [Display(Name = "Remember me?")]
+        [Display(Name = "Lembrar-me?")]
         public bool RememberMe { get; set; }
     }
 
     public class RegisterViewModel
     {
-        [Required]
+        [Required(ErrorMessage = "O email é obrigatório")]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
 
-        [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [Required(ErrorMessage = "A senha é obrigatória")]
+        [StringLength(100, ErrorMessage = "A {0} Senha deve  ter {2} caracteres", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Senha")]
         public string Password { get; set; }
         public string Setor { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Display(Name = "Confirmar senha")]
+        [Compare("Password", ErrorMessage = "A senha e senha de confirmação de correspondem")]
         public string ConfirmPassword { get; set; }
     }
 
