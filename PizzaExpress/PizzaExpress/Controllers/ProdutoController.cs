@@ -18,7 +18,8 @@ namespace PizzaExpress.Controllers
                     return JavaScript("alert(\"Nome Invalido, Digite algo que tenha pelo menos mais de duas letras\")");
                 return PartialView("ProcurarProduto", produto.ListarNome(pesquisar));
             }
-            return View(produto.ListarNome(pesquisar).Take(0));
+            IList<Produto> lista = new List<Produto>();
+            return View(lista);
         }
         [HttpGet]
         public ActionResult Create()
@@ -34,7 +35,7 @@ namespace PizzaExpress.Controllers
             {
                 produto.Salvar(produto);
             }
-                return View();
+                return RedirectToAction("Index");
         }
         [ActionName("Edit")]
         [HttpGet]
@@ -48,7 +49,7 @@ namespace PizzaExpress.Controllers
         public ActionResult EditPost(Produto produto)
         {
             produto.Salvar(produto);
-            return View();
+            return RedirectToAction("Index");
         }
         public ActionResult Details(int id)
         {
@@ -68,7 +69,7 @@ namespace PizzaExpress.Controllers
         {
             DAOProduto dao = new DAOProduto();
             dao.Excluir(id);
-            return View();
+            return RedirectToAction("Index");
         }
     }
 }

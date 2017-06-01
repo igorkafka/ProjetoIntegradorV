@@ -9,8 +9,10 @@ namespace PizzaExpress.Models
     public class Pedido
     {
         private Produto objproduto;
+        
         private Pizza objpizza;
         private Sabor objsabor;
+        
         public Sabor ObjSabor
         {
             get { return this.objsabor; }
@@ -48,16 +50,14 @@ namespace PizzaExpress.Models
         }
 
         private string descPedido;
+        [StringLength(50,ErrorMessage ="Descrição é obrigatória")]
+        [Required(ErrorMessage ="Descrição do Pedido é obrigatória")]
         [Display(Name="Descrição")]
         public string DescPedido
         {
             get { return descPedido; }
             set { descPedido = value; }
         }
-        
-
-
-
         private DateTime dataPedido;
         [Display(Name ="Data")]
         [Required(ErrorMessage ="Data do pedido é obrigatória!")]
@@ -68,7 +68,7 @@ namespace PizzaExpress.Models
             get { return dataPedido; }
             set { dataPedido = value; }
         }
-
+         
         private decimal valorTotal;
         [DataType(DataType.Currency)]
         public decimal ValorTotal
@@ -78,8 +78,8 @@ namespace PizzaExpress.Models
         }
 
         private string statusPedido;
-        [Display( Name ="Status")]
         
+        [Display( Name ="Status")]
         public string StatusPedido
         {
             get { return statusPedido; }
@@ -97,7 +97,7 @@ namespace PizzaExpress.Models
         private IList<Pizza> pizzas = new List<Pizza>();
         public IList<Pizza> Pizzas { get { return pizzas; } set { this.pizzas = value; } }
         public Produto ObjProduto { get { return objproduto; } set { this.objproduto = value; } }
-
+        [Required]
         public Pizza ObjPizza { get { return objpizza; } set { this.objpizza= value; } }
 
         public Pedido()

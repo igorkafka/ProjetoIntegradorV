@@ -15,7 +15,7 @@ namespace PizzaExpress.Controllers
         // GET: Pedido
         public ActionResult Index(string status="")
         {
-            FormCollection form = new FormCollection();
+          
           
             Pedido objpedido = new Pedido();
             if(Request.IsAjaxRequest())
@@ -48,28 +48,31 @@ namespace PizzaExpress.Controllers
         [HttpPost]
         public ActionResult Create([Bind(Exclude = "Sabores[1].IdSabor,Sabores[2].IdSabor")]Pedido pedido)
         {
+            
+            TryUpdateModel(pedido);
+            if (ModelState.IsValid)
+            {
+                pedido.ObjPizza.IdPizza = pedido.ObjPizza.salvar(pedido.ObjPizza);
+                pedido.ObjProduto = pedido.ObjProduto.ProdutoPorId(pedido.ObjProduto.IdProduto);
+                pedido.ObjPizza.Sabores[0] = pedido.ObjPizza.Sabores[0].BuscarPorId(pedido.ObjPizza.Sabores[0].IdSabor);
 
-           
-            pedido.ObjPizza.IdPizza = pedido.ObjPizza.salvar(pedido.ObjPizza);
-            pedido.ObjProduto = pedido.ObjProduto.ProdutoPorId(pedido.ObjProduto.IdProduto);
-            pedido.ObjPizza.Sabores[0] = pedido.ObjPizza.Sabores[0].BuscarPorId(pedido.ObjPizza.Sabores[0].IdSabor);
-            
-            
-       /*     if (pedido.ObjPizza.Sabores[1].IdSabor != 0)
-            {
-                pedido.ObjPizza.Sabores[1] = pedido.ObjPizza.Sabores[1].BuscarPorId(pedido.ObjPizza.Sabores[1].IdSabor);
-                pedido.ValorTotal += pedido.ObjPizza.Sabores[1].PrecoSabor;
+
+                /*     if (pedido.ObjPizza.Sabores[1].IdSabor != 0)
+                     {
+                         pedido.ObjPizza.Sabores[1] = pedido.ObjPizza.Sabores[1].BuscarPorId(pedido.ObjPizza.Sabores[1].IdSabor);
+                         pedido.ValorTotal += pedido.ObjPizza.Sabores[1].PrecoSabor;
+                     }
+                     if (pedido.ObjPizza.Sabores[2].IdSabor != 0)
+                     {
+                         pedido.ObjPizza.Sabores[2] = pedido.ObjPizza.Sabores[2].BuscarPorId(pedido.ObjPizza.Sabores[2].IdSabor);
+                         pedido.ValorTotal += pedido.ObjPizza.Sabores[2].PrecoSabor;
+                    } */
+
+
+                pedido.salvar(pedido);
             }
-            if (pedido.ObjPizza.Sabores[2].IdSabor != 0)
-            {
-                pedido.ObjPizza.Sabores[2] = pedido.ObjPizza.Sabores[2].BuscarPorId(pedido.ObjPizza.Sabores[2].IdSabor);
-                pedido.ValorTotal += pedido.ObjPizza.Sabores[2].PrecoSabor;
-           } */
-          
-   
-            pedido.salvar(pedido);
-            
             return View();
+
         }
 
         [HttpPost]
@@ -98,7 +101,7 @@ namespace PizzaExpress.Controllers
             //Searching records from list using LINQ query
             var Clientes = (from cliente in c.ListarNome(term)
                             where cliente.NomeCliente.Contains(term)
-                            select new { Label = "Nome: " + cliente.NomeCliente  + " Telefone: " +  cliente.TelefoneCliente, Name = cliente.Nome, Value = cliente.IdCliente });
+                            select new { Label = "Nome: " + cliente.NomeCliente  + " Telefone: " +  cliente.TelefoneCliente, Name = cliente.NomeCliente, Value = cliente.IdCliente });
             return Json(Clientes, JsonRequestBehavior.AllowGet);
         }
         [HttpGet]

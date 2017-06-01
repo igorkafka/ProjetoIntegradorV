@@ -94,7 +94,7 @@ $(document).ready(function () {
                 success: function (data) {
                     response($.map(data, function (item) {
 
-                        return { label: item.Label, value: item.Name, Id: item.Value,Descricao: item.Descricao, PrecoProduto: item.PrecoProduto };
+                        return { label: item.Label, value: item.Name, Id: item.Value, Descricao: item.Descricao, PrecoProduto: item.PrecoProduto };
                     }))
 
                 }
@@ -104,7 +104,7 @@ $(document).ready(function () {
             $("input[name='ObjProduto.IdProduto']").val(ui.item.Id);
             $("input[name='ObjProduto.DescProduto']").val(ui.item.Descricao);
             $("input[name='ObjProduto.PrecoProduto']").val(ui.item.PrecoProduto);
-            
+
 
 
 
@@ -143,8 +143,7 @@ $(document).ready(function () {
             noResults: "", results: ""
         }
     });
-})
-$(document).ready(function ()
-{
-    $("#DataPedido").datepicker({ dateFormat: 'yy-mm-dd' ,defaultDate: new Date()});
+}) 
+$(document).ready(function () {
+    $("#DataPedido").datepicker({ dateFormat: 'yy-mm-dd', defaultDate: new Date() });
 })

@@ -86,6 +86,7 @@ namespace PizzaExpress.Models
             DAOPizza dao = new DAOPizza();
             return dao.BuscarPizza(tamanho);
         }
+        [Required(ErrorMessage ="Sabores são obrigatórios")]
 
         public IList<Sabor> Sabores { get { return sabores; } set { this.sabores = value; } }
 
