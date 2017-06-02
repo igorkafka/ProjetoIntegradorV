@@ -96,6 +96,7 @@ namespace PizzaExpress.Models
         }
         private IList<Pizza> pizzas = new List<Pizza>();
         public IList<Pizza> Pizzas { get { return pizzas; } set { this.pizzas = value; } }
+       [Required]
         public Produto ObjProduto { get { return objproduto; } set { this.objproduto = value; } }
         [Required]
         public Pizza ObjPizza { get { return objpizza; } set { this.objpizza= value; } }

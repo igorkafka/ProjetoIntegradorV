@@ -70,11 +70,13 @@
     <div class="form-group">
         <label class="control-label col-md-2">Produto</label>
         <div class="col-md-10">
-            <input type="text" name="ObjProduto.NomeProduto" class="form-control"/>
-             <br />
-            <input type="text" name="ObjProduto.DescProduto" class="form-control" />
-            <input type="hidden" name="ObjProduto.IdProduto" />
+            @Html.EditorFor(model => model.ObjProduto.NomeProduto, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.ObjProduto.NomeProduto, "", new { @class = "text-danger" })
+          <br />
+            <input type="text" name="ObjProduto.DescProduto" class="form-control" readonly="readonly" />
+           
+            <input type="hidden" name="ObjProduto.IdProduto" />
+           
         </div>
     </div>
 
@@ -82,8 +84,7 @@
 
     <h4>Pizza</h4>
     <hr />
-    @Html.AntiForgeryToken()
-    @Html.ValidationSummary(true)
+
  
         <div class="form-group">
             @Html.LabelFor(model => model.ObjPizza.Tamanho, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -96,7 +97,7 @@
         <div class="form-group">
             <label class="control-label col-md-2"> Sabor 1</label>
             <div class="col-md-10">
-                <input type="text" name="ObjPizza.Sabores[0].NomeSabor" class="form-control" />
+                @Html.EditorFor(model => model.ObjPizza.Sabores[0].NomeSabor, new { htmlAttributes = new { @class = "form-control" } })
                 <input type="hidden" name="ObjPizza.Sabores[0].IdSabor" class="form-control"/>
                 @Html.ValidationMessageFor(model => model.ObjPizza.Sabores[0].NomeSabor, "", new { @class = "text-danger" })
             </div>
@@ -105,8 +106,9 @@
             <label class="control-label col-md-2"> Sabor 2</label>
             <div class="col-md-10">
                 <input type="text" name="ObjPizza.Sabores[1].NomeSabor" class="form-control"  />
+                @Html.ValidationMessageFor(model => model.ObjPizza.Sabores[1].NomeSabor, "", new { @class = "text-danger" })
                 <input type="hidden" name="ObjPizza.Sabores[1].IdSabor" class="form-control"  />
-                @Html.ValidationMessageFor(model => model.ObjPizza.Sabores[1].IdSabor, "", new { @class = "text-danger" })
+            
             </div>
         </div>
         <div class="form-group">
@@ -114,7 +116,7 @@
             <div class="col-md-10">
                 <input type="text" name="ObjPizza.Sabores[2].NomeSabor" class="form-control"  />
                 <input type="hidden" name="ObjPizza.Sabores[2].IdSabor" class="form-control"  />
-                @Html.ValidationMessageFor(model => model.ObjPizza.Sabores[2].IdSabor, "", new { @class = "text-danger" })
+                @Html.ValidationMessageFor(model => model.ObjPizza.Sabores[2].NomeSabor, "", new { @class = "text-danger" })
             </div>
         </div>
         <div class="form-group">

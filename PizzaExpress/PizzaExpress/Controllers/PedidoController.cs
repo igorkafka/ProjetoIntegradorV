@@ -48,7 +48,8 @@ namespace PizzaExpress.Controllers
         [HttpPost]
         public ActionResult Create([Bind(Exclude = "Sabores[1].IdSabor,Sabores[2].IdSabor")]Pedido pedido)
         {
-            
+
+
             TryUpdateModel(pedido);
             if (ModelState.IsValid)
             {
