@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<PizzaExpress.Models.Pedido>
 <div id="divlistapedidos">
 <p>
-    @Html.ActionLink("Cadastrar Pedido", "Create")
+    @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>
@@ -57,10 +57,12 @@
                 @Html.DisplayFor(modelItem => item.ObjPizza.ObjListSabor3.DescSabor);
             </td>
             <td>
-                @Html.ActionLink("Alterar", "Edit", new { id = item.NumPedido }) |
-                @Html.ActionLink("Detalhes", "Details", new { id = item.NumPedido }) |
-                @Html.ActionLink("Deletar", "Delete", new { id = item.NumPedido })
-               
+                @Html.ActionLink("Edit", "Edit", new { id = item.NumPedido }) |
+                @Html.ActionLink("Details", "Details", new { id = item.NumPedido }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.NumPedido })
+                @Html.ActionLink("Pizza", "Details", "Pizza", new { id = item.ObjPizza.IdPizza },null)
+                @Html.ActionLink("Produto", "Details", "Produto", new { id = item.ObjProduto.IdProduto},null)
+                @Html.ActionLink("Cliente", "Details", "Cliente", new { id = item.ObjCliente.IdCliente }, null)
                 
             </td>
         </tr>

@@ -1,0 +1,62 @@
+﻿@model PizzaExpress.Models.Pizza
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Pizza</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IdPizza)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdPizza)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PrecoPizza)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PrecoPizza)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tamanho)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tamanho)
+        </dd>
+        <dd>
+        <dt>
+            Sabor 1
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ObjListaSabor1.NomeSabor)
+        </dd>
+        <dt>
+            Sabor 2
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ObjListaSabor2.NomeSabor)
+        </dd>
+        <dt>
+            Sabor 3
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ObjListSabor3.NomeSabor)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new {  id = Model.IdPizza }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

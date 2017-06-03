@@ -24,7 +24,7 @@ namespace PizzaExpress.Controllers
         [HttpGet]
         public ActionResult Create()
         {
-            return View();
+            return RedirectToAction("Index");
         }
         [HttpPost]
         public ActionResult Create([Bind(Exclude ="idSabor")]Sabor sabor)
@@ -40,7 +40,7 @@ namespace PizzaExpress.Controllers
             }
            
            
-            return RedirectToAction("Index");
+            return View();
         }
         [HttpGet]
         public ActionResult Details(int id)

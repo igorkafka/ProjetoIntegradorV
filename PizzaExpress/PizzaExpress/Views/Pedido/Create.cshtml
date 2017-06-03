@@ -1,7 +1,13 @@
 ﻿@model PizzaExpress.Models.Pedido
+
 @{
     ViewBag.Title = "Create";
 }
+
+
+
+
+
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
@@ -20,7 +26,7 @@
             <div class="col-md-10">
                 @Html.EditorFor(model => model.ObjCliente.NomeCliente, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.HiddenFor(model => model.ObjCliente.IdCliente)
-              
+                @Html.ValidationMessageFor(model => model.ObjCliente.NomeCliente, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -65,7 +71,7 @@
         <label class="control-label col-md-2">Produto</label>
         <div class="col-md-10">
             @Html.EditorFor(model => model.ObjProduto.NomeProduto, new { htmlAttributes = new { @class = "form-control" } })
-            
+            @Html.ValidationMessageFor(model => model.ObjProduto.NomeProduto, "", new { @class = "text-danger" })
           <br />
             <input type="text" name="ObjProduto.DescProduto" class="form-control" readonly="readonly" />
            
@@ -93,14 +99,14 @@
             <div class="col-md-10">
                 @Html.EditorFor(model => model.ObjPizza.Sabores[0].NomeSabor, new { htmlAttributes = new { @class = "form-control" } })
                 <input type="hidden" name="ObjPizza.Sabores[0].IdSabor" class="form-control"/>
-          
+                @Html.ValidationMessageFor(model => model.ObjPizza.Sabores[0].NomeSabor, "", new { @class = "text-danger" })
             </div>
         </div>
         <div class="form-group">
             <label class="control-label col-md-2"> Sabor 2</label>
             <div class="col-md-10">
                 <input type="text" name="ObjPizza.Sabores[1].NomeSabor" class="form-control"  />
-               
+                @Html.ValidationMessageFor(model => model.ObjPizza.Sabores[1].NomeSabor, "", new { @class = "text-danger" })
                 <input type="hidden" name="ObjPizza.Sabores[1].IdSabor" class="form-control"  />
             
             </div>
@@ -110,7 +116,7 @@
             <div class="col-md-10">
                 <input type="text" name="ObjPizza.Sabores[2].NomeSabor" class="form-control"  />
                 <input type="hidden" name="ObjPizza.Sabores[2].IdSabor" class="form-control"  />
-               
+                @Html.ValidationMessageFor(model => model.ObjPizza.Sabores[2].NomeSabor, "", new { @class = "text-danger" })
             </div>
         </div>
         <div class="form-group">
@@ -118,6 +124,7 @@
             <div class="col-md-10">
                 <input type="submit" value="Vender" class="btn btn-default" />
             </div>
+
         </div>
          </div>
         }
@@ -132,4 +139,9 @@
 
         @Scripts.Render("~/bundles/scripsdoprojeto")
         @Scripts.Render("~/bundles/jqueryval")
-}
+
+
+
+
+
+    }
