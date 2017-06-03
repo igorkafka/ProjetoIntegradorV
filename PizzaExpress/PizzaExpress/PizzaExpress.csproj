@@ -366,8 +366,8 @@
     <Content Include="Views\Pedido\ListaDeProdutosDoPedido.cshtml" />
     <Content Include="Views\Pedido\Index.cshtml" />
     <Content Include="Views\Pedido\ProcurarPedido.cshtml" />
-    <Content Include="Views\Pizza\Details.cshtml" />
     <Content Include="Views\Pedido\Edit.cshtml" />
+    <Content Include="Views\Pedido\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

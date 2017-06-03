@@ -38,9 +38,7 @@ namespace PizzaExpress.Models
             get { return nomeProduto; }
             set { nomeProduto = value; }
         }
-
         private string descProduto;
-        
         [Required(ErrorMessage ="Descrição é obrigatória")]
         [StringLength(50,ErrorMessage ="É permitido até 50 caracteres")]
         [DisplayName("Descrição")]
@@ -49,7 +47,6 @@ namespace PizzaExpress.Models
             get { return descProduto; }
             set { descProduto = value; }
         }
-
         private decimal precoProduto;
         [Required(ErrorMessage ="Preço é obrigatório")]
         [DisplayName("Preço")]
