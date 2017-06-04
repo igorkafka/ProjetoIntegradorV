@@ -50,9 +50,17 @@ namespace PizzaExpress.Controllers
         {
 
 
-            UpdateModel(pedido);
-            if (ModelState.IsValid)
+            if (string.IsNullOrEmpty(pedido.DescPedido))
             {
+                ModelState.AddModelError(pedido.DescPedido, "Teste");
+                return JavaScript(" alert('Erro')");
+            }
+            else
+            {
+                return View();
+            }
+           
+            
             /*    pedido.ObjPizza.IdPizza = pedido.ObjPizza.salvar(pedido.ObjPizza);
                 pedido.ObjProduto = pedido.ObjProduto.ProdutoPorId(pedido.ObjProduto.IdProduto);
               /*  pedido.ObjPizza.Sabores[0] = pedido.ObjPizza.Sabores[0].BuscarPorId(pedido.ObjPizza.Sabores[0].IdSabor);
@@ -71,8 +79,8 @@ namespace PizzaExpress.Controllers
 
 
                // pedido.salvar(pedido);
-            }
-            return View();
+            
+         
 
         }
 
