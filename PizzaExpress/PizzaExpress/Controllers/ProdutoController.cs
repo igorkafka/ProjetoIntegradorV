@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using PizzaExpress.Models;
 namespace PizzaExpress.Controllers
 {
+    [Authorize()]
     public class ProdutoController : Controller
     {
         public ActionResult Index(string pesquisar = "")

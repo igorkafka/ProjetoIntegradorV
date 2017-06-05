@@ -7,9 +7,11 @@ using PizzaExpress.Models;
 using PagedList;
 namespace PizzaExpress.Controllers
 {
+    [Authorize()]
     public class ClienteController : Controller
     {
         // GET: Cliente
+        
         public ActionResult Index(int? page ,string pesquisar="")
         {
 
