@@ -11,7 +11,7 @@ namespace PizzaExpress.Models
     {
         private SqlConnection Conectar()
         {
-            string stringConexao = @"Data Source=DESKTOP-TC5QN9P;Initial Catalog=PizzaExpress;User ID=sa;Password=evangelion;Min Pool Size=5;Max Pool Size=250";
+            string stringConexao = @"Data Source=DESKTOP-TC5QN9P;Initial Catalog=PizzaExpress;User ID=sa;Password=evangelion;Min Pool Size=5;Max Pool Size=250; Connect Timeout=3";
 
             SqlConnection conexao = new SqlConnection(stringConexao);
             conexao.Open();

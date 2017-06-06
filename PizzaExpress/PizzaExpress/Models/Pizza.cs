@@ -42,21 +42,21 @@ namespace PizzaExpress.Models
         }
         public decimal VerificarSabores()
         {
-            if (this.Sabores[0].IdSabor != 0 || this.Sabores[1].IdSabor == 0 || this.Sabores[2].IdSabor == 0)
+            if (this.Sabores[0].IdSabor != 0 && this.Sabores[1].IdSabor == 0 && this.Sabores[2].IdSabor == 0)
             {
 
-                // return CalcularValorTotalPizza(this.Sabores[0].PrecoSabor, Tamanho);
-                return 10;
+                 return CalcularValorTotalPizza(this.Sabores[0].PrecoSabor, Tamanho);
+               
             }
-            else if(this.Sabores[0].IdSabor != 0 || this.Sabores[1].IdSabor != 0 || this.Sabores[2].IdSabor == 0)
+            else if(this.Sabores[0].IdSabor != 0 && this.Sabores[1].IdSabor != 0 && this.Sabores[2].IdSabor == 0)
             {
-                // return CalcularValorTotalPizzaDoisSabores(this.Sabores[0].PrecoSabor, this.Tamanho, this.Sabores[1].PrecoSabor);
-                return 20;
+                 return CalcularValorTotalPizzaDoisSabores(this.Sabores[0].PrecoSabor, this.Tamanho, this.Sabores[1].PrecoSabor);
+                
             }
-            else if (this.Sabores[0].IdSabor != 0 || this.Sabores[1].IdSabor != 0 || this.Sabores[2].IdSabor != 0)
+            else if (this.Sabores[0].IdSabor != 0 && this.Sabores[1].IdSabor != 0 && this.Sabores[2].IdSabor != 0)
             {
-                // return CalcularValorTotalPizzasTresSabores(this.Sabores[0].PrecoSabor, this.Tamanho, this.Sabores[1].PrecoSabor, this.Sabores[2].PrecoSabor);
-                return 30;
+                 return CalcularValorTotalPizzasTresSabores(this.Sabores[0].PrecoSabor, this.Tamanho, this.Sabores[1].PrecoSabor, this.Sabores[2].PrecoSabor);
+               
             }
             return 0;
 
