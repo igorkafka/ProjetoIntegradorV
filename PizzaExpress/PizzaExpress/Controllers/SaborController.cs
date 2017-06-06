@@ -61,7 +61,11 @@ namespace PizzaExpress.Controllers
         [HttpPost]
         public ActionResult EditPOST(Sabor sabor)
         {
-            sabor.Salvar(sabor);
+            TryUpdateModel(sabor);
+            if (ModelState.IsValid)
+            {
+                sabor.Salvar(sabor);
+            }
             return RedirectToAction("Index");
         }
         [ActionName("Delete")]

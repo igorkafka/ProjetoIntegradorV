@@ -58,7 +58,11 @@ namespace PizzaExpress.Controllers
         [HttpPost]
         public ActionResult EditPOST(Cliente cliente)
         {
-            cliente.Alterar(cliente);
+            TryUpdateModel(cliente);
+            if (ModelState.IsValid)
+            {
+                cliente.Alterar(cliente);
+            }
             return RedirectToAction("Index");
         }
         public ActionResult Details(int id)

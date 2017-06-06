@@ -49,7 +49,11 @@ namespace PizzaExpress.Controllers
         [HttpPost]
         public ActionResult EditPost(Produto produto)
         {
-            produto.Salvar(produto);
+            TryUpdateModel(produto);
+            if (ModelState.IsValid)
+            {
+                produto.Salvar(produto);
+            }
             return RedirectToAction("Index");
         }
         public ActionResult Details(int id)

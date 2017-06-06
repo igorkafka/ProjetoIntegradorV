@@ -15,8 +15,7 @@ namespace PizzaExpress.Controllers
         // GET: Pedido
         public ActionResult Index(string status="")
         {
-          
-          
+                    
             Pedido objpedido = new Pedido();
             if(Request.IsAjaxRequest())
             {
@@ -125,7 +124,11 @@ namespace PizzaExpress.Controllers
         [ActionName("Edit")]
         public ActionResult EditPOST(Pedido objpedido)
         {
-            objpedido.AlterarStatus(objpedido);
+            TryUpdateModel(objpedido);
+            if (ModelState.IsValid)
+            {
+                objpedido.AlterarStatus(objpedido);
+            }
             return RedirectToAction("Index", "Pedido");
         }
        
