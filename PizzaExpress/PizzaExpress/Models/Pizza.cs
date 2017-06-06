@@ -11,41 +11,17 @@ namespace PizzaExpress.Models
     {
         public Pizza()
         {
-           Sabor listasabor = new Sabor();
-            this.ObjListaSabor1 = listasabor;
-            this.ObjListaSabor2 = listasabor;
+            Sabor listasabor = new Sabor();
             Sabor ListaSabor2 = new Sabor();
-            this.ObjListSabor3 = ListaSabor2;
             this.Sabores = new List<Sabor>();
             this.Sabores.Add(new Sabor());
             this.Sabores.Add(new Sabor());
             this.Sabores.Add(new Sabor());
-
+            this.Sabores[0] = new Sabor();
+            this.Sabores[1] = new Sabor();
+            this.Sabores[2] = new Sabor();
         }
-        private Sabor objListaSabor = new Sabor(); //Lista Sabor
-        private Sabor objlistasabor2 = new Sabor();
-        public Sabor ObjListaSabor2
-        {
-            get { return this.objlistasabor2; }
-            set { this.objlistasabor2 = value; }
-        }
-        private Sabor objlistasabor3;
-        public Sabor ObjListSabor3
-        {
-            get { return this.objlistasabor3; }
-            set { this.objlistasabor3 = value; }
-        }
-        public Sabor ObjListaSabor1
-        {
-            get { return objListaSabor; }
-            set { objListaSabor = value; }
-        }
-
-        public Pizza(Sabor objListaSabor)
-        {
-
-            this.objListaSabor = objListaSabor;
-        }
+       
 
         //----- Atributos -----
 
@@ -64,7 +40,27 @@ namespace PizzaExpress.Models
             get { return idPizza; }
             set { idPizza = value; }
         }
+        public decimal VerificarSabores()
+        {
+            if (this.Sabores[0].IdSabor != 0 && this.Sabores[1].IdSabor == 0 && this.Sabores[2].IdSabor == 0)
+            {
 
+                 return CalcularValorTotalPizza(this.Sabores[0].PrecoSabor, Tamanho);
+               
+            }
+            else if(this.Sabores[0].IdSabor != 0 && this.Sabores[1].IdSabor != 0 && this.Sabores[2].IdSabor == 0)
+            {
+                 return CalcularValorTotalPizzaDoisSabores(this.Sabores[0].PrecoSabor, this.Tamanho, this.Sabores[1].PrecoSabor);
+                
+            }
+            else if (this.Sabores[0].IdSabor != 0 && this.Sabores[1].IdSabor != 0 && this.Sabores[2].IdSabor != 0)
+            {
+                 return CalcularValorTotalPizzasTresSabores(this.Sabores[0].PrecoSabor, this.Tamanho, this.Sabores[1].PrecoSabor, this.Sabores[2].PrecoSabor);
+               
+            }
+            return 0;
+
+        }
         private decimal precoPizza;
         [DisplayName("Preço")]
         [DataType(DataType.Currency, ErrorMessage ="Valor não é válido")]
@@ -86,8 +82,9 @@ namespace PizzaExpress.Models
             DAOPizza dao = new DAOPizza();
             return dao.BuscarPizza(tamanho);
         }
+        [Required(ErrorMessage ="Sabores são obrigatórios")]
 
-        public IList<Sabor> Sabores { get { return sabores; } set { this.sabores = value; } }
+        public IList<Sabor> Sabores { get { return this.sabores; } set { this.sabores = value; } }
 
         private IList<Sabor> sabores;
         
@@ -126,21 +123,52 @@ namespace PizzaExpress.Models
         }
 
 
-        public decimal CalcularValorTotalPizzaDoisSabores(decimal valorSabor1, string tamanho, decimal valorSabor2, decimal valorSabor3)
+        public decimal CalcularValorTotalPizzaDoisSabores(decimal valorSabor1, string tamanho, decimal valorSabor2)
         {
+            if (tamanho == "P")
+            {
+                int qtdPecacoP = 4;
+
+                PrecoPizza = ((valorSabor1 * Convert.ToDecimal(qtdPecacoP)) / 2) + ((valorSabor2 * Convert.ToDecimal(qtdPecacoP)) / 2);
+            }
             if (tamanho == "M")
             {
-                int qtdSabor1 = 6;
+                int qtdPecacoP = 6;
 
-                PrecoPizza = ((valorSabor1 * Convert.ToDecimal(qtdSabor1)) / 2) + ((valorSabor2 * Convert.ToDecimal(qtdSabor1)) / 2);
+                PrecoPizza = ((valorSabor1 * Convert.ToDecimal(qtdPecacoP)) / 2) + ((valorSabor2 * Convert.ToDecimal(qtdPecacoP) / 2));
             }
             else
             {
                 if (tamanho == "G")
                 {
-                    int qtdSabor1 = 8;
+                    int qtdPecacoP = 8;
 
-                    PrecoPizza = ((valorSabor1 * Convert.ToDecimal(qtdSabor1)) / 2) + ((valorSabor2 * Convert.ToDecimal(qtdSabor1)) / 2) + ((valorSabor3 * Convert.ToDecimal(qtdSabor1)) / 2);
+                    PrecoPizza = ((valorSabor1 * Convert.ToDecimal(qtdPecacoP)) / 2) + ((valorSabor2 * Convert.ToDecimal(qtdPecacoP)) / 2) + ((((valorSabor1+valorSabor2)/2) * Convert.ToDecimal(qtdPecacoP)) / 2);
+                }
+            }
+            return PrecoPizza;
+        }
+        public decimal CalcularValorTotalPizzasTresSabores(decimal valorSabor1, string tamanho, decimal valorSabor2,decimal valorsabor3)
+        {
+            if (tamanho == "P")
+            {
+                int qtdPecacoP = 4;
+
+                PrecoPizza = ((valorSabor1 * Convert.ToDecimal(qtdPecacoP)) / 2) + ((valorSabor2 * Convert.ToDecimal(qtdPecacoP)) / 2) + ((valorsabor3 * Convert.ToDecimal(qtdPecacoP)) / 2);
+            }
+            if (tamanho == "M")
+            {
+                int qtdPecacoP = 6;
+
+                PrecoPizza = ((valorSabor1 * Convert.ToDecimal(qtdPecacoP)) / 2) + ((valorSabor2 * Convert.ToDecimal(qtdPecacoP) / 2)) + ((valorsabor3 * Convert.ToDecimal(qtdPecacoP)) / 2);
+            }
+            else
+            {
+                if (tamanho == "G")
+                {
+                    int qtdPecacoP = 8;
+
+                    PrecoPizza = ((valorSabor1 * Convert.ToDecimal(qtdPecacoP)) / 2) + ((valorSabor2 * Convert.ToDecimal(qtdPecacoP)) / 2) + ((((valorSabor1 + valorSabor2 + valorsabor3) / 2) * Convert.ToDecimal(qtdPecacoP)) / 2) + ((valorsabor3 * Convert.ToDecimal(qtdPecacoP)) / 2);
                 }
             }
             return PrecoPizza;

@@ -30,7 +30,8 @@ namespace PizzaExpress.Models
             set { idProduto = value; }
         }
         private string nomeProduto;
-        
+        [Required(ErrorMessage ="Nome é obrigatório!")]
+        [StringLength(50,ErrorMessage ="É permitido até 50 caracteres")]
         [DisplayName("Nome")]
         public string NomeProduto
         {
@@ -39,6 +40,9 @@ namespace PizzaExpress.Models
         }
 
         private string descProduto;
+        
+        [Required(ErrorMessage ="Descrição é obrigatória")]
+        [StringLength(50,ErrorMessage ="É permitido até 50 caracteres")]
         [DisplayName("Descrição")]
         public string DescProduto
         {
@@ -47,6 +51,7 @@ namespace PizzaExpress.Models
         }
 
         private decimal precoProduto;
+        [Required(ErrorMessage ="Preço é obrigatório")]
         [DisplayName("Preço")]
         [DataType(DataType.Currency)]
         public decimal PrecoProduto

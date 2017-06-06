@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<PizzaExpress.Models.Pedido>
 <div id="divlistapedidos">
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Cadastrar", "Create")
 </p>
 <table class="table">
     <tr>
@@ -48,21 +48,21 @@
                 @Html.DisplayFor(modelItem => item.StatusPedido)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ObjPizza.ObjListaSabor1.DescSabor);
+                @Html.DisplayFor(modelItem => item.ObjPizza.Sabores[0].DescSabor);
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ObjPizza.ObjListaSabor2.DescSabor);
+                @Html.DisplayFor(modelItem => item.ObjPizza.Sabores[1].DescSabor);
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ObjPizza.ObjListSabor3.DescSabor);
+                @Html.DisplayFor(modelItem => item.ObjPizza.Sabores[2].DescSabor);
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.NumPedido }) |
-                @Html.ActionLink("Details", "Details", new { id = item.NumPedido }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.NumPedido })
-                @Html.ActionLink("Pizza", "Details", "Pizza", new { id = item.ObjPizza.IdPizza },null)
-                @Html.ActionLink("Produto", "Details", "Produto", new { id = item.ObjProduto.IdProduto},null)
-                @Html.ActionLink("Cliente", "Details", "Cliente", new { id = item.ObjCliente.IdCliente }, null)
+                @Html.ActionLink("Editar", "Edit", new { id = item.NumPedido }) |
+                @Html.ActionLink("Detalhes", "Details", new { id = item.NumPedido }) |
+                @Html.ActionLink("Deletar", "Delete", new { id = item.NumPedido })
+                
+                
+               
                 
             </td>
         </tr>

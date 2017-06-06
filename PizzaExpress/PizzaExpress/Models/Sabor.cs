@@ -30,6 +30,7 @@ namespace PizzaExpress.Models
 
         private string nomeSabor;
         [Display( Name = "Nome")]
+        [StringLength(30,ErrorMessage = "É permitido no máximo 30 e no mínimo 3 caracteres!", MinimumLength =3)]
         [Required(ErrorMessage ="Nome é obrigatório")]
         public string NomeSabor
         {
@@ -39,6 +40,7 @@ namespace PizzaExpress.Models
 
         private string descSabor;
         [Required(ErrorMessage = "Descrição é obrigatória")]
+        [StringLength(60,ErrorMessage = "É permitido no máximo 60 caracteres!")]
         [Display(Name = "Descrição")]
         public string DescSabor
         {
@@ -47,11 +49,12 @@ namespace PizzaExpress.Models
         }
 
         private decimal precoSabor;
-        [DataType(DataType.Currency)]
+        [Required(ErrorMessage ="O Preço do Sabor é obrigatório")]
+        [DataType(DataType.Currency,ErrorMessage ="Apenas valores monetários são permitidos")]
         [Display(Name = "Preço")]
         public decimal PrecoSabor
         {
-            get { return precoSabor; }
+            get { return this.precoSabor; }
             set { precoSabor = value; }
         }
         public IList<Sabor> ListarNome(string nome)

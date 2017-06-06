@@ -7,9 +7,11 @@ using PizzaExpress.Models;
 using PagedList;
 namespace PizzaExpress.Controllers
 {
+    [Authorize()]
     public class ClienteController : Controller
     {
         // GET: Cliente
+        
         public ActionResult Index(int? page ,string pesquisar="")
         {
 
@@ -22,7 +24,8 @@ namespace PizzaExpress.Controllers
                return PartialView("ProcurarCliente", cliente.ListarNome(pesquisar));
                 
             }
-            return View(cliente.ListarNome(pesquisar).Take(0));
+            IList<Cliente> lista = new List<Cliente>();
+            return View(lista);
             
         }
         
@@ -40,7 +43,7 @@ namespace PizzaExpress.Controllers
             {
                 cliente.Salvar(cliente);
             }
-            return View();
+            return RedirectToAction("Index");
         }
         [ActionName(name: "Edit")]
 
@@ -55,8 +58,12 @@ namespace PizzaExpress.Controllers
         [HttpPost]
         public ActionResult EditPOST(Cliente cliente)
         {
-            cliente.Alterar(cliente);
-            return View();
+            TryUpdateModel(cliente);
+            if (ModelState.IsValid)
+            {
+                cliente.Alterar(cliente);
+            }
+            return RedirectToAction("Index");
         }
         public ActionResult Details(int id)
         {
@@ -77,7 +84,7 @@ namespace PizzaExpress.Controllers
         {
             Cliente cliente = new Models.Cliente();
             cliente.Delete(id);
-            return View();
+            return RedirectToAction("Index");
         }
     }
     }

@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using PizzaExpress.Models;
 namespace PizzaExpress.Controllers
 {
+    [Authorize()]
     public class SaborController : Controller
     {
         // GET: Sabor
@@ -18,7 +19,8 @@ namespace PizzaExpress.Controllers
                     return JavaScript("alert(\"Nome Invalido, Digite algo que tenha pelo menos mais de duas letras\")");
                 return PartialView("ProcurarSabor", sabor.ListarNome(pesquisar));
             }
-            return View(sabor.ListarNome(pesquisar).Take(0));
+            IList<Sabor> lista = new List<Sabor>();
+            return View(lista);
         }
         [HttpGet]
         public ActionResult Create()
@@ -35,11 +37,11 @@ namespace PizzaExpress.Controllers
             if (ModelState.IsValid)
             {
                 sabor.Salvar(sabor);
-                return View();
+                return RedirectToAction("Index");
             }
            
            
-            return View();
+            return RedirectToAction("Index");
         }
         [HttpGet]
         public ActionResult Details(int id)
@@ -59,8 +61,12 @@ namespace PizzaExpress.Controllers
         [HttpPost]
         public ActionResult EditPOST(Sabor sabor)
         {
-            sabor.Salvar(sabor);
-            return View();
+            TryUpdateModel(sabor);
+            if (ModelState.IsValid)
+            {
+                sabor.Salvar(sabor);
+            }
+            return RedirectToAction("Index");
         }
         [ActionName("Delete")]
         [HttpGet]
@@ -75,7 +81,7 @@ namespace PizzaExpress.Controllers
         {
             Sabor sabor = new Models.Sabor();
             sabor.Excluir(id);
-            return View();
+            return RedirectToAction("Index");
         }
     }
 }

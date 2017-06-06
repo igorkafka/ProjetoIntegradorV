@@ -2,9 +2,10 @@
     $("input[name='ObjPizza.Sabores[0].NomeSabor'").autocomplete({
         source: function (request, response) {
             $.ajax({
+                async: true,
                 url: "/Pedido/BuscarSabor",
                 type: "POST",
-                dataType: "json",
+                dataType:"json",
                 data: { term: request.term },
                 success: function (data) {
                     response($.map(data, function (item) {
@@ -20,7 +21,9 @@
 
         },
         messages: {
-            noResults: "Não foi Encontrado", results: ""
+            noResults: "Não foi Encontrado", results: function (count) {
+                return count + (count === 0 ? ' result' : ' results');
+            }
         }
     });
 })
@@ -28,6 +31,7 @@ $(document).ready(function () {
     $("input[name='ObjPizza.Sabores[1].NomeSabor'").autocomplete({
         source: function (request, response) {
             $.ajax({
+                async: true,
                 url: "/Pedido/BuscarSabor",
                 type: "POST",
 
@@ -50,7 +54,9 @@ $(document).ready(function () {
 
         },
         messages: {
-            noResults: "", results: ""
+            noResults: "", results: function (count) {
+                return count + (count === 0 ? ' result' : ' results');
+            }
         }
 
     });
@@ -60,6 +66,7 @@ $(document).ready(function () {
     $("input[name='ObjPizza.Sabores[2].NomeSabor'").autocomplete({
         source: function (request, response) {
             $.ajax({
+                async: true,
                 url: "/Pedido/BuscarSabor",
                 type: "POST",
                 dataType: "json",
@@ -79,7 +86,9 @@ $(document).ready(function () {
 
         },
         messages: {
-            noResults: "", results: ""
+            noResults: "", results: function (count) {
+                return count + (count === 0 ? ' result' : ' results');
+            }
         }
     });
 })
@@ -87,6 +96,7 @@ $(document).ready(function () {
     $("input[name='ObjProduto.NomeProduto']").autocomplete({
         source: function (request, response) {
             $.ajax({
+                async: true,
                 url: "/Pedido/BuscarProduto",
                 type: "POST",
                 dataType: "json",
@@ -94,7 +104,7 @@ $(document).ready(function () {
                 success: function (data) {
                     response($.map(data, function (item) {
 
-                        return { label: item.Label, value: item.Name, Id: item.Value,Descricao: item.Descricao, PrecoProduto: item.PrecoProduto };
+                        return { label: item.Label, value: item.Name, Id: item.Value, Descricao: item.Descricao, PrecoProduto: item.PrecoProduto };
                     }))
 
                 }
@@ -102,15 +112,16 @@ $(document).ready(function () {
         },
         select: function (e, ui) {
             $("input[name='ObjProduto.IdProduto']").val(ui.item.Id);
-            $("input[name='ObjProduto.DescProduto']").val(ui.item.Descricao);
-            $("input[name='ObjProduto.PrecoProduto']").val(ui.item.PrecoProduto);
-            
+    
+
 
 
 
         },
         messages: {
-            noResults: "", results: ""
+            noResults: "", results: function (count) {
+                return count + (count === 0 ? ' result' : ' results');
+            }
         }
     });
 })
@@ -118,6 +129,7 @@ $(document).ready(function () {
     $("input[name='ObjCliente.NomeCliente']").autocomplete({
         source: function (request, response) {
             $.ajax({
+                async: true,
                 url: "/Pedido/BuscarCliente",
                 type: "POST",
                 dataType: "json",
@@ -140,11 +152,17 @@ $(document).ready(function () {
 
         },
         messages: {
-            noResults: "", results: ""
+            noResults: "", result: function (count) {
+                return count + (count === 0 ? ' result' : ' results');
+            }
         }
     });
 })
-$(document).ready(function ()
-{
-    $("#DataPedido").datepicker({ dateFormat: 'yy-mm-dd' ,defaultDate: new Date()});
-})
+var isFirefox = typeof InstallTrigger !== 'undefined';
+if (isFirefox) {
+    $(document).ready(function () {
+        $("#DataPedido").datepicker({
+            dateFormat: 'dd/mm/yy'
+        })
+    })
+}

@@ -9,8 +9,10 @@ namespace PizzaExpress.Models
     public class Pedido
     {
         private Produto objproduto;
+        
         private Pizza objpizza;
         private Sabor objsabor;
+        
         public Sabor ObjSabor
         {
             get { return this.objsabor; }
@@ -48,38 +50,36 @@ namespace PizzaExpress.Models
         }
 
         private string descPedido;
+        [StringLength(50,ErrorMessage ="Descrição é obrigatória")]
+        [Required(ErrorMessage ="Descrição do Pedido é obrigatória")]
         [Display(Name="Descrição")]
         public string DescPedido
         {
             get { return descPedido; }
             set { descPedido = value; }
         }
-        
-
-
-
         private DateTime dataPedido;
         [Display(Name ="Data")]
         [Required(ErrorMessage ="Data do pedido é obrigatória!")]
         [DataType(DataType.Date,ErrorMessage ="Digite uma datá valida Dia/Mês/Ano")]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yy-mm-dd}")]
+        
         public DateTime DataPedido
         {
             get { return dataPedido; }
             set { dataPedido = value; }
         }
-
+         
         private decimal valorTotal;
         [DataType(DataType.Currency)]
         public decimal ValorTotal
         {
-            get { return this.ObjPizza.CalcularValorTotalPizza(this.ObjPizza.Sabores[0].PrecoSabor, this.ObjPizza.Tamanho) + this.ObjPizza.CalcularValorTotalPizza(this.ObjPizza.Sabores[1].PrecoSabor, this.ObjPizza.Tamanho) + this.ObjPizza.CalcularValorTotalPizza(this.ObjPizza.Sabores[2].PrecoSabor, this.ObjPizza.Tamanho) + this.ObjProduto.PrecoProduto; }
+            get { return ObjPizza.VerificarSabores() + ObjProduto.PrecoProduto; }
             set { this.valorTotal = value; }
         }
 
         private string statusPedido;
-        [Display( Name ="Status")]
         
+        [Display( Name ="Status")]
         public string StatusPedido
         {
             get { return statusPedido; }
@@ -89,6 +89,7 @@ namespace PizzaExpress.Models
         private string tipoPedido;
         [Display(Name = "Tipo de Pedido")]
         [Required( ErrorMessage ="Tipo de Pedido é obrigatório")]
+        [DisplayFormat(DataFormatString = "{dd/mm/yy}", ApplyFormatInEditMode = true)]
         public string TipoPedido
         {
             get { return tipoPedido; }
@@ -96,8 +97,9 @@ namespace PizzaExpress.Models
         }
         private IList<Pizza> pizzas = new List<Pizza>();
         public IList<Pizza> Pizzas { get { return pizzas; } set { this.pizzas = value; } }
+       [Required]
         public Produto ObjProduto { get { return objproduto; } set { this.objproduto = value; } }
-
+        [Required]
         public Pizza ObjPizza { get { return objpizza; } set { this.objpizza= value; } }
 
         public Pedido()

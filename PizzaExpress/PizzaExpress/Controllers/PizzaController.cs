@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using PizzaExpress.Models;
 namespace PizzaExpress.Controllers
 {
+    [Authorize()]
     public class PizzaController : Controller
     {
         // GET: Pizza

@@ -105,6 +105,7 @@ namespace PizzaExpress.Models
                     objPedido.DescPedido = dr["DescPedido"].ToString();
                     objPedido.DataPedido = Convert.ToDateTime(dr["DataPedido"]);
                     objPedido.StatusPedido = dr["StatusPedido"].ToString();
+                    objpedido.ValorTotal = Convert.ToDecimal(dr["PrecoTotal"]);
                     objPedido.ObjCliente = objClienteDAO.BuscarPorIdCliente(Convert.ToInt32(dr["IdCliente"]));
                     objPedido.ObjPizza = objPedido.ObjPizza.BuscarPizzaId(Convert.ToInt32(dr["IdPizza"]));
                     objPedido.ObjProduto = objPedido.ObjProduto.ProdutoPorId(Convert.ToInt32(dr["IdProduto"]));
