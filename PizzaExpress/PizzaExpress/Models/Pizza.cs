@@ -17,7 +17,9 @@ namespace PizzaExpress.Models
             this.Sabores.Add(new Sabor());
             this.Sabores.Add(new Sabor());
             this.Sabores.Add(new Sabor());
-
+            this.Sabores[0] = new Sabor();
+            this.Sabores[1] = new Sabor();
+            this.Sabores[2] = new Sabor();
         }
        
 
@@ -42,15 +44,19 @@ namespace PizzaExpress.Models
         {
             if (this.Sabores[0].IdSabor != 0 || this.Sabores[1].IdSabor == 0 || this.Sabores[2].IdSabor == 0)
             {
-                return this.CalcularValorTotalPizza(this.Sabores[0].PrecoSabor, this.tamanho);
+
+                // return CalcularValorTotalPizza(this.Sabores[0].PrecoSabor, Tamanho);
+                return 10;
             }
             else if(this.Sabores[0].IdSabor != 0 || this.Sabores[1].IdSabor != 0 || this.Sabores[2].IdSabor == 0)
             {
-                return this.CalcularValorTotalPizzaDoisSabores(this.Sabores[0].PrecoSabor, this.Tamanho, this.Sabores[1].PrecoSabor);
+                // return CalcularValorTotalPizzaDoisSabores(this.Sabores[0].PrecoSabor, this.Tamanho, this.Sabores[1].PrecoSabor);
+                return 20;
             }
             else if (this.Sabores[0].IdSabor != 0 || this.Sabores[1].IdSabor != 0 || this.Sabores[2].IdSabor != 0)
             {
-                return this.CalcularValorTotalPizzasTresSabores(this.Sabores[0].PrecoSabor, this.Tamanho, this.Sabores[1].PrecoSabor, this.Sabores[2].PrecoSabor);
+                // return CalcularValorTotalPizzasTresSabores(this.Sabores[0].PrecoSabor, this.Tamanho, this.Sabores[1].PrecoSabor, this.Sabores[2].PrecoSabor);
+                return 30;
             }
             return 0;
 
@@ -60,7 +66,7 @@ namespace PizzaExpress.Models
         [DataType(DataType.Currency, ErrorMessage ="Valor não é válido")]
         public decimal PrecoPizza
         {
-            get { return VerificarSabores(); }
+            get { return precoPizza; }
             set { precoPizza = value; }
         }
 
@@ -78,7 +84,7 @@ namespace PizzaExpress.Models
         }
         [Required(ErrorMessage ="Sabores são obrigatórios")]
 
-        public IList<Sabor> Sabores { get { return sabores; } set { this.sabores = value; } }
+        public IList<Sabor> Sabores { get { return this.sabores; } set { this.sabores = value; } }
 
         private IList<Sabor> sabores;
         

@@ -54,7 +54,7 @@ namespace PizzaExpress.Models
         [Display(Name = "Preço")]
         public decimal PrecoSabor
         {
-            get { return precoSabor; }
+            get { return this.precoSabor; }
             set { precoSabor = value; }
         }
         public IList<Sabor> ListarNome(string nome)

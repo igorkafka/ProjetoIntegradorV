@@ -73,8 +73,8 @@ namespace PizzaExpress.Models
         [DataType(DataType.Currency)]
         public decimal ValorTotal
         {
-            get { return this.ObjPizza.PrecoPizza + this.ObjProduto.PrecoProduto; }
-            set { this.valorTotal = value; }
+            get { return valorTotal; }
+            set { this.valorTotal = ObjProduto.PrecoProduto + ObjPizza.VerificarSabores() ; }
         }
 
         private string statusPedido;
