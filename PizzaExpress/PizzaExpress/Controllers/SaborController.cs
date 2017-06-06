@@ -37,7 +37,7 @@ namespace PizzaExpress.Controllers
             if (ModelState.IsValid)
             {
                 sabor.Salvar(sabor);
-                return View();
+                return RedirectToAction("Index");
             }
            
            
