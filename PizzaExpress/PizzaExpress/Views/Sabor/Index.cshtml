@@ -4,8 +4,7 @@
     @using (Ajax.BeginForm("Index", "Sabor", new AjaxOptions { HttpMethod = "GET", InsertionMode = InsertionMode.Replace, UpdateTargetId = "divlistasabores", OnFailure = "handleError" }))
     {
         <div class="container" id="containerprocurarcliente">
-            <form class="form-inline">
-                <h3>Sabor</h3>
+            
                 
                 <form class="form-inline my-2 my-lg-0">
                     <input class="form-control mr-sm-2" type="text" name="pesquisar" placeholder="Digite o nome do Sabor">
@@ -18,7 +17,7 @@
 
 
 
-            </form>
+            
         </div>
 
 
