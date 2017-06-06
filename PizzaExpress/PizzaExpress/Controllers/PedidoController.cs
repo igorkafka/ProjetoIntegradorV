@@ -49,35 +49,26 @@ namespace PizzaExpress.Controllers
         {
 
 
-            if (string.IsNullOrEmpty(pedido.DescPedido))
-            {
-                ModelState.AddModelError(pedido.DescPedido, "Teste");
-                return JavaScript(" alert('Erro')");
-            }
-            else
-            {
-                return View();
-            }
+           
            
             
-            /*    pedido.ObjPizza.IdPizza = pedido.ObjPizza.salvar(pedido.ObjPizza);
-                pedido.ObjProduto = pedido.ObjProduto.ProdutoPorId(pedido.ObjProduto.IdProduto);
-              /*  pedido.ObjPizza.Sabores[0] = pedido.ObjPizza.Sabores[0].BuscarPorId(pedido.ObjPizza.Sabores[0].IdSabor);
+                 pedido.ObjPizza.IdPizza = pedido.ObjPizza.salvar(pedido.ObjPizza);
+                 pedido.ObjProduto = pedido.ObjProduto.ProdutoPorId(pedido.ObjProduto.IdProduto);
+                 pedido.ObjPizza.Sabores[0] = pedido.ObjPizza.Sabores[0].BuscarPorId(pedido.ObjPizza.Sabores[0].IdSabor);
 
 
-                /*     if (pedido.ObjPizza.Sabores[1].IdSabor != 0)
+                     if (pedido.ObjPizza.Sabores[1].IdSabor != 0)
                      {
                          pedido.ObjPizza.Sabores[1] = pedido.ObjPizza.Sabores[1].BuscarPorId(pedido.ObjPizza.Sabores[1].IdSabor);
-                         pedido.ValorTotal += pedido.ObjPizza.Sabores[1].PrecoSabor;
+                     
                      }
                      if (pedido.ObjPizza.Sabores[2].IdSabor != 0)
                      {
                          pedido.ObjPizza.Sabores[2] = pedido.ObjPizza.Sabores[2].BuscarPorId(pedido.ObjPizza.Sabores[2].IdSabor);
-                         pedido.ValorTotal += pedido.ObjPizza.Sabores[2].PrecoSabor;
-                    } */
-
-
-               // pedido.salvar(pedido);
+                         
+                     }
+            pedido.salvar(pedido);
+            return RedirectToAction("Index");
             
          
 
@@ -130,6 +121,10 @@ namespace PizzaExpress.Controllers
                 objpedido.AlterarStatus(objpedido);
             }
             return RedirectToAction("Index", "Pedido");
+        }
+        public ActionResult PesquisarPedido()
+        {
+            return View();
         }
        
         

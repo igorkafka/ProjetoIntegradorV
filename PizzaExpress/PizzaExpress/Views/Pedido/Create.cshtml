@@ -8,27 +8,25 @@
 
 @using (Html.BeginForm()) 
 {
-    @Html.AntiForgeryToken()
-    
+  @Html.AntiForgeryToken()
     <div class="form-horizontal">
         <h4>Pedido</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+    </div>
+    <div class="form-horizontal">
+
         <div class="form-group">
-            @Html.LabelFor(model => model.Usuario, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label class="control-label col-md-2">Cliente</label>
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Usuario, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Usuario, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.ObjCliente.NomeCliente, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.HiddenFor(model => model.ObjCliente.IdCliente)
+                @Html.ValidationMessageFor(model => model.ObjCliente.NomeCliente, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.NumPedido, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.NumPedido, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.NumPedido, "", new { @class = "text-danger" })
-            </div>
-        </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.DescPedido, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -38,6 +36,8 @@
             </div>
         </div>
 
+
+
         <div class="form-group">
             @Html.LabelFor(model => model.DataPedido, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -46,36 +46,83 @@
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.ValorTotal, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ValorTotal, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ValorTotal, "", new { @class = "text-danger" })
-            </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.StatusPedido, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.StatusPedido, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.StatusPedido, "", new { @class = "text-danger" })
-            </div>
-        </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.TipoPedido, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.TipoPedido, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownListFor(model => model.TipoPedido, new List<SelectListItem>() { new SelectListItem() { Text = "Urgente", Value = "Urgente" }, new SelectListItem() { Text = "Normal", Value = "Normal" } }, new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.TipoPedido, "", new { @class = "text-danger" })
             </div>
         </div>
 
+
+
+
+
+
+
+        <h4>Produto</h4>
+        <hr />
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+            <label class="control-label col-md-2">Produto</label>
+            <div class="col-md-10">
+                <input type="text" name="ObjProduto.NomeProduto" class="form-control" />
+                <br />
+                <input type="text" name="ObjProduto.DescProduto" class="form-control" />
+                <input type="hidden" name="ObjProduto.IdProduto" />
+                @Html.ValidationMessageFor(model => model.ObjProduto.NomeProduto, "", new { @class = "text-danger" })
             </div>
         </div>
-    </div>
+
+
+
+        <h4>Pizza</h4>
+        <hr />
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ObjPizza.Tamanho, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+
+                @Html.DropDownListFor(model => model.ObjPizza.Tamanho, new List<SelectListItem>() { new SelectListItem() { Text = "G", Value = "G" }, new SelectListItem() { Text = "M", Value = "M" }, new SelectListItem() { Text = "P", Value = "P" } }, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ObjPizza.Tamanho, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2"> Sabor 1</label>
+            <div class="col-md-10">
+                <input type="text" name="ObjPizza.Sabores[0].NomeSabor" class="form-control" />
+                <input type="hidden" name="ObjPizza.Sabores[0].IdSabor" class="form-control" />
+                @Html.ValidationMessageFor(model => model.ObjPizza.Sabores[0].IdSabor, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2"> Sabor 2</label>
+            <div class="col-md-10">
+                <input type="text" name="ObjPizza.Sabores[1].NomeSabor" class="form-control" />
+                <input type="hidden" name="ObjPizza.Sabores[1].IdSabor" class="form-control" />
+
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2"> Sabor 3</label>
+            <div class="col-md-10">
+                <input type="text" name="ObjPizza.Sabores[2].NomeSabor" class="form-control" />
+                <input type="hidden" name="ObjPizza.Sabores[2].IdSabor" class="form-control" />
+
+            </div>
+        </div>
+        <div class="form-group">
+            
+            <div class="col-md-10">
+                <input type="submit" value="Vender" class="btn btn-default" />
+            </div>
+
+        </div>
+
 }
 
 <div>
@@ -83,6 +130,8 @@
 </div>
 @section scripts
 {
-    @Scripts.Render("~/bundles/jquery")
+  
     @Scripts.Render("~/bundles/jqueryval")
-    @Scripts.Render("~/ bundles / scripsdoprojeto")}
+    @Scripts.Render("~/bundles/scripsdoprojeto")
+
+}

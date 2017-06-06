@@ -64,13 +64,29 @@ namespace PizzaExpress.Models
             get { return idPizza; }
             set { idPizza = value; }
         }
+        public decimal VerificarSabores()
+        {
+            if (this.Sabores[0].IdSabor != 0 || this.Sabores[1].IdSabor == 0 || this.Sabores[2].IdSabor == 0)
+            {
+                return this.CalcularValorTotalPizza(this.Sabores[0].PrecoSabor, this.tamanho);
+            }
+            else if(this.Sabores[0].IdSabor != 0 || this.Sabores[1].IdSabor != 0 || this.Sabores[2].IdSabor == 0)
+            {
+                return this.CalcularValorTotalPizzaDoisSabores(this.Sabores[0].PrecoSabor, this.Tamanho, this.Sabores[1].PrecoSabor);
+            }
+            else if (this.Sabores[0].IdSabor != 0 || this.Sabores[1].IdSabor != 0 || this.Sabores[2].IdSabor != 0)
+            {
+                return this.CalcularValorTotalPizzasTresSabores(this.Sabores[0].PrecoSabor, this.Tamanho, this.Sabores[1].PrecoSabor, this.Sabores[2].PrecoSabor);
+            }
+            return 0;
 
+        }
         private decimal precoPizza;
         [DisplayName("Preço")]
         [DataType(DataType.Currency, ErrorMessage ="Valor não é válido")]
         public decimal PrecoPizza
         {
-            get { return precoPizza; }
+            get { return this.VerificarSabores(); }
             set { precoPizza = value; }
         }
 
@@ -127,21 +143,52 @@ namespace PizzaExpress.Models
         }
 
 
-        public decimal CalcularValorTotalPizzaDoisSabores(decimal valorSabor1, string tamanho, decimal valorSabor2, decimal valorSabor3)
+        public decimal CalcularValorTotalPizzaDoisSabores(decimal valorSabor1, string tamanho, decimal valorSabor2)
         {
+            if (tamanho == "P")
+            {
+                int qtdPecacoP = 4;
+
+                PrecoPizza = ((valorSabor1 * Convert.ToDecimal(qtdPecacoP)) / 2) + ((valorSabor2 * Convert.ToDecimal(qtdPecacoP)) / 2);
+            }
             if (tamanho == "M")
             {
-                int qtdSabor1 = 6;
+                int qtdPecacoP = 6;
 
-                PrecoPizza = ((valorSabor1 * Convert.ToDecimal(qtdSabor1)) / 2) + ((valorSabor2 * Convert.ToDecimal(qtdSabor1)) / 2);
+                PrecoPizza = ((valorSabor1 * Convert.ToDecimal(qtdPecacoP)) / 2) + ((valorSabor2 * Convert.ToDecimal(qtdPecacoP) / 2));
             }
             else
             {
                 if (tamanho == "G")
                 {
-                    int qtdSabor1 = 8;
+                    int qtdPecacoP = 8;
 
-                    PrecoPizza = ((valorSabor1 * Convert.ToDecimal(qtdSabor1)) / 2) + ((valorSabor2 * Convert.ToDecimal(qtdSabor1)) / 2) + ((valorSabor3 * Convert.ToDecimal(qtdSabor1)) / 2);
+                    PrecoPizza = ((valorSabor1 * Convert.ToDecimal(qtdPecacoP)) / 2) + ((valorSabor2 * Convert.ToDecimal(qtdPecacoP)) / 2) + ((((valorSabor1+valorSabor2)/2) * Convert.ToDecimal(qtdPecacoP)) / 2);
+                }
+            }
+            return PrecoPizza;
+        }
+        public decimal CalcularValorTotalPizzasTresSabores(decimal valorSabor1, string tamanho, decimal valorSabor2,decimal valorsabor3)
+        {
+            if (tamanho == "P")
+            {
+                int qtdPecacoP = 4;
+
+                PrecoPizza = ((valorSabor1 * Convert.ToDecimal(qtdPecacoP)) / 2) + ((valorSabor2 * Convert.ToDecimal(qtdPecacoP)) / 2) + ((valorsabor3 * Convert.ToDecimal(qtdPecacoP)) / 2);
+            }
+            if (tamanho == "M")
+            {
+                int qtdPecacoP = 6;
+
+                PrecoPizza = ((valorSabor1 * Convert.ToDecimal(qtdPecacoP)) / 2) + ((valorSabor2 * Convert.ToDecimal(qtdPecacoP) / 2)) + ((valorsabor3 * Convert.ToDecimal(qtdPecacoP)) / 2);
+            }
+            else
+            {
+                if (tamanho == "G")
+                {
+                    int qtdPecacoP = 8;
+
+                    PrecoPizza = ((valorSabor1 * Convert.ToDecimal(qtdPecacoP)) / 2) + ((valorSabor2 * Convert.ToDecimal(qtdPecacoP)) / 2) + ((((valorSabor1 + valorSabor2 + valorsabor3) / 2) * Convert.ToDecimal(qtdPecacoP)) / 2) + ((valorsabor3 * Convert.ToDecimal(qtdPecacoP)) / 2);
                 }
             }
             return PrecoPizza;
