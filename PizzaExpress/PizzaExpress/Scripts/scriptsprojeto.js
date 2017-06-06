@@ -22,7 +22,7 @@
         },
         messages: {
             noResults: "Não foi Encontrado", results: function (count) {
-                return count + (count == 0 ? ' result' : ' results');
+                return count + (count === 0 ? ' result' : ' results');
             }
         }
     });
@@ -55,7 +55,7 @@ $(document).ready(function () {
         },
         messages: {
             noResults: "", results: function (count) {
-                return count + (count == 0 ? ' result' : ' results');
+                return count + (count === 0 ? ' result' : ' results');
             }
         }
 
@@ -87,7 +87,7 @@ $(document).ready(function () {
         },
         messages: {
             noResults: "", results: function (count) {
-                return count + (count == 0 ? ' result' : ' results');
+                return count + (count === 0 ? ' result' : ' results');
             }
         }
     });
@@ -120,7 +120,7 @@ $(document).ready(function () {
         },
         messages: {
             noResults: "", results: function (count) {
-                return count + (count == 0 ? ' result' : ' results');
+                return count + (count === 0 ? ' result' : ' results');
             }
         }
     });
@@ -153,7 +153,7 @@ $(document).ready(function () {
         },
         messages: {
             noResults: "", result: function (count) {
-                return count + (count == 0 ? ' result' : ' results');
+                return count + (count === 0 ? ' result' : ' results');
             }
         }
     });

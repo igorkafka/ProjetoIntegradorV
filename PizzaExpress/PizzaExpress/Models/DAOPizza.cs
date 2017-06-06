@@ -74,23 +74,23 @@ namespace PizzaExpress.Models
                 objPizza.IdPizza = (int)dr["IdPizza"];
                 objPizza.Tamanho = dr["Tamanho"].ToString();
                 Sabor objsabor = new Sabor();
-                objPizza.ObjListaSabor1 = objPizza.ObjListaSabor1.BuscarPorId((Convert.ToInt32(dr["Sabor1"])));
+                objPizza.Sabores[0] = objPizza.Sabores[0].BuscarPorId((Convert.ToInt32(dr["Sabor1"])));
                 if(dr["Sabor2"] is DBNull)
                 {
-                    objPizza.ObjListaSabor2.DescSabor = "Sem segundo sabor";
+                    objPizza.Sabores[1].DescSabor = "Sem segundo sabor";
                 }
                 else
                 {
-                    objPizza.ObjListaSabor2 = objPizza.ObjListaSabor2.BuscarPorId(Convert.ToInt32(dr["Sabor2"]));
+                    objPizza.Sabores[1]= objPizza.Sabores[1].BuscarPorId(Convert.ToInt32(dr["Sabor2"]));
                 }
                 if (dr["Sabor3"] is DBNull)
                 {
                     
-                    objPizza.ObjListSabor3.DescSabor = "Sem terceiro sabor";
+                    objPizza.Sabores[2].DescSabor= "Sem terceiro sabor";
                 }
                 else
                 {
-                    objPizza.ObjListSabor3 = objPizza.ObjListSabor3.BuscarPorId(Convert.ToInt32(dr["Sabor3"]));
+                    objPizza.Sabores[2] = objPizza.Sabores[2].BuscarPorId(Convert.ToInt32(dr["Sabor3"]));
                 }
                
                 objPizza.PrecoPizza = Convert.ToDecimal(dr["PrecoPizza"]);
@@ -104,7 +104,7 @@ namespace PizzaExpress.Models
         public IList<Pizza> BuscarPizza(string tamanho)
         {
             IList<Pizza> listadepizza = new List<Pizza>();
-            Pizza objPizza = new Pizza(new Sabor());
+            Pizza objPizza = new Pizza();
             SqlCommand comando = new SqlCommand();
             comando.CommandType = CommandType.Text;
             comando.CommandText = "SELECT * FROM Tb_Pizza WHERE Tb_Pizza.Tamanho  like '%@tamanho%'";
