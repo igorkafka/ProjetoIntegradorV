@@ -1,23 +1,50 @@
 ﻿@using Microsoft.AspNet.Identity
 @if (Request.IsAuthenticated)
 {
-    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-nav" }))
     {
     @Html.AntiForgeryToken()
+        
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Informações Adicionais
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="@Url.Action("About","Home")">Sobre</a>
+                    <a class="dropdown-item" href="@Url.Action("Contact","Home")">Contato</a>
+                </div>
+            </li>
+        <li class="nav-item">
 
-        <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
-            
-                @Html.ActionLink("Olá " + User.Identity.GetUserName() + "   ", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
-          
-            <a href="javascript:document.getElementById('logoutForm').submit()">Sair</a>
-            </nav>
+            @Html.ActionLink("Olá " + User.Identity.GetUserName() + "   ", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage",@class="nav-link" })
+    
+
+         
+            </li>
+            <li>
+                <a class="nav-link" href="javascript:document.getElementById('logoutForm').submit()">Sair</a>
+            </li>
     }
 }
 else
-{
-    <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+{ 
+    <ul class="navbar-nav">
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Informações Adicionais
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="@Url.Action("About","Home")">Sobre</a>
+            <a class="dropdown-item" href="@Url.Action("Contact","Home")">Contato</a>
+        </div>
+    </li>
+    <li class="nav-item">
 
-        @Html.ActionLink("Registrar-se", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })
-        @Html.ActionLink("Logar", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })
-    </nav>
+        @Html.ActionLink("Registrar-se", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "nav-link" })
+       
+        </li>
+        <li class="nav-item">
+            @Html.ActionLink("Logar", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "nav-link" })
+        </li>
+        </ul>
 }
