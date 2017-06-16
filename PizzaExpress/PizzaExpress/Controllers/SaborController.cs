@@ -17,6 +17,8 @@ namespace PizzaExpress.Controllers
             {
                 if (string.IsNullOrEmpty(pesquisar) || pesquisar.Trim().Length < 2)
                     return JavaScript("alert(\"Nome Invalido, Digite algo que tenha pelo menos mais de duas letras\")");
+                if (sabor.ListarNome(pesquisar).Count == 0)
+                    return JavaScript("alert('Não foi encontrado nenhum sabor com o nome: " + pesquisar + "');");
                 return PartialView("ProcurarSabor", sabor.ListarNome(pesquisar));
             }
             IList<Sabor> lista = new List<Sabor>();

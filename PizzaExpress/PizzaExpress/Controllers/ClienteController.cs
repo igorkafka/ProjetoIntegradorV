@@ -21,6 +21,9 @@ namespace PizzaExpress.Controllers
                 if (string.IsNullOrEmpty(pesquisar) || pesquisar.Trim().Length < 2) {
                     return JavaScript("alert(\"Nome Invalido, Digite algo que tenha pelo menos mais de duas letras\")");
                 }
+                if (cliente.ListarNome(pesquisar).Count == 0)
+                    return JavaScript("alert(\'Não foi encontrado nenhum cliente com o nome: " + pesquisar + "');");
+                    
                return PartialView("ProcurarCliente", cliente.ListarNome(pesquisar));
                 
             }
