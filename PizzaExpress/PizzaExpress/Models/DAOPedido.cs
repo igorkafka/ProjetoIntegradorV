@@ -39,7 +39,7 @@ namespace PizzaExpress.Models
             Conexao con = new Conexao();
             con.ExecutarCrud(comando);
         }
-
+     
 
         public IList<Pedido> BuscaTodosOsPedidos()
         {
