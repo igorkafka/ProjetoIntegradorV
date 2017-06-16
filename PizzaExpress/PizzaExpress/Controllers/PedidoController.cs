@@ -15,17 +15,17 @@ namespace PizzaExpress.Controllers
         // GET: Pedido
         public ActionResult Index(string status="")
         {
-                    
+            ViewBag.Data = DateTime.Now.Date ;
             Pedido objpedido = new Pedido();
             if(Request.IsAjaxRequest())
             {
                 if (status == "Aberto")
                 {
-                    return PartialView("ProcurarPedido", objpedido.ListarPizzasAbertos());
+                    return PartialView("ProcurarPedido", objpedido.ListarPizzasAbertos(ViewBag.Data));
                 }
                 else if(status == "Fechado")
                 {
-                    return PartialView("ProcurarPedido", objpedido.ListarPizzasFechados());
+                    return PartialView("ProcurarPedido", objpedido.ListarPizzasFechados(ViewBag.Data));
                 }
                 else
                 {

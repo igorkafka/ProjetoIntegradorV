@@ -80,7 +80,7 @@ namespace PizzaExpress.Models
 
 
 
-        public IList<Pedido> BuscaTodosOsPedidosAberto(string Data)
+        public IList<Pedido> BuscaTodosOsPedidosAberto(DateTime Data)
         {
             IList<Pedido> ListaDePedidos = new List<Pedido>();
             Pedido objpedido = new Pedido();
@@ -120,7 +120,7 @@ namespace PizzaExpress.Models
             return ListaDePedidos;
         }
 
-        public IList<Pedido> BuscaTodosOsPedidosFechado(string data)
+        public IList<Pedido> BuscaTodosOsPedidosFechado(DateTime data)
         {
             IList<Pedido> ListaDePedidos = new List<Pedido>();
             Pedido objPedido = new Pedido();
@@ -128,7 +128,7 @@ namespace PizzaExpress.Models
             SqlCommand comando = new SqlCommand();
             comando.CommandType = CommandType.Text;
             comando.CommandText = "SELECT*FROM Tb_Pedido WHERE StatusPedido = 'Fechado' AND DataPedido = CAST(@Data as date)";
-            comando.Parameters.AddWithValue("@Data", Data);
+            comando.Parameters.AddWithValue("@Data", data);
 
 
 
