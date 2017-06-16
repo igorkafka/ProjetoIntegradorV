@@ -46,9 +46,9 @@
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
 
-        <div class="form-actions">
-            <input type="submit" value="Deletar" class="form-control" >
-            @Html.ActionLink("Pesquisar Cliente", "Index")
+        <div class="form-actions no-color">
+            <input type="submit" value="Deletar" class="btn btn-default" /> |
+            @Html.ActionLink("Pesquisar Produto", "Index")
         </div>
     }
 </div>

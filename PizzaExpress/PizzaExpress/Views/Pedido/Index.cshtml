@@ -1,5 +1,5 @@
 ﻿@model IEnumerable<PizzaExpress.Models.Pedido>
-<h2>Pedido</h2>
+>
 
 <div>
     @using (Ajax.BeginForm("Index", "Pedido", new AjaxOptions { HttpMethod = "GET", InsertionMode = InsertionMode.Replace, UpdateTargetId = "divlistapedidos", OnFailure = "handleError" }))
@@ -8,8 +8,10 @@
         <div class="container" id="containerprocurarcliente">
             <form class="form-inline my-2 my-lg-0">
 
-            
-                <div>
+                <h2>
+                    Pedido
+                </h2>
+               <div>
                 <label class="radio-inline">
                     <input type="radio" value="Aberto" name="status">Aberto
                 </label>
