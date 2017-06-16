@@ -13,30 +13,36 @@ namespace PizzaExpress.Controllers
     {
         
         // GET: Pedido
-        public ActionResult Index(string status="")
+        public ActionResult Index(string status = "", string pesquisar = "")
         {
-                    
+           
             Pedido objpedido = new Pedido();
+
             if(Request.IsAjaxRequest())
             {
-                if (status == "Aberto")
-                {
-                    return PartialView("ProcurarPedido", objpedido.ListarPizzasAbertos());
-                }
-                else if(status == "Fechado")
-                {
-                    return PartialView("ProcurarPedido", objpedido.ListarPizzasFechados());
-                }
-                else
-                {
-                    return JavaScript("alert(" + status +  ")");
-                }
 
+                 if (string.IsNullOrEmpty(status))
+                 {
+                     return JavaScript("alert('Sem status');");
+                 }
+                 if(string.IsNullOrEmpty(pesquisar))
+                 {
+                     return JavaScript("alert('Preencha uma data');");
+                 }
+                 if (status == "Aberto")
+                 {
+                     return PartialView("ProcurarPedido", objpedido.ListarPizzasAbertos(Convert.ToDateTime(pesquisar)));
+                 }
+                 if(status == "Fechado")
+                 {
+                     return PartialView("ProcurarPedido", objpedido.ListarPizzasFechados(Convert.ToDateTime(pesquisar)));
+             
+                 }
                 
-                
+
             }
-
-            return View(objpedido.TodoosPedidos().Take(0));
+            IList<Pedido> lista = new List<Pedido>();
+            return View(lista);
         }
         public ActionResult Create()
         {
@@ -75,6 +81,7 @@ namespace PizzaExpress.Controllers
         }
 
         [HttpPost]
+        [ChildActionOnly]
         public JsonResult BuscarSabor(string term)
         {
             Sabor sabor = new Sabor();
@@ -85,6 +92,7 @@ namespace PizzaExpress.Controllers
             return Json(Sabores, JsonRequestBehavior.AllowGet);
         }
         [HttpPost]
+        [ChildActionOnly]
         public JsonResult BuscarProduto(string term)
         {
              Produto objproduto = new Produto();
@@ -94,6 +102,7 @@ namespace PizzaExpress.Controllers
             return Json(Produtos, JsonRequestBehavior.AllowGet);
         }
         [HttpPost]
+        [ChildActionOnly]
         public JsonResult BuscarCliente(string term)
         {
             Cliente c = new Cliente();
@@ -105,6 +114,7 @@ namespace PizzaExpress.Controllers
         }
         [HttpGet]
         [ActionName("Edit")]
+
         public ActionResult EditGET(int id)
         {
             Pedido objpedido = new Pedido();
