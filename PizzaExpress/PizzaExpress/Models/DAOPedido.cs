@@ -79,15 +79,16 @@ namespace PizzaExpress.Models
 
 
 
-        public IList<Pedido> BuscaTodosOsPedidosAberto()
+
+        public IList<Pedido> BuscaTodosOsPedidosAberto(string Data)
         {
             IList<Pedido> ListaDePedidos = new List<Pedido>();
             Pedido objpedido = new Pedido();
             DAOCliente objClienteDAO = new DAOCliente();
             SqlCommand comando = new SqlCommand();
             comando.CommandType = CommandType.Text;
-            comando.CommandText = "SELECT*FROM Tb_Pedido WHERE StatusPedido = 'Aberto'  AND DataPedido = CAST(GETDATE() as date)";
-
+            comando.CommandText = "SELECT*FROM Tb_Pedido WHERE StatusPedido = 'Aberto'  AND DataPedido = CAST(@Data as date)";
+            comando.Parameters.AddWithValue("@Data", Data);
 
 
 
@@ -119,17 +120,17 @@ namespace PizzaExpress.Models
             return ListaDePedidos;
         }
 
-        public IList<Pedido> BuscaTodosOsPedidosFechado()
+        public IList<Pedido> BuscaTodosOsPedidosFechado(string data)
         {
             IList<Pedido> ListaDePedidos = new List<Pedido>();
             Pedido objPedido = new Pedido();
             DAOCliente objClienteDAO = new DAOCliente();
             SqlCommand comando = new SqlCommand();
             comando.CommandType = CommandType.Text;
-            comando.CommandText = "SELECT*FROM Tb_Pedido WHERE StatusPedido = 'Fechado' AND DataPedido = CAST(GETDATE() as date)";
+            comando.CommandText = "SELECT*FROM Tb_Pedido WHERE StatusPedido = 'Fechado' AND DataPedido = CAST(@Data as date)";
+            comando.Parameters.AddWithValue("@Data", Data);
 
 
-          
 
             Conexao con = new Conexao();
             SqlDataReader dr = con.ExecutarSelect(comando);
