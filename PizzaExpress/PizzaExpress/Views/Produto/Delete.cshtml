@@ -1,14 +1,12 @@
 ﻿@model PizzaExpress.Models.Produto
 
-@{
-    ViewBag.Title = "Deletar";
-}
 
-<h2>Delete</h2>
+
+
 
 <h3>Você tem certeza que deseja excluir?</h3>
 <div>
-    <h4>Produto</h4>
+    
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -49,7 +47,7 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions">
-            <input type="submit" value="Deletar"/>
+            <input type="submit" value="Deletar" class="form-control" >
             @Html.ActionLink("Pesquisar Cliente", "Index")
         </div>
     }
