@@ -31,11 +31,15 @@ namespace PizzaExpress.Controllers
                  }
                  if (status == "Aberto")
                  {
+                    if (objpedido.ListarPizzasAbertos(Convert.ToDateTime(pesquisar)).Count == 0)
+                        return JavaScript("alert('Nenhum pedido em aberto foi encontrado no dia " + pesquisar +"');");
                      return PartialView("ProcurarPedido", objpedido.ListarPizzasAbertos(Convert.ToDateTime(pesquisar)));
                  }
                  if(status == "Fechado")
                  {
-                     return PartialView("ProcurarPedido", objpedido.ListarPizzasFechados(Convert.ToDateTime(pesquisar)));
+                    if (objpedido.ListarPizzasFechados(Convert.ToDateTime(pesquisar)).Count == 0)
+                        return JavaScript("alert('Nenhum pedido fechado foi encontrado no dia " + pesquisar + "');");
+                    return PartialView("ProcurarPedido", objpedido.ListarPizzasFechados(Convert.ToDateTime(pesquisar)));
              
                  }
                 
