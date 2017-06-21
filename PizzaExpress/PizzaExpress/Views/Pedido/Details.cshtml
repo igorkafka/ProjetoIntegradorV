@@ -1,0 +1,126 @@
+﻿@model PizzaExpress.Models.Pedido
+
+
+
+<h2>Detalhes</h2>
+
+<div>
+    <h4>Pedido</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+           Código do Cliente
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ObjCliente.IdCliente)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ObjCliente.Nome)
+        </dt>
+
+        <dd>
+           Nome do Cliente
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumPedido)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumPedido)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DescPedido)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DescPedido)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DataPedido)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataPedido)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ValorTotal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ValorTotal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StatusPedido)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StatusPedido)
+        </dd>
+
+        <dt>
+            Nome do produto
+        </dt>
+
+        <dd>
+           @Html.DisplayFor(model => model.ObjProduto.NomeProduto)
+        </dd>
+       
+
+       <dt>
+             Nome do Primeiro Sabor
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ObjPizza.Sabores[0].NomeSabor)
+        </dd>
+        @if (Model.ObjPizza.Sabores[1].IdSabor != 0)
+        {
+        <dt>
+            Nome do segundo sabor
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ObjPizza.Sabores[1].NomeSabor)
+        </dd>
+        }
+        else
+        {
+            <dt>
+                Nome do segundo Sabor
+            </dt>
+
+            <dd>
+               Sem segundo sabor
+            </dd>
+        }
+        @if (Model.ObjPizza.Sabores[2].IdSabor != 0)
+        {
+            <dt>
+               Nome do terceiro sabor
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.ObjPizza.Sabores[2].NomeSabor)
+            </dd>
+        }
+        else
+        {
+            <dt>
+                Nome do terceiro sabor
+            </dt>
+
+            <dd>
+                Sem terceiro sabor
+            </dd>
+        }
+      
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new {  id = Model.NumPedido }) |
+    @Html.ActionLink("Pesquisar pedido", "Index")
+</p>
