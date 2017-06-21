@@ -55,13 +55,13 @@ namespace PizzaExpress.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Create([Bind(Exclude = "Sabores[1].IdSabor,Sabores[2].IdSabor")]Pedido pedido)
+        public ActionResult Create(Pedido pedido)
         {
 
 
            
            
-            
+                  
                  pedido.ObjPizza.IdPizza = pedido.ObjPizza.salvar(pedido.ObjPizza);
                  pedido.ObjProduto = pedido.ObjProduto.ProdutoPorId(pedido.ObjProduto.IdProduto);
                  pedido.ObjPizza.Sabores[0] = pedido.ObjPizza.Sabores[0].BuscarPorId(pedido.ObjPizza.Sabores[0].IdSabor);
@@ -136,9 +136,11 @@ namespace PizzaExpress.Controllers
             }
             return RedirectToAction("Index", "Pedido");
         }
-        public ActionResult PesquisarPedido()
+        public ActionResult Details(int id)
         {
-            return View();
+            Pedido objpedido = new Pedido();
+            objpedido = objpedido.BuscarPorId(id);
+            return View(objpedido);
         }
        
         
