@@ -117,11 +117,10 @@ namespace PizzaExpress.Controllers
         [ActionName("Edit")]
         public ActionResult EditPOST(Pedido objpedido)
         {
-            TryUpdateModel(objpedido);
-            if (ModelState.IsValid)
-            {
+           
+            
                 objpedido.AlterarStatus(objpedido);
-            }
+            
             return RedirectToAction("Index", "Pedido");
         }
         public ActionResult Details(int id)
