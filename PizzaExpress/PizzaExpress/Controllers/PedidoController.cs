@@ -57,30 +57,10 @@ namespace PizzaExpress.Controllers
         [HttpPost]
         public ActionResult Create(Pedido pedido)
         {
-            if (pedido.ObjPizza.IdPizza == 0)
-            {
-                throw new Exception("Valor Pizza não informado");
-            }
-            else
-            {
-                pedido.ObjPizza.IdPizza = pedido.ObjPizza.salvar(pedido.ObjPizza);
-            }
-            if(pedido.ObjPizza.Sabores[0].IdSabor == 0)
-            {
-                throw new Exception("Primeiro Sabor não foi informado");
-            }
-            else
-            {
-                pedido.ObjPizza.Sabores[0] = pedido.ObjPizza.Sabores[0].BuscarPorId(pedido.ObjPizza.Sabores[0].IdSabor);
-            }
-            if (pedido.ObjProduto.IdProduto == 0)
-            {
-                throw new Exception("Valor de produto não informado!");
-            }
-            else
-            {
-                pedido.ObjProduto = pedido.ObjProduto.ProdutoPorId(pedido.ObjProduto.IdProduto);
-            }   
+            pedido.ObjPizza.IdPizza = pedido.ObjPizza.salvar(pedido.ObjPizza);
+            pedido.ObjPizza.Sabores[0] = pedido.ObjPizza.Sabores[0].BuscarPorId(pedido.ObjPizza.Sabores[0].IdSabor);
+            pedido.ObjProduto = pedido.ObjProduto.ProdutoPorId(pedido.ObjProduto.IdProduto);
+            
 
 
                      if (pedido.ObjPizza.Sabores[1].IdSabor != 0)
