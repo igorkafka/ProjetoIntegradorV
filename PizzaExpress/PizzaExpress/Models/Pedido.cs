@@ -12,7 +12,7 @@ namespace PizzaExpress.Models
         
         private Pizza objpizza;
         private Sabor objsabor;
-        
+        [Required]
         public Sabor ObjSabor
         {
             get { return this.objsabor; }
@@ -31,7 +31,7 @@ namespace PizzaExpress.Models
             get { return listaItemPedido; }
             set { listaItemPedido = value; }
         }
-
+        [Required]
         private Cliente objCliente; //Agregação Cliente
         public Cliente ObjCliente
         {
