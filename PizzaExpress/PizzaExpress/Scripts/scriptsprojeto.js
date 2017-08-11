@@ -162,7 +162,7 @@ var isFirefox = typeof InstallTrigger !== 'undefined';
 if (isFirefox) {
     $(document).ready(function () {
         $("#DataPedido").datepicker({
-            dateFormat: 'dd/mm/yy'
+            dateFormat: 'yy/mm/dd'
         })
     })
 }

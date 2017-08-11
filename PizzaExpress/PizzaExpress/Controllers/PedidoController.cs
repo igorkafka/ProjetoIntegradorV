@@ -50,21 +50,17 @@ namespace PizzaExpress.Controllers
         }
         public ActionResult Create()
         {
-            
+          
            
             return View();
         }
         [HttpPost]
         public ActionResult Create(Pedido pedido)
         {
-
-
-           
-           
-                  
-                 pedido.ObjPizza.IdPizza = pedido.ObjPizza.salvar(pedido.ObjPizza);
-                 pedido.ObjProduto = pedido.ObjProduto.ProdutoPorId(pedido.ObjProduto.IdProduto);
-                 pedido.ObjPizza.Sabores[0] = pedido.ObjPizza.Sabores[0].BuscarPorId(pedido.ObjPizza.Sabores[0].IdSabor);
+            pedido.ObjPizza.IdPizza = pedido.ObjPizza.salvar(pedido.ObjPizza);
+            pedido.ObjPizza.Sabores[0] = pedido.ObjPizza.Sabores[0].BuscarPorId(pedido.ObjPizza.Sabores[0].IdSabor);
+            pedido.ObjProduto = pedido.ObjProduto.ProdutoPorId(pedido.ObjProduto.IdProduto);
+            
 
 
                      if (pedido.ObjPizza.Sabores[1].IdSabor != 0)
@@ -79,13 +75,8 @@ namespace PizzaExpress.Controllers
                      }
             pedido.salvar(pedido);
             return RedirectToAction("Index");
-            
-         
-
         }
-
         [HttpPost]
-        [ChildActionOnly]
         public JsonResult BuscarSabor(string term)
         {
             Sabor sabor = new Sabor();
@@ -96,7 +87,6 @@ namespace PizzaExpress.Controllers
             return Json(Sabores, JsonRequestBehavior.AllowGet);
         }
         [HttpPost]
-        [ChildActionOnly]
         public JsonResult BuscarProduto(string term)
         {
              Produto objproduto = new Produto();
@@ -106,7 +96,6 @@ namespace PizzaExpress.Controllers
             return Json(Produtos, JsonRequestBehavior.AllowGet);
         }
         [HttpPost]
-        [ChildActionOnly]
         public JsonResult BuscarCliente(string term)
         {
             Cliente c = new Cliente();
@@ -118,7 +107,6 @@ namespace PizzaExpress.Controllers
         }
         [HttpGet]
         [ActionName("Edit")]
-
         public ActionResult EditGET(int id)
         {
             Pedido objpedido = new Pedido();
@@ -129,11 +117,10 @@ namespace PizzaExpress.Controllers
         [ActionName("Edit")]
         public ActionResult EditPOST(Pedido objpedido)
         {
-            TryUpdateModel(objpedido);
-            if (ModelState.IsValid)
-            {
+           
+            
                 objpedido.AlterarStatus(objpedido);
-            }
+            
             return RedirectToAction("Index", "Pedido");
         }
         public ActionResult Details(int id)

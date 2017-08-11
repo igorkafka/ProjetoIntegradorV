@@ -14,14 +14,11 @@ namespace PizzaExpress.Models
             SqlCommand comando = new SqlCommand();
             comando.CommandType = CommandType.Text;
             comando.CommandText = "INSERT INTO Tb_Cliente (nomeCliente, telefoneCliente ,rua, bairro, numero) VALUES ( @nomeCliente, @telefoneCliente, @rua, @bairro, @numero)";
-
             comando.Parameters.AddWithValue("@nomeCliente", objCliente.NomeCliente);
             comando.Parameters.AddWithValue("@telefoneCliente", objCliente.TelefoneCliente);
             comando.Parameters.AddWithValue("@rua", objCliente.Rua);
             comando.Parameters.AddWithValue("@bairro", objCliente.Bairro);
             comando.Parameters.AddWithValue("@numero", objCliente.Numero);
-
-
             Conexao con = new Conexao();
             con.ExecutarCrud(comando);
         }

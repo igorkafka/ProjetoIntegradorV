@@ -12,7 +12,7 @@ namespace PizzaExpress.Models
         
         private Pizza objpizza;
         private Sabor objsabor;
-        
+        [Required]
         public Sabor ObjSabor
         {
             get { return this.objsabor; }
@@ -31,7 +31,7 @@ namespace PizzaExpress.Models
             get { return listaItemPedido; }
             set { listaItemPedido = value; }
         }
-
+        [Required]
         private Cliente objCliente; //Agregação Cliente
         public Cliente ObjCliente
         {
@@ -61,8 +61,7 @@ namespace PizzaExpress.Models
         private DateTime dataPedido;
         [Display(Name ="Data")]
         [Required(ErrorMessage ="Data do pedido é obrigatória!")]
-        [DataType(DataType.Date,ErrorMessage ="Digite uma datá valida Dia/Mês/Ano")]
-        
+        [DataType(DataType.Date)]
         public DateTime DataPedido
         {
             get { return dataPedido; }
@@ -89,7 +88,7 @@ namespace PizzaExpress.Models
         private string tipoPedido;
         [Display(Name = "Tipo de Pedido")]
         [Required( ErrorMessage ="Tipo de Pedido é obrigatório")]
-        [DisplayFormat(DataFormatString = "{dd/mm/yy}", ApplyFormatInEditMode = true)]
+       [DisplayFormat(DataFormatString = "{dd/mm/yy}", ApplyFormatInEditMode = true)]
         public string TipoPedido
         {
             get { return tipoPedido; }
