@@ -28,7 +28,7 @@ namespace PizzaExpress
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css", "~/Content/themes/base/jquery-ui", "~/Content/themes/base/jquery-ui.min.css" , "~/Content/themes/base/jquery.datetimepicker.min.css", "~/Content/themes/base/autocomplete.css", "~/Content/themes/base/datepicker.css" ,"~/Content/themes/base/theme.css"));
+                      "~/Content/site.css"));
             bundles.Add(new StyleBundle("~/bundles/scripsdoprojeto").Include("~/Scripts/scriptsprojeto.js"));
             
         }
