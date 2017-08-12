@@ -6,108 +6,105 @@ using System.Linq;
 using System.Web;
 
 namespace PizzaExpress.Models
-{   
-    public class Cliente:Pessoa
+{
+    public class Cliente : Pessoa
     {
-        public Cliente()
-        {
+        
+            public Cliente()
+            {
 
-        }
-        private int idCliente;
-        [DisplayName("Código")]
-        public int IdCliente
-        {
-            get { return idCliente; }
-            set { idCliente = value; }
-        }
-    
-        private string nomeCliente;
-      
-        [Required(ErrorMessage ="O nome é obrigatório!")]
-        [StringLength(40, ErrorMessage = "O campo nome não pode ter mais de 40 letras e menos de 3 letras",MinimumLength =3)]
-        [DisplayName(displayName:"Nome")]
-        public string NomeCliente
-        {
-            get { return nomeCliente; }
-            set { nomeCliente = value; }
-        }
+            }
+            private int idCliente;
+            [DisplayName("Código")]
+            public int IdCliente
+            {
+                get { return idCliente; }
+                set { idCliente = value; }
+            }
 
-        private string telefoneCliente;
-        [StringLength(18, ErrorMessage = "O campo telefone não pode ter mais de 18 letras")]
-        [DisplayName(displayName: "Telefone")]
-        [RegularExpression("[0-9]{1,}", ErrorMessage = "Apenas algarismo númericos são permitidos")]
-        [Required(ErrorMessage ="Número do Telefone do Cliente é obrigatório")]
-        public string TelefoneCliente
-        {
-            get { return telefoneCliente; }
-            set { telefoneCliente = value; }
-        }
+            private string nomeCliente;
 
-        private string rua;
-        [Required(ErrorMessage ="Nome da Rua é obrigatório")]
-        [StringLength(30, ErrorMessage = "O campo rua não pode ter mais de 30 letras")]
-        public string Rua
-        {
-            get { return rua; }
-            set { rua = value; }
-        }
+            [Required(ErrorMessage = "O nome é obrigatório!")]
+            [StringLength(40, ErrorMessage = "O campo nome não pode ter mais de 40 letras e menos de 3 letras", MinimumLength = 3)]
+            [DisplayName(displayName: "Nome")]
+            public string NomeCliente
+            {
+                get { return nomeCliente; }
+                set { nomeCliente = value; }
+            }
 
-        private string bairro;
-        [Required(ErrorMessage = "Nome do Bairro é obrigatório")]
-        [StringLength(30, ErrorMessage = "O campo bairro não pode ter mais de 30 letras")]
-        public string Bairro
-        {
-            get { return bairro; }
-            set { bairro = value; }
-        }
+            private string telefoneCliente;
+            [StringLength(18, ErrorMessage = "O campo telefone não pode ter mais de 18 letras")]
+            [DisplayName(displayName: "Telefone")]
+            [RegularExpression("[0-9]{1,}", ErrorMessage = "Apenas algarismo númericos são permitidos")]
+            [Required(ErrorMessage = "Número do Telefone do Cliente é obrigatório")]
+            public string TelefoneCliente
+            {
+                get { return telefoneCliente; }
+                set { telefoneCliente = value; }
+            }
 
-        private string numero;
-        [RegularExpression("[0-9]{1,}",ErrorMessage ="Apenas algarismo númericos são permitidos")]
-        [Required(ErrorMessage = "Número da Casa é obrigatório")]
-        [StringLength(8, ErrorMessage = "O campo número da casa não pode ter mais de 8 letras")]
-        public string Numero
-        {
-            get { return numero; }
-            set { numero = value; }
-        }
-        public void Salvar(Cliente cliente)
-        {
-            DAOCliente daocliente = new DAOCliente();
-            daocliente.Alterar(cliente);
-            
-            daocliente.Salvar(cliente);
+            private string rua;
+            [Required(ErrorMessage = "Nome da Rua é obrigatório")]
+            [StringLength(30, ErrorMessage = "O campo rua não pode ter mais de 30 letras")]
+            public string Rua
+            {
+                get { return rua; }
+                set { rua = value; }
+            }
+
+            private string bairro;
+            [Required(ErrorMessage = "Nome do Bairro é obrigatório")]
+            [StringLength(30, ErrorMessage = "O campo bairro não pode ter mais de 30 letras")]
+            public string Bairro
+            {
+                get { return bairro; }
+                set { bairro = value; }
+            }
+
+            private string numero;
+            [RegularExpression("[0-9]{1,}", ErrorMessage = "Apenas algarismo númericos são permitidos")]
+            [Required(ErrorMessage = "Número da Casa é obrigatório")]
+            [StringLength(8, ErrorMessage = "O campo número da casa não pode ter mais de 8 letras")]
+            public string Numero
+            {
+                get { return numero; }
+                set { numero = value; }
+            }
+            public void Salvar(Cliente cliente)
+            {
+                
              
-        }
-        public void Alterar(Cliente cliente)
-        {
-            DAOCliente daocliente = new DAOCliente();
-            
 
-            daocliente.Alterar(cliente);
-        }
-        public IList<Cliente> ListarNome(String Nome)
-        {
-            DAOCliente dao = new Models.DAOCliente();
-            return dao.BuscarPorNome(Nome);
-           
-        }
-        public IList<Cliente> ListarTodos()
-        {
-            DAOCliente dao = new Models.DAOCliente();
-            return dao.BuscaTodosOsClientes();
-        }
-        public Cliente BuscarPorId(int id)
-        {
-            DAOCliente dao = new DAOCliente();
-            return dao.BuscarPorIdCliente(id);
-        }
+            }
+            public void Alterar(Cliente cliente)
+            {
+                
 
-        public void Delete(int id)
-        {
-            DAOCliente dao = new DAOCliente();
-            dao.Excluir(id);
+
+               
+            }
+            public IList<Cliente> ListarNome(String Nome)
+            {
+            return null;
+
+            }
+            public IList<Cliente> ListarTodos()
+            {
+
+            return null;
+            }
+            public Cliente BuscarPorId(int id)
+            {
+
+            return null; 
+            }
+
+            public void Delete(int id)
+            {
+             
+            }
+
+
         }
-        
-        
     }
-}
