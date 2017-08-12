@@ -74,8 +74,8 @@ namespace PizzaExpress.Controllers
         [HttpPost]
         public ActionResult Delete(int id)
         {
-            DAOProduto dao = new DAOProduto();
-            dao.Excluir(id);
+            
+            
             return RedirectToAction("Index");
         }
     }

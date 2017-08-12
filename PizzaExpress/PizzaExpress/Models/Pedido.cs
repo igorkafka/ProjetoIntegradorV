@@ -119,37 +119,35 @@ namespace PizzaExpress.Models
         }
         public void salvar(Pedido pedido)
         {
-            DAOPedido dao = new DAOPedido();
-            dao.Salvar(pedido);
+            
         }
         public IList<Pedido> ListarPizzasAbertos(DateTime data)
         {
-            DAOPedido dao = new DAOPedido();
-            return dao.BuscaTodosOsPedidosAberto(data);
+
+            return null;
             
             
         }
         public IList<Pedido> ListarPizzasFechados(DateTime data)
         {
-            DAOPedido dao = new DAOPedido();
-            return dao.BuscaTodosOsPedidosFechado(data);
+
+            return null;
 
 
         }
         public IList<Pedido> TodoosPedidos()
         {
-            DAOPedido dao = new DAOPedido();
-            return dao.BuscaTodosOsPedidos();
+
+            return null;
         }
         public void AlterarStatus(Pedido objpedido)
         {
-            DAOPedido dao = new DAOPedido();
-            dao.Alterar(objpedido);
+
         }
         public Pedido BuscarPorId(int id)
         {
-            DAOPedido dao = new DAOPedido();
-            return dao.BuscaPorID(id);
+
+            return null;
         }
         
     }

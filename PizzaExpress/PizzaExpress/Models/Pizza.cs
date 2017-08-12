@@ -79,9 +79,10 @@ namespace PizzaExpress.Models
         }
         public IList<Pizza> ListarPorTamanho(string tamanho)
         {
-            DAOPizza dao = new DAOPizza();
-            return dao.BuscarPizza(tamanho);
-        }
+
+            return null;
+         }
+
         [Required(ErrorMessage ="Sabores são obrigatórios")]
 
         public IList<Sabor> Sabores { get { return this.sabores; } set { this.sabores = value; } }
@@ -175,14 +176,14 @@ namespace PizzaExpress.Models
         }
         public int salvar(Pizza objpizza)
         {
-            
-            DAOPizza dao = new DAOPizza();
-            return dao.Salvar(objpizza);
+
+
+            return 0;
         }
         public Pizza BuscarPizzaId(int id)
         {
-            DAOPizza dao = new DAOPizza();
-            return dao.BuscarPizza(id);
+
+            return null;
         }
     }
 }

@@ -62,30 +62,23 @@ namespace PizzaExpress.Models
         }
         public Produto ProdutoPorId(int id)
         {
-            DAOProduto dao = new DAOProduto();
-            return dao.BuscarPorIdProduto(id);
+
+            return null;
         }
         public IList<Produto> ListarNome(string nome)
         {
-            DAOProduto dao = new DAOProduto();
-            return dao.BuscarPorNome(nome);
+
+            return null;
         }
         public void Salvar(Produto produto)
         {
-            DAOProduto dao = new Models.DAOProduto();
-            if(produto.IdProduto == 0)
-            {
-                dao.Salvar(produto);
-            }
-            else
-            {
-                dao.Alterar(produto);
-            }
+         
+            
         }
         public void Deletar(int id)
         {
-            DAOProduto dao = new DAOProduto();
-            dao.Excluir(id);
+      
+         
         }
     }
 }

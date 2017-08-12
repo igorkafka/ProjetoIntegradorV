@@ -59,31 +59,21 @@ namespace PizzaExpress.Models
         }
         public IList<Sabor> ListarNome(string nome)
         {
-            DAOSabor dao = new DAOSabor();
-             return dao.BuscarPorNome(nome);
+
+            return null;
         }
         public void Salvar(Sabor sabor)
         {
-            DAOSabor dao = new DAOSabor();
-            if(sabor.IdSabor == 0)
-            {
-                dao.Salvar(sabor);
-
-            }
-            else
-            {
-                dao.Alterar(sabor);
-            }
+           
         }
         public Sabor BuscarPorId(int id)
         {
-            DAOSabor dao = new DAOSabor();
-            return dao.BuscarPorIdSabor(id);
+
+            return null;
         }
         public void Excluir(int id)
         {
-            DAOSabor dao = new DAOSabor();
-            dao.Excluir(id);
+         
         }
     }
 }

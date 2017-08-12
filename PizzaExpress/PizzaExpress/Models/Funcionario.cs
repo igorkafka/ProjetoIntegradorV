@@ -38,21 +38,12 @@ namespace PizzaExpress.Models
         }
         public void Salvar(Funcionario funcionario)
         {
-            DAOFuncionario dao = new DAOFuncionario();
-            if (funcionario.IdFuncionario != 0)
-            {
-                dao.Alterar(funcionario);
-            }
-            else
-            {
-                
-                dao.Salvar(funcionario);
-            }
+           
         }
         public IList<Funcionario> Listar(String nome)
         {
-            DAOFuncionario dao = new DAOFuncionario();
-            return dao.BuscarPorNome(nome);
+
+            return null;
         }
 
     }
