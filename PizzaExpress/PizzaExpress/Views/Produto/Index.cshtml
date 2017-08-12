@@ -7,8 +7,6 @@
 <h2>Produto</h2>
 
 
-    @using (Ajax.BeginForm("Index", "Produto", new AjaxOptions { HttpMethod = "GET", InsertionMode = InsertionMode.Replace, UpdateTargetId = "divlistaprodutos", OnFailure = "handleError" }))
-    {
 
         <section id="containerprocurarcliente">
             <form class="form-inline my-2 my-lg-0">
@@ -24,14 +22,8 @@
            
             </section>
 
-    }
+    
 <div>
 @Html.Partial("ProcurarProduto", Model)
     </div>
-@section Scripts
-{
-    @Scripts.Render("~/bundles/jqueryval")
-   
- 
 
-}
