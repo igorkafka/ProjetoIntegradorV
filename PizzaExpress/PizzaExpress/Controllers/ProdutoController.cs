@@ -11,18 +11,8 @@ namespace PizzaExpress.Controllers
     {
         public ActionResult Index(string pesquisar = "")
         {
-            Produto produto = new Produto();
-            if (Request.IsAjaxRequest())
-            {
-
-                if (string.IsNullOrEmpty(pesquisar) || pesquisar.Trim().Length < 2)
-                    return JavaScript("alert(\"Nome Invalido, Digite algo que tenha pelo menos mais de duas letras\")");
-                if (produto.ListarNome(pesquisar).Count == 0)
-                    return JavaScript("alert('Nenhum sabor encontrado com o nome: " + pesquisar + "');");
-                return PartialView("ProcurarProduto", produto.ListarNome(pesquisar));
-            }
-            IList<Produto> lista = new List<Produto>();
-            return View(lista);
+            
+            return View();
         }
         [HttpGet]
         public ActionResult Create()

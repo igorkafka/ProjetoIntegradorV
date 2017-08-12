@@ -16,37 +16,8 @@ namespace PizzaExpress.Controllers
         public ActionResult Index(string status = "", string pesquisar = "")
         {
            
-            Pedido objpedido = new Pedido();
-
-            if(Request.IsAjaxRequest())
-            {
-
-                 if (string.IsNullOrEmpty(status))
-                 {
-                     return JavaScript("alert('Sem status');");
-                 }
-                 if(string.IsNullOrEmpty(pesquisar))
-                 {
-                     return JavaScript("alert('Preencha uma data');");
-                 }
-                 if (status == "Aberto")
-                 {
-                    if (objpedido.ListarPizzasAbertos(Convert.ToDateTime(pesquisar)).Count == 0)
-                        return JavaScript("alert('Nenhum pedido em aberto foi encontrado no dia " + pesquisar +"');");
-                     return PartialView("ProcurarPedido", objpedido.ListarPizzasAbertos(Convert.ToDateTime(pesquisar)));
-                 }
-                 if(status == "Fechado")
-                 {
-                    if (objpedido.ListarPizzasFechados(Convert.ToDateTime(pesquisar)).Count == 0)
-                        return JavaScript("alert('Nenhum pedido fechado foi encontrado no dia " + pesquisar + "');");
-                    return PartialView("ProcurarPedido", objpedido.ListarPizzasFechados(Convert.ToDateTime(pesquisar)));
-             
-                 }
-                
-
-            }
-            IList<Pedido> lista = new List<Pedido>();
-            return View(lista);
+            
+            return View();
         }
         public ActionResult Create()
         {
