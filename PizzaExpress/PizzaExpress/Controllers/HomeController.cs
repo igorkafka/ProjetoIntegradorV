@@ -1,31 +1,39 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+using System.Net;
+using System.Net.Http;
+using System.Web.Http;
 
 namespace PizzaExpress.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : ApiController
     {
-        public ActionResult Index()
+        // GET: api/Home
+        public IEnumerable<string> Get()
         {
-         
-            return View();
+            return new string[] { "value1", "value2" };
         }
 
-        public ActionResult About()
+        // GET: api/Home/5
+        public string Get(int id)
         {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
+            return "value";
         }
 
-        public ActionResult Contact()
+        // POST: api/Home
+        public void Post([FromBody]string value)
         {
-            ViewBag.Message = "Your contact page.";
+        }
 
-            return View();
+        // PUT: api/Home/5
+        public void Put(int id, [FromBody]string value)
+        {
+        }
+
+        // DELETE: api/Home/5
+        public void Delete(int id)
+        {
         }
     }
 }
