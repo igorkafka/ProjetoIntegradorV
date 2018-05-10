@@ -186,35 +186,46 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201704231926364_1.0.cs" />
-    <Compile Include="Migrations\201704231926364_1.0.Designer.cs">
-      <DependentUpon>201704231926364_1.0.cs</DependentUpon>
+    <Compile Include="Migrations\201805100347317_InitialMigration.cs" />
+    <Compile Include="Migrations\201805100347317_InitialMigration.Designer.cs">
+      <DependentUpon>201805100347317_InitialMigration.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201704231932334_1.2.cs" />
-    <Compile Include="Migrations\201704231932334_1.2.Designer.cs">
-      <DependentUpon>201704231932334_1.2.cs</DependentUpon>
+    <Compile Include="Migrations\201805101346003_Refatoracao.cs" />
+    <Compile Include="Migrations\201805101346003_Refatoracao.Designer.cs">
+      <DependentUpon>201805101346003_Refatoracao.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201704231934067_1.3.cs" />
-    <Compile Include="Migrations\201704231934067_1.3.Designer.cs">
-      <DependentUpon>201704231934067_1.3.cs</DependentUpon>
+    <Compile Include="Migrations\201805101357433_AjutesItemPedido.cs" />
+    <Compile Include="Migrations\201805101357433_AjutesItemPedido.Designer.cs">
+      <DependentUpon>201805101357433_AjutesItemPedido.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201704231946075_1.4.cs" />
-    <Compile Include="Migrations\201704231946075_1.4.Designer.cs">
-      <DependentUpon>201704231946075_1.4.cs</DependentUpon>
+    <Compile Include="Migrations\201805101403288_SaborPizzasAjustes.cs" />
+    <Compile Include="Migrations\201805101403288_SaborPizzasAjustes.Designer.cs">
+      <DependentUpon>201805101403288_SaborPizzasAjustes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805101412085_SaborPizzasAjustes3.cs" />
+    <Compile Include="Migrations\201805101412085_SaborPizzasAjustes3.Designer.cs">
+      <DependentUpon>201805101412085_SaborPizzasAjustes3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805101416264_SaborPizzasAjustes4.cs" />
+    <Compile Include="Migrations\201805101416264_SaborPizzasAjustes4.Designer.cs">
+      <DependentUpon>201805101416264_SaborPizzasAjustes4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805101423474_AjustesPizzas4.cs" />
+    <Compile Include="Migrations\201805101423474_AjustesPizzas4.Designer.cs">
+      <DependentUpon>201805101423474_AjustesPizzas4.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Cliente.cs" />
     <Compile Include="Models\Funcionario.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ItensPedido.cs" />
-    <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Pedido.cs" />
     <Compile Include="Models\Pessoa.cs" />
     <Compile Include="Models\Pizza.cs" />
     <Compile Include="Models\Produto.cs" />
     <Compile Include="Models\Sabor.cs" />
+    <Compile Include="Models\Venda.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\PizzaExpressEntity.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -238,17 +249,26 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201704231926364_1.0.resx">
-      <DependentUpon>201704231926364_1.0.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201805100347317_InitialMigration.resx">
+      <DependentUpon>201805100347317_InitialMigration.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201704231932334_1.2.resx">
-      <DependentUpon>201704231932334_1.2.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201805101346003_Refatoracao.resx">
+      <DependentUpon>201805101346003_Refatoracao.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201704231934067_1.3.resx">
-      <DependentUpon>201704231934067_1.3.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201805101357433_AjutesItemPedido.resx">
+      <DependentUpon>201805101357433_AjutesItemPedido.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201704231946075_1.4.resx">
-      <DependentUpon>201704231946075_1.4.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201805101403288_SaborPizzasAjustes.resx">
+      <DependentUpon>201805101403288_SaborPizzasAjustes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805101412085_SaborPizzasAjustes3.resx">
+      <DependentUpon>201805101412085_SaborPizzasAjustes3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805101416264_SaborPizzasAjustes4.resx">
+      <DependentUpon>201805101416264_SaborPizzasAjustes4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805101423474_AjustesPizzas4.resx">
+      <DependentUpon>201805101423474_AjustesPizzas4.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

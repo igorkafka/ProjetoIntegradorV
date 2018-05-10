@@ -7,13 +7,13 @@ namespace PizzaExpress.Models
 {
     public class Funcionario:Pessoa
     {
-        private int idFuncionario;
-        public int IdFuncionario
+        private int id;
+        public int Id
         {
-            get { return idFuncionario; }
-            set { idFuncionario = value; }
+            get { return id; }
+            set { id = value; }
         }
-
+        public virtual ICollection<Pedido> Pedidos { get; set; }
         private string senha;
         public string Senha
         {

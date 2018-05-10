@@ -12,20 +12,13 @@ namespace PizzaExpress.Models
         {
             this.DescSabor = "Sem sabor";
         }
-        private Pizza objPizza; //Composição Pizza
-        public Pizza ObjPizza
-        {
-            get { return objPizza; }
-            set { objPizza = value; }
-        }
-
         //----- Atributos -----
 
-        private int idSabor;
-        public int IdSabor
+        private int id;
+        public int Id
         {
-            get { return idSabor; }
-            set { idSabor = value; }
+            get { return id; }
+            set { id = value; }
         }
 
         private string nomeSabor;
@@ -37,7 +30,6 @@ namespace PizzaExpress.Models
             get { return nomeSabor; }
             set { nomeSabor = value; }
         }
-
         private string descSabor;
         [Required(ErrorMessage = "Descrição é obrigatória")]
         [StringLength(60,ErrorMessage = "É permitido no máximo 60 caracteres!")]
@@ -47,7 +39,6 @@ namespace PizzaExpress.Models
             get { return descSabor; }
             set { descSabor = value; }
         }
-
         private decimal precoSabor;
         [Required(ErrorMessage ="O Preço do Sabor é obrigatório")]
         [DataType(DataType.Currency,ErrorMessage ="Apenas valores monetários são permitidos")]

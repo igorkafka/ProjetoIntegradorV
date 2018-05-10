@@ -10,18 +10,9 @@ namespace PizzaExpress.Models
     public class Pizza
     {
         public Pizza()
-        {
-            Sabor listasabor = new Sabor();
-            Sabor ListaSabor2 = new Sabor();
-            this.Sabores = new List<Sabor>();
-            this.Sabores.Add(new Sabor());
-            this.Sabores.Add(new Sabor());
-            this.Sabores.Add(new Sabor());
-            this.Sabores[0] = new Sabor();
-            this.Sabores[1] = new Sabor();
-            this.Sabores[2] = new Sabor();
+        { 
         }
-       
+
 
         //----- Atributos -----
 
@@ -33,29 +24,29 @@ namespace PizzaExpress.Models
             set { status = value; }
         }
 
-        private int idPizza;
+        private int id;
 
-        public int IdPizza
+        public int Id
         {
-            get { return idPizza; }
-            set { idPizza = value; }
+            get { return id; }
+            set { id = value; }
         }
         public decimal VerificarSabores()
         {
-            if (this.Sabores[0].IdSabor != 0 && this.Sabores[1].IdSabor == 0 && this.Sabores[2].IdSabor == 0)
+            if (this.Sabor1.Id != 0 && this.Sabor2.Id == 0 && this.Sabor3.Id == 0)
             {
 
-                 return CalcularValorTotalPizza(this.Sabores[0].PrecoSabor, Tamanho);
+                 return CalcularValorTotalPizza(this.Sabor1.PrecoSabor, Tamanho);
                
             }
-            else if(this.Sabores[0].IdSabor != 0 && this.Sabores[1].IdSabor != 0 && this.Sabores[2].IdSabor == 0)
+            else if(this.Sabor1.Id != 0 && this.Sabor2.Id != 0 && this.Sabor3.Id == 0)
             {
-                 return CalcularValorTotalPizzaDoisSabores(this.Sabores[0].PrecoSabor, this.Tamanho, this.Sabores[1].PrecoSabor);
+                 return CalcularValorTotalPizzaDoisSabores(this.Sabor1.PrecoSabor, this.Tamanho, this.Sabor2.PrecoSabor);
                 
             }
-            else if (this.Sabores[0].IdSabor != 0 && this.Sabores[1].IdSabor != 0 && this.Sabores[2].IdSabor != 0)
+            else if (this.Sabor1.Id != 0 && this.Sabor2.Id != 0 && this.Sabor3.Id != 0)
             {
-                 return CalcularValorTotalPizzasTresSabores(this.Sabores[0].PrecoSabor, this.Tamanho, this.Sabores[1].PrecoSabor, this.Sabores[2].PrecoSabor);
+                 return CalcularValorTotalPizzasTresSabores(this.Sabor1.PrecoSabor, this.Tamanho, this.Sabor2.PrecoSabor, this.Sabor3.PrecoSabor);
                
             }
             return 0;
@@ -83,13 +74,9 @@ namespace PizzaExpress.Models
             return null;
          }
 
-        [Required(ErrorMessage ="Sabores são obrigatórios")]
-
-        public IList<Sabor> Sabores { get { return this.sabores; } set { this.sabores = value; } }
-
-        private IList<Sabor> sabores;
-        
-
+        public Sabor Sabor1 { get; set; }
+        public Sabor  Sabor2 { get; set; }
+        public Sabor Sabor3 { get; set; }
 
         public decimal CalcularValorTotalPizza(decimal valorSabor, string tamanho)
         {

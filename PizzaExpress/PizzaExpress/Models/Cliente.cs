@@ -14,28 +14,15 @@ namespace PizzaExpress.Models
             {
 
             }
-            private int idCliente;
-            [DisplayName("Código")]
-            public int IdCliente
+            private int id;
+            public int Id
             {
-                get { return idCliente; }
-                set { idCliente = value; }
-            }
-
-            private string nomeCliente;
-
-            [Required(ErrorMessage = "O nome é obrigatório!")]
-            [StringLength(40, ErrorMessage = "O campo nome não pode ter mais de 40 letras e menos de 3 letras", MinimumLength = 3)]
-            [DisplayName(displayName: "Nome")]
-            public string NomeCliente
-            {
-                get { return nomeCliente; }
-                set { nomeCliente = value; }
+                get { return id; }
+                set { id = value; }
             }
 
             private string telefoneCliente;
             [StringLength(18, ErrorMessage = "O campo telefone não pode ter mais de 18 letras")]
-            [DisplayName(displayName: "Telefone")]
             [RegularExpression("[0-9]{1,}", ErrorMessage = "Apenas algarismo númericos são permitidos")]
             [Required(ErrorMessage = "Número do Telefone do Cliente é obrigatório")]
             public string TelefoneCliente

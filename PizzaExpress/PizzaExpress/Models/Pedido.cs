@@ -8,37 +8,13 @@ namespace PizzaExpress.Models
 {
     public class Pedido
     {
-        private Produto objproduto;
-        
-        private Pizza objpizza;
-        private Sabor objsabor;
-        [Required]
-        public Sabor ObjSabor
-        {
-            get { return this.objsabor; }
-            set { this.objsabor = value; }
-        }
-        private string usuario;
-        public string Usuario
-        {
-            get { return this.usuario; }
-            set { this.usuario = value; }
-        }
-        
+        public int Id { get; set; }        
         private IList<ItensPedido> listaItemPedido; //Lista ItensPedido
         public IList<ItensPedido> ListaItemPedido
         {
             get { return listaItemPedido; }
             set { listaItemPedido = value; }
         }
-        [Required]
-        private Cliente objCliente; //Agregação Cliente
-        public Cliente ObjCliente
-        {
-            get { return objCliente; }
-            set { objCliente = value; }
-        }
-
         //----- Atributos -----
 
         private int numPedido;
@@ -68,14 +44,6 @@ namespace PizzaExpress.Models
             set { dataPedido = value; }
         }
          
-        private decimal valorTotal;
-        [DataType(DataType.Currency)]
-        public decimal ValorTotal
-        {
-            get { return ObjPizza.VerificarSabores() + ObjProduto.PrecoProduto; }
-            set { this.valorTotal = value; }
-        }
-
         private string statusPedido;
         
         [Display( Name ="Status")]
@@ -94,28 +62,9 @@ namespace PizzaExpress.Models
             get { return tipoPedido; }
             set { tipoPedido = value; }
         }
-        private IList<Pizza> pizzas = new List<Pizza>();
-        public IList<Pizza> Pizzas { get { return pizzas; } set { this.pizzas = value; } }
-       [Required]
-        public Produto ObjProduto { get { return objproduto; } set { this.objproduto = value; } }
-        [Required]
-        public Pizza ObjPizza { get { return objpizza; } set { this.objpizza= value; } }
-
+     
         public Pedido()
-        {
-            listaItemPedido = new List<ItensPedido>();
-            Pizzas = new List<Pizza>();
-            this.objpizza = new Pizza();
-            this.objproduto = new Produto();
-            this.objpizza.Sabores = new List<Sabor>();
-            this.objpizza.Sabores.Add(new Sabor());
-            this.objpizza.Sabores.Add(new Sabor());
-            this.objpizza.Sabores.Add(new Sabor());
-            this.objpizza.Sabores[0] = new Sabor();
-            this.objpizza.Sabores[1] = new Sabor();
-            this.objpizza.Sabores[2] = new Sabor();
-
-
+        { 
         }
         public void salvar(Pedido pedido)
         {
@@ -149,6 +98,8 @@ namespace PizzaExpress.Models
 
             return null;
         }
-        
+        public Funcionario ObjFuncionario { get; set; }
+        public virtual ICollection<Venda> Vendas { get; set; }
+
     }
 }

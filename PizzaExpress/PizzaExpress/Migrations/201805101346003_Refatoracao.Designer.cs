@@ -6,14 +6,14 @@ namespace PizzaExpress.Migrations
     using System.Data.Entity.Migrations.Infrastructure;
     using System.Resources;
     
-    [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class _10 : IMigrationMetadata
+    [GeneratedCode("EntityFramework.Migrations", "6.2.0-beta1-60406")]
+    public sealed partial class Refatoracao : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(_10));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Refatoracao));
         
         string IMigrationMetadata.Id
         {
-            get { return "201704231926364_1.0"; }
+            get { return "201805101346003_Refatoracao"; }
         }
         
         string IMigrationMetadata.Source

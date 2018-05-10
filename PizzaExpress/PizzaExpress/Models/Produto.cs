@@ -13,21 +13,14 @@ namespace PizzaExpress.Models
         {
            
         }
-        private ItensPedido objitensPedido; //Agregação ItensPedido
-        public ItensPedido ObjitensPedido
-        {
-            get { return objitensPedido; }
-            set { objitensPedido = value; }
-        }
-
         //----- Atributos -----
 
-        private int idProduto;
+        private int id;
         [ScaffoldColumn(false)]
-        public int IdProduto
+        public int Id
         {
-            get { return idProduto; }
-            set { idProduto = value; }
+            get { return id; }
+            set { id = value; }
         }
         private string nomeProduto;
         [Required(ErrorMessage ="Nome é obrigatório!")]

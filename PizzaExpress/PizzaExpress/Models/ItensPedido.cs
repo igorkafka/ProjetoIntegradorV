@@ -7,13 +7,9 @@ namespace PizzaExpress.Models
 {
     public class ItensPedido
     {
-        private Produto objProduto;
-
-        public Produto ObjProduto
-        {
-            get { return objProduto; }
-            set { objProduto = value; }
-        }
+        
+        public int Id { get; set; }
+        public Produto ObjProduto { get; set; }
 
         private Pizza objPizza;
 
@@ -24,12 +20,7 @@ namespace PizzaExpress.Models
         }
         //----- Atributos -----
 
-        private int idItem;
-        public int IdItem
-        {
-            get { return idItem; }
-            set { idItem = value; }
-        }
+       
 
 
         private int quatidade;
@@ -50,7 +41,6 @@ namespace PizzaExpress.Models
         public ItensPedido(Pedido objPedido)
         {
             this.objPedido = objPedido;
-            objProduto = new Produto();
         }
     }
 }
