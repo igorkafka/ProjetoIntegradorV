@@ -31,6 +31,7 @@ namespace PizzaExpress.Models
             get { return id; }
             set { id = value; }
         }
+        public string Nome { get; set; }
         public decimal VerificarSabores()
         {
             if (this.Sabor1.Id != 0 && this.Sabor2.Id == 0 && this.Sabor3.Id == 0)

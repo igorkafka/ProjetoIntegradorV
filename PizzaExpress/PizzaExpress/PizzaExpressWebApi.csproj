@@ -226,6 +226,10 @@
     <Compile Include="Models\Venda.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\PizzaExpressEntity.cs" />
+    <Compile Include="Repository\RepositoryCliente.cs" />
+    <Compile Include="Repository\RepositoryPedido.cs" />
+    <Compile Include="Repository\RepositoryPizza.cs" />
+    <Compile Include="Repository\RepositoryProduto.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
