@@ -214,6 +214,18 @@
     <Compile Include="Migrations\201805101423474_AjustesPizzas4.Designer.cs">
       <DependentUpon>201805101423474_AjustesPizzas4.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805151912314_AtualizarBanco1.cs" />
+    <Compile Include="Migrations\201805151912314_AtualizarBanco1.Designer.cs">
+      <DependentUpon>201805151912314_AtualizarBanco1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805151915368_AtualizarBanco2.cs" />
+    <Compile Include="Migrations\201805151915368_AtualizarBanco2.Designer.cs">
+      <DependentUpon>201805151915368_AtualizarBanco2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805151929075_AtualizarBanco3.cs" />
+    <Compile Include="Migrations\201805151929075_AtualizarBanco3.Designer.cs">
+      <DependentUpon>201805151929075_AtualizarBanco3.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Cliente.cs" />
     <Compile Include="Models\Funcionario.cs" />
@@ -227,6 +239,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\PizzaExpressEntity.cs" />
     <Compile Include="Repository\RepositoryCliente.cs" />
+    <Compile Include="Repository\RepositoryItensPedido.cs" />
     <Compile Include="Repository\RepositoryPedido.cs" />
     <Compile Include="Repository\RepositoryPizza.cs" />
     <Compile Include="Repository\RepositoryProduto.cs" />
@@ -273,6 +286,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805101423474_AjustesPizzas4.resx">
       <DependentUpon>201805101423474_AjustesPizzas4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805151912314_AtualizarBanco1.resx">
+      <DependentUpon>201805151912314_AtualizarBanco1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805151915368_AtualizarBanco2.resx">
+      <DependentUpon>201805151915368_AtualizarBanco2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805151929075_AtualizarBanco3.resx">
+      <DependentUpon>201805151929075_AtualizarBanco3.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

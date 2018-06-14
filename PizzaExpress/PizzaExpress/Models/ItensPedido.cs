@@ -9,38 +9,15 @@ namespace PizzaExpress.Models
     {
         
         public int Id { get; set; }
-        public Produto ObjProduto { get; set; }
-
-        private Pizza objPizza;
-
-        public Pizza ObjPizza
-        {
-            get { return objPizza; }
-            set { objPizza = value; }
-        }
-        //----- Atributos -----
-
-       
-
-
+        public virtual ICollection<Produto> Produtos { get; set; }
+        public virtual ICollection<Pizza> Pizzas { get; set; }
+        public Pedido ObjPedido { get; set; }
+        //----- Atributos ----
         private int quatidade;
         public int Quatidade
         {
             get { return quatidade; }
             set { quatidade = value; }
-        }
-
-
-        private Pedido objPedido;
-        public Pedido ObjPedido
-        {
-            get { return objPedido; }
-            set { objPedido = value; }
-        }
-
-        public ItensPedido(Pedido objPedido)
-        {
-            this.objPedido = objPedido;
         }
     }
 }

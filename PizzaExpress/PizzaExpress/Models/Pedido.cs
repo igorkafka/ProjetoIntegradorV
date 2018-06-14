@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -9,12 +10,6 @@ namespace PizzaExpress.Models
     public class Pedido
     {
         public int Id { get; set; }        
-        private IList<ItensPedido> listaItemPedido; //Lista ItensPedido
-        public IList<ItensPedido> ListaItemPedido
-        {
-            get { return listaItemPedido; }
-            set { listaItemPedido = value; }
-        }
         //----- Atributos -----
 
         private int numPedido;
@@ -24,7 +19,7 @@ namespace PizzaExpress.Models
             get { return numPedido; }
             set { numPedido = value; }
         }
-
+        public virtual ICollection<ItensPedido> itenspedidos { get; set; }
         private string descPedido;
         [StringLength(50,ErrorMessage ="Descrição é obrigatória")]
         [Required(ErrorMessage ="Descrição do Pedido é obrigatória")]

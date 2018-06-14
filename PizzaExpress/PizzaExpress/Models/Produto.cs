@@ -11,10 +11,10 @@ namespace PizzaExpress.Models
     {
         public Produto()
         {
-           
+
         }
         //----- Atributos -----
-
+        public virtual ICollection<ItensPedido> ItensPedidos { get; set; }
         private int id;
         [ScaffoldColumn(false)]
         public int Id

@@ -9,6 +9,7 @@ namespace PizzaExpress.Models
 {
     public class Pizza
     {
+        public virtual ICollection<ItensPedido> ItensPedidos { get; set; }
         public Pizza()
         { 
         }
